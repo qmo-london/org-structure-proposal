@@ -478,7 +478,7 @@ const JOURNEY = [
 
 /* ---------- Linked proposals by Mr. Mohamed Fakhtoo ---------- */
 const PROJECTS = {
-  ivr:{icon:"📞", short:"Smart IVR", pdf:"",
+  ivr:{icon:"📞", short:"Smart IVR", pdf:"Smart_IVR_Proposal.pdf",
     ar:"نظام الرد الصوتي التفاعلي الذكي", en:"Smart IVR",
     sub:"Self-service for patients using their Qatari ID: appointments, weekly allowances, medical extension, travel and transport. Available 24/7, in Arabic, secure and private.",
     tag:"“One call, instant information, a reassured patient.”",
@@ -586,8 +586,9 @@ function renderProject(id){
   let h = `<div class="hero"><div>
       <div class="ar">${P.ar}</div><h2>${P.icon} ${P.en}</h2><p>${T(P.sub)}</p>
       <div class="tagline">${T(P.tag)}</div><div class="by">💡 ${L("Proposal by","إعداد:")} Mr. Mohamed Fakhtoo</div></div>
+      ${P.pdf ? `<a class="pdfbtn" href="${P.pdf}" target="_blank">${L("📄 Open full proposal (PDF)","📄 فتح المقترح الكامل (PDF)")}</a>` : ""}
       </div>
-    ${lang==="ar" ? `<div class="en-note">📝 التفاصيل أدناه ملخص باللغة الإنجليزية.</div>` : ""}
+    ${lang==="ar" ? `<div class="en-note">📝 التفاصيل أدناه ملخص باللغة الإنجليزية${P.pdf ? "، والمقترح الكامل باللغة العربية متاح في ملف PDF" : ""}.</div>` : ""}
     <div class="headline">${P.tiles.map(t=>`<div class="hk" style="--c:var(--maroon)"><b>${t[0]}</b><span>${T(t[1])}</span></div>`).join("")}</div>`;
   P.sections.forEach(s=>{
     h += `<h3 class="psec">${T(s.h)}</h3>`;
@@ -1083,7 +1084,7 @@ function openDrawer(x){
       <div class="label">${L("How success is measured","مؤشرات النجاح")}</div>${j.kpis?.length?`<ul dir="auto">${j.kpis.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>`:`<p>${e}</p>`}
       ${(PROJ_OF[n.t]||[]).map(p=>`<div class="note">${PROJECTS[p].icon} ${L("This unit runs the","تتولى هذه الوحدة مقترح")} <b>${L(PROJECTS[p].en, PROJECTS[p].ar)}</b>${L(" proposal.","")}
         <button class="btn primary" style="margin-left:8px" onclick="goView('${p}')">${L("Open","فتح")} ${PROJECTS[p].icon} ${L(PROJECTS[p].short, PROJECTS[p].ar)}</button>
-        </div>`).join("")}
+        ${PROJECTS[p].pdf ? `<a class="btn" style="margin-left:4px;text-decoration:none" href="${PROJECTS[p].pdf}" target="_blank">📄 PDF</a>` : ""}</div>`).join("")}
       <div class="actions"><button class="btn" onclick="toggleEdit(true)">${L("✏️ Edit this job description","✏️ تعديل الوصف الوظيفي")}</button><button class="btn primary" style="margin-left:auto" onclick="closeDrawer()">${L("✖ Close","✖ إغلاق")}</button></div>`;
   } else {
     const one = L("(one per line)","(سطر لكل بند)");
