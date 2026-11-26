@@ -13,7 +13,7 @@
   *{box-sizing:border-box}
   body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
   /* ---------- Header ---------- */
-  header{background:#fff;color:var(--ink);padding:10px 40px 22px;position:relative}
+  header{background:#fff;color:var(--ink);padding:10px 40px 22px;position:sticky;top:0;z-index:8;transition:padding .2s}
   /* Qatar flag serrated edge: white points cutting into a maroon band */
   header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:12px;background:var(--maroon);
     -webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/18px 100%;
@@ -33,10 +33,34 @@
   h1{margin:2px 0 0;font-size:22px;font-weight:600;color:var(--maroon)}
   .badge-draft{display:inline-block;margin-left:8px;padding:2px 9px;border:1px solid var(--maroon);color:var(--maroon);border-radius:20px;font-size:10px;letter-spacing:.1em;vertical-align:middle}
   /* ---------- Toolbar ---------- */
-  .toolbar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;padding:16px 48px;background:#fff;border-bottom:1px solid #e6e1dc;position:sticky;top:0;z-index:5}
-  .seg{display:inline-flex;flex-wrap:wrap;background:#f0ebe7;border-radius:10px;padding:4px}
-  .seg button{border:0;background:transparent;padding:8px 15px;border-radius:7px;font:inherit;font-size:14px;cursor:pointer;color:var(--muted)}
-  .seg button.on{background:var(--maroon);color:#fff;box-shadow:0 2px 6px rgba(138,21,56,.3)}
+  .toolbar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;padding:16px 48px;background:#fff;border-bottom:1px solid #e6e1dc;position:sticky;top:var(--hh,0px);z-index:7;box-shadow:0 8px 14px -12px rgba(0,0,0,.35)}
+  .seg{display:inline-flex;flex-wrap:wrap;gap:4px;background:linear-gradient(180deg,#fff,#fbf5f7);border:1px solid #eedfe5;border-radius:18px;padding:6px;box-shadow:0 4px 14px rgba(138,21,56,.08)}
+  .seg button{position:relative;display:inline-flex;align-items:center;gap:8px;border:0;background:transparent;padding:7px 14px 7px 8px;border-radius:13px;font:inherit;font-size:14px;font-weight:600;cursor:pointer;color:#5d4a51;transition:background .18s,color .18s,transform .18s,box-shadow .18s}
+  [dir=rtl] .seg button{padding:7px 8px 7px 14px}
+  .seg button .ic{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:14px;background:#f6e8ee;box-shadow:inset 0 0 0 1px rgba(138,21,56,.08);transition:background .18s,transform .18s}
+  .seg button:hover{background:#f8edf1;color:var(--maroon);transform:translateY(-1px)}
+  .seg button:hover .ic{transform:scale(1.08)}
+  .seg button.on{background:linear-gradient(135deg,var(--maroon-dk),var(--maroon) 55%,#a8325a);color:#fff;box-shadow:0 8px 18px -6px rgba(138,21,56,.55)}
+  .seg button.on .ic{background:rgba(255,255,255,.18);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+  .seg button.on::after{content:"";position:absolute;left:50%;bottom:3px;width:34%;height:3px;border-radius:3px;background:#d8b25a;transform:translateX(-50%)}
+  .tools .btn{border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  /* sticky header that compacts while scrolling */
+  .logo,.logo img{transition:height .2s}
+  .eyebrow{transition:opacity .2s}
+  body.scrolled header{padding-top:5px;padding-bottom:17px}
+  body.scrolled .logo,body.scrolled .logo img{height:42px}
+  body.scrolled .eyebrow{display:none}
+  body.scrolled h1{font-size:18px}
+  /* large PDF popup */
+  .pdfmodal{position:fixed;inset:0;background:rgba(30,12,20,.55);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:30}
+  .pdfmodal.open{display:flex}
+  .pdfbox{width:94vw;height:92vh;background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.45);border-top:8px solid var(--maroon);animation:pdfpop .2s ease}
+  @keyframes pdfpop{from{transform:scale(.97);opacity:0}to{transform:none;opacity:1}}
+  .pdfbar{display:flex;align-items:center;gap:10px;padding:10px 16px;background:#fbf6f8;border-bottom:1px solid #eee}
+  .pdfbar b{color:var(--maroon);font-size:16px}
+  .pdfbar .sp{flex:1}
+  .pdfbar a.btn{text-decoration:none}
+  #pdfFrame{flex:1;border:0;width:100%;background:#f1eeef}
   .tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
   .tools input{padding:8px 12px;border:1px solid #ddd6d0;border-radius:8px;font:inherit;font-size:14px;width:190px}
   .btn{border:1px solid #ddd6d0;background:#fff;padding:8px 13px;border-radius:8px;font:inherit;font-size:14px;cursor:pointer;color:var(--ink)}
@@ -270,7 +294,8 @@
   [hidden]{display:none!important}
   @media print{
     @page{size:A3 landscape;margin:10mm}
-    .toolbar,.drawer,.editbar,.toast,.backdrop{display:none!important}
+    .toolbar,.drawer,.editbar,.toast,.backdrop,.pdfmodal{display:none!important}
+    header{position:static!important}
     .goal,.rung,.hk{break-inside:avoid}
     .logo:not(.has){display:none}
     body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -302,13 +327,13 @@
 
 <div class="toolbar">
   <div class="seg" id="seg">
-    <button data-v="summary" class="on" data-ar="📌 الملخص التنفيذي">📌 Executive summary</button>
-    <button data-v="proposed" data-ar="🏛️ الهيكل التنظيمي">🏛️ Organisation structure</button>
-    <button data-v="journey" data-ar="🧭 رحلة المريض">🧭 Patient journey</button>
-    <button data-v="jds" data-ar="📋 الأوصاف الوظيفية">📋 Job descriptions</button>
-    <button data-v="goals" data-ar="🎯 الأهداف والمؤشرات">🎯 Goals &amp; KPIs</button>
-    <button data-v="ivr" data-ar="📞 الرد الصوتي الذكي">📞 Smart IVR</button>
-    <button data-v="crm" data-ar="💻 تطبيق رحلة المريض">💻 Patient Journey App</button>
+    <button data-v="summary" class="on" data-ar="<span class='ic'>📌</span><span>الملخص التنفيذي</span>"><span class="ic">📌</span><span>Executive summary</span></button>
+    <button data-v="proposed" data-ar="<span class='ic'>🏛️</span><span>الهيكل التنظيمي</span>"><span class="ic">🏛️</span><span>Organisation structure</span></button>
+    <button data-v="journey" data-ar="<span class='ic'>🧭</span><span>رحلة المريض</span>"><span class="ic">🧭</span><span>Patient journey</span></button>
+    <button data-v="jds" data-ar="<span class='ic'>📋</span><span>الأوصاف الوظيفية</span>"><span class="ic">📋</span><span>Job descriptions</span></button>
+    <button data-v="goals" data-ar="<span class='ic'>🎯</span><span>الأهداف والمؤشرات</span>"><span class="ic">🎯</span><span>Goals &amp; KPIs</span></button>
+    <button data-v="ivr" data-ar="<span class='ic'>📞</span><span>الرد الصوتي الذكي</span>"><span class="ic">📞</span><span>Smart IVR</span></button>
+    <button data-v="crm" data-ar="<span class='ic'>💠</span><span>تطبيق «رحلة»</span>"><span class="ic">💠</span><span>Rihla App</span></button>
   </div>
   <div class="tools">
     <input id="q" placeholder="🔍 Search units or tasks…" data-ar-ph="🔍 ابحث عن وحدة أو مهمة…">
@@ -338,6 +363,14 @@
 
 <div class="backdrop" id="backdrop" onclick="closeDrawer()"></div>
 <aside class="drawer" id="drawer"><button class="x" onclick="closeDrawer()">×</button><div id="dbody"></div></aside>
+<div class="pdfmodal" id="pdfModal" onclick="if(event.target===this)closePdf()">
+  <div class="pdfbox">
+    <div class="pdfbar"><b id="pdfTitle"></b><span class="sp"></span>
+      <a id="pdfNew" class="btn" target="_blank">↗ Open in new tab</a>
+      <button class="btn primary" id="pdfClose" onclick="closePdf()">✖ Close</button></div>
+    <iframe id="pdfFrame" title="PDF"></iframe>
+  </div>
+</div>
 <div class="toast" id="toast"></div>
 
 <!-- Arabic job descriptions (role, purpose, tasks, KPIs). Lead and headcount are shared with the English block. -->
@@ -369,7 +402,7 @@
  "Procurement & Distribution":{"role":"موظفو المشتريات","purpose":"يشتري الأدوية والمعدات بأفضل قيمة من موردين معتمدين، ويوصلها إلى حيث تُحتاج.","tasks":["طلب عروض الأسعار واختيار الموردين المعتمدين","إدارة عقود الموردين بالتعاون مع الشؤون القانونية والامتثال","مسك سجلات المخزون وتواريخ الصلاحية والتسليم","رفع تقرير بالإنفاق والوفورات كل ربع سنة"],"kpis":["تسليم الطلبات في موعدها","الوفورات مقارنة بعروض الأسعار"]},
  "Corporate Services":{"role":"رئيس الخدمات المؤسسية","purpose":"يوفر للمكتب الكوادر والأنظمة والأدوات التي يحتاجها.","tasks":["إدارة تقنية المعلومات والخدمات الرقمية والموارد البشرية","إدارة مقر المكتب ومرافقه","ضمان حصول الموظفين على الأدوات والتدريب اللازم","قيادة الخطة الرقمية للمكتب"],"kpis":["رضا الموظفين عن خدمات الدعم"]},
  "IT Operations":{"role":"موظفو تقنية المعلومات","purpose":"يحافظ على عمل الأنظمة وأمنها.","tasks":["دعم أجهزة الموظفين وهواتفهم وحساباتهم","تشغيل الشبكة والبريد الإلكتروني والنسخ الاحتياطي","حماية الأنظمة","إدارة موردي تقنية المعلومات"],"kpis":["إغلاق طلبات الدعم خلال يوم عمل واحد","استمرارية عمل الأنظمة"]},
- "Digital Services":{"role":"مسؤول الخدمات الرقمية","purpose":"ينقل عمل المكتب إلى البيئة الرقمية، بقيادة تطبيق رحلة المريض والرد الصوتي الذكي.","tasks":["بناء تطبيق رحلة المريض وتشغيله: منصة ويب واحدة تحل محل الأنظمة القديمة والسجلات اليدوية، على أربعة إصدارات","بناء بوابة إلكترونية للمرضى وتشغيلها","تشغيل منصة الرد الصوتي الذكي وربطها الآمن (للقراءة فقط) بنظام المكتب","توفير لوحات متابعة للموظفين للحالات والمواعيد والمكالمات والإنفاق","تحويل الإجراءات الورقية إلى إلكترونية","تدريب الموظفين على الأنظمة الجديدة"],"kpis":["نسبة الطلبات المقدمة إلكترونياً"]},
+ "Digital Services":{"role":"مسؤول الخدمات الرقمية","purpose":"ينقل عمل المكتب إلى البيئة الرقمية، بقيادة تطبيق «رحلة» والرد الصوتي الذكي.","tasks":["بناء تطبيق «رحلة» وتشغيله: منصة ويب واحدة تحل محل الأنظمة القديمة والسجلات اليدوية، على أربعة إصدارات","بناء بوابة إلكترونية للمرضى وتشغيلها","تشغيل منصة الرد الصوتي الذكي وربطها الآمن (للقراءة فقط) بنظام المكتب","توفير لوحات متابعة للموظفين للحالات والمواعيد والمكالمات والإنفاق","تحويل الإجراءات الورقية إلى إلكترونية","تدريب الموظفين على الأنظمة الجديدة"],"kpis":["نسبة الطلبات المقدمة إلكترونياً"]},
  "HR & Administration":{"role":"مسؤول الموارد البشرية والشؤون الإدارية","purpose":"يرعى موظفي المكتب.","tasks":["التوظيف وإدارة العقود","تنفيذ برامج التهيئة والتدريب","إدارة الإجازات والحضور وتقييم الأداء","تحديث سياسات الموظفين"],"kpis":["شغل الوظائف الشاغرة في وقتها","إنجاز تقييمات الأداء سنوياً"]}
 }
 </script>
@@ -403,7 +436,7 @@
  "Procurement & Distribution":{"role":"Procurement Officers","lead":"","headcount":"","purpose":"Buys medicines and equipment at the best value from approved suppliers, and gets them where they are needed.","tasks":["Get quotes and choose approved suppliers","Manage supplier contracts with Legal & Compliance","Keep stock, expiry-date and delivery records","Report spend and savings every quarter"],"kpis":["Orders delivered on time","Savings against quotes"]},
  "Corporate Services":{"role":"Head of Corporate Services","lead":"","headcount":"","purpose":"Gives the office the people, systems and tools it needs.","tasks":["Run IT, digital services and HR","Manage the office premises and facilities","Make sure staff have the tools and training they need","Lead the office's digital plan"],"kpis":["Staff satisfaction with support services"]},
  "IT Operations":{"role":"IT Officers","lead":"","headcount":"","purpose":"Keeps systems running and secure.","tasks":["Support staff computers, phones and accounts","Run the network, email and backups","Keep systems secure","Manage IT suppliers"],"kpis":["Support requests closed within 1 working day","System uptime"]},
- "Digital Services":{"role":"Digital Services Officer","lead":"","headcount":"","purpose":"Moves the office's work online, led by the Patient Journey App (web-based CRM) and Smart IVR.","tasks":["Build and run the Patient Journey App: one web platform replacing the old systems and manual records, released in 4 stages","Build and run an online patient portal","Run the Smart IVR platform and its secure, read-only link to the office system","Give staff dashboards for cases, appointments, calls and spend","Move paper processes online","Train staff on new systems"],"kpis":["Share of requests submitted online"]},
+ "Digital Services":{"role":"Digital Services Officer","lead":"","headcount":"","purpose":"Moves the office's work online, led by the Rihla App (web-based CRM) and Smart IVR.","tasks":["Build and run the Rihla App: one web platform replacing the old systems and manual records, released in 4 stages","Build and run an online patient portal","Run the Smart IVR platform and its secure, read-only link to the office system","Give staff dashboards for cases, appointments, calls and spend","Move paper processes online","Train staff on new systems"],"kpis":["Share of requests submitted online"]},
  "HR & Administration":{"role":"HR & Admin Officer","lead":"","headcount":"","purpose":"Looks after the office's staff.","tasks":["Recruit staff and manage contracts","Run induction and training","Manage leave, attendance and appraisals","Keep staff policies up to date"],"kpis":["Vacancies filled on time","Appraisals completed each year"]}
 }
 </script>
@@ -448,7 +481,7 @@ const PROPOSED = {
       {t:"Procurement & Distribution", e:"📦"}]},
     {t:"Corporate Services", d:"IT · digital · HR", c:C.corp, e:"🖥️", kids:[
       {t:"IT Operations"},
-      {t:"Digital Services", d:"Patient Journey App · portal"},
+      {t:"Digital Services", d:"Rihla App · portal"},
       {t:"HR & Administration", tag:"new"}]}
   ],
   changes:[
@@ -461,7 +494,7 @@ const PROPOSED = {
     "⚖️ <b>Independent compliance.</b> Legal & Compliance reports directly to the Attaché and covers UK GDPR, contracts and audit.",
     "✈️ <b>Complete patient support.</b> Visas, interpreting, transport, airports and accommodation are managed as one service.",
     "📞 <b>One call, instant information.</b> Smart IVR lets patients hear their own appointments, allowances, extension status, flights and transport 24/7 in Arabic, using their QID and a PIN.",
-    "💻 <b>Digital first.</b> One Patient Journey App replaces the old systems and paper records, with a patient portal and live dashboards, run by Corporate Services."
+    "💻 <b>Digital first.</b> One Rihla App replaces the old systems and paper records, with a patient portal and live dashboards, run by Corporate Services."
   ]
 };
 
@@ -528,10 +561,10 @@ const PROJECTS = {
         ["Caller rating","≥ 4 out of 5","Quality & Patient Experience"],
         ["Current patients registered for “My services”","≥ 80%","Patient Registration"],
         ["Complaints about wrong information","0","Digital Services"]]},
-      {h:"🔒 Privacy by design", type:"note", text:"The IVR reads <b>logistics only</b> (dates, times, places and statuses), never diagnoses or medical reports. Access needs a QID and a PIN, the link is read-only and encrypted, every access is logged, and a Data Protection Impact Assessment (UK GDPR) is approved before launch. In the Patient Journey App plan, Smart IVR is part of <b>Release 4</b>."}
+      {h:"🔒 Privacy by design", type:"note", text:"The IVR reads <b>logistics only</b> (dates, times, places and statuses), never diagnoses or medical reports. Access needs a QID and a PIN, the link is read-only and encrypted, every access is logged, and a Data Protection Impact Assessment (UK GDPR) is approved before launch. In the Rihla App plan, Smart IVR is part of <b>Release 4</b>."}
     ]},
-  crm:{icon:"💻", short:"Patient Journey App", pdf:"Patient_Journey_App_Proposal.pdf",
-    ar:"نظام إدارة رحلة المريض المتكامل", en:"Web-based Patient Journey CRM",
+  crm:{icon:"💻", short:"Rihla App", pdf:"Patient_Journey_App_Proposal.pdf",
+    ar:"«رحلة» · نظام إدارة رحلة المريض المتكامل", en:"Rihla · Web-based Patient Journey CRM",
     sub:"One platform that replaces several separate legacy systems, covering medical, administrative, financial, travel, accommodation and allowances, from treatment approval until the patient returns home.",
     tag:"“One file, a clear journey, a reassured patient.”",
     tiles:[["3 → 1","One platform instead of three separate systems"],["17","Modules covering the full patient journey"],["100%","Of operations recorded in an audit log"],["Live","Reports and dashboards for decision-makers"]],
@@ -727,7 +760,7 @@ const AR = {
  "Accounting":"المحاسبة","Invoice Processing":"معالجة الفواتير","Medical Billing Audit":"تدقيق الفواتير الطبية","Medical supply":"الإمداد الطبي",
  "Medicines & Pharmacy":"الأدوية والصيدلية","Medical Equipment":"المعدات الطبية","Procurement & Distribution":"المشتريات والتوزيع",
  "Corporate Services":"الخدمات المؤسسية","IT · digital · HR":"تقنية المعلومات · الخدمات الرقمية · الموارد البشرية","IT Operations":"عمليات تقنية المعلومات",
- "Digital Services":"الخدمات الرقمية","Patient Journey App · portal":"تطبيق رحلة المريض · البوابة","HR & Administration":"الموارد البشرية والشؤون الإدارية",
+ "Digital Services":"الخدمات الرقمية","Rihla App · portal":"تطبيق «رحلة» · البوابة","HR & Administration":"الموارد البشرية والشؤون الإدارية",
  "Leadership":"القيادة",
  /* patient journey */
  "Referral & registration":"الإحالة والتسجيل",
@@ -842,7 +875,7 @@ const ROADMAP = [
     [["Internal testing","الاختبار الداخلي"],3,3,["Mar","مارس"]],
     [["Pilot with patients","التشغيل التجريبي مع المرضى"],4,4,["Apr","أبريل"]],
     [["Full launch, 24/7","الإطلاق الكامل على مدار الساعة"],5,12,["From May 2027","من مايو 2027"]]]},
-  {s:["💻 Patient Journey App","💻 تطبيق رحلة المريض"], c:"#6E5560", items:[
+  {s:["💻 Rihla App","💻 تطبيق «رحلة»"], c:"#6E5560", items:[
     [["Release 1: operational foundation (replaces the old system)","الإصدار 1: الأساس التشغيلي (بديل النظام القديم)"],1,3,["Jan–Mar","يناير–مارس"]],
     [["Release 2: documents and follow-up","الإصدار 2: المتابعة والمستندات"],4,6,["Apr–Jun","أبريل–يونيو"]],
     [["Release 3: finance (old databases retired)","الإصدار 3: الجانب المالي (إيقاف قواعد البيانات القديمة)"],7,9,["Jul–Sep","يوليو–سبتمبر"]],
@@ -858,7 +891,7 @@ function renderSummary(){
     ["⚡",["Faster decisions","قرارات أسرع"],["Treatment plans approved in ≤ 5 working days, first appointment in ≤ 10.","اعتماد خطط العلاج خلال 5 أيام عمل أو أقل، وأول موعد خلال 10 أيام أو أقل."]],
     ["💷",["Stronger financial control","رقابة مالية أقوى"],["Every hospital bill audited against the approved plan before payment.","تُدقَّق كل فاتورة مستشفى مقابل الخطة المعتمدة قبل السداد."]],
     ["📞",["Information 24/7","المعلومة على مدار الساعة"],["Smart IVR answers patients' routine questions in Arabic, day and night.","يجيب الرد الصوتي الذكي عن استفسارات المرضى المتكررة بالعربية ليلاً ونهاراً."]],
-    ["💻",["One patient file","ملف واحد لكل مريض"],["The Patient Journey App replaces the old systems and paper records.","يحل تطبيق رحلة المريض محل الأنظمة القديمة والسجلات الورقية."]],
+    ["💻",["One patient file","ملف واحد لكل مريض"],["The Rihla App replaces the old systems and paper records.","يحل تطبيق «رحلة» محل الأنظمة القديمة والسجلات الورقية."]],
     ["🏥",["Aligned with the National Health Strategy","متوافق مع الاستراتيجية الوطنية للصحة"],["Eight office goals linked to the three priorities of NHS 2024–2030.","ثمانية أهداف للمكتب مرتبطة بالأولويات الثلاث للاستراتيجية 2024–2030."]]
   ];
   const decisions = [
@@ -866,14 +899,14 @@ function renderSummary(){
     ["Appoint a <b>Deputy Medical Attaché</b> and the <b>four directors</b> (acting appointments from existing staff where possible).","تعيين <b>نائب للملحق الطبي</b> و<b>مديري الإدارات الأربع</b> (بالتكليف من الموظفين الحاليين قدر الإمكان)."],
     ["Approve the <b>job descriptions and KPIs</b> as the basis for 2027 performance reviews.","اعتماد <b>الأوصاف الوظيفية ومؤشرات الأداء</b> أساساً لتقييم الأداء في 2027."],
     ["Approve the <b>Smart IVR</b> project, with a patient pilot in <b>April 2027</b>.","اعتماد مشروع <b>الرد الصوتي الذكي</b>، مع تشغيل تجريبي للمرضى في <b>أبريل 2027</b>."],
-    ["Approve the <b>Patient Journey App</b>, starting with Release 1 in <b>January–March 2027</b>.","اعتماد <b>تطبيق رحلة المريض</b>، بدءاً بالإصدار الأول في <b>يناير–مارس 2027</b>."],
+    ["Approve the <b>Rihla App</b>, starting with Release 1 in <b>January–March 2027</b>.","اعتماد <b>تطبيق «رحلة»</b>، بدءاً بالإصدار الأول في <b>يناير–مارس 2027</b>."],
     ["Form a <b>steering committee</b> that meets monthly, and name a <b>data owner</b> in each department.","تشكيل <b>لجنة توجيهية</b> تجتمع شهرياً، وتسمية <b>مالك بيانات</b> في كل قسم."]
   ];
   const first90 = [
     ["New structure live on 1 January; every staff member told their new unit and line manager.","بدء العمل بالهيكل الجديد في 1 يناير، وإبلاغ كل موظف بوحدته ومسؤوله المباشر."],
     ["Deputy, directors and acting unit leads in place by the end of February.","تكليف النائب والمديرين ومسؤولي الوحدات بنهاية فبراير."],
     ["Job descriptions and KPIs issued by March, each KPI with a named owner.","إصدار الأوصاف الوظيفية والمؤشرات بحلول مارس، ولكل مؤشر مسؤول محدد."],
-    ["Patient Journey App Release 1 live by the end of March, replacing the old system day to day.","إطلاق الإصدار الأول من تطبيق رحلة المريض بنهاية مارس بديلاً عن النظام القديم في العمل اليومي."],
+    ["Rihla App Release 1 live by the end of March, replacing the old system day to day.","إطلاق الإصدار الأول من تطبيق «رحلة» بنهاية مارس بديلاً عن النظام القديم في العمل اليومي."],
     ["Smart IVR built and tested, ready for the April pilot.","بناء الرد الصوتي الذكي واختباره، وجاهزيته للتشغيل التجريبي في أبريل."]
   ];
   const risks = [
@@ -897,8 +930,8 @@ function renderSummary(){
   <div class="hero"><div>
     <div class="ar" style="font-size:13px;font-weight:600;opacity:.85;direction:inherit">${L("📌 Executive summary","📌 الملخص التنفيذي")}</div>
     <h2 style="font-size:26px">${L("A patient-centred Medical Attaché Office, from January 2027","مكتب طبي محوره المريض، اعتباراً من يناير 2027")}</h2>
-    <p>${L("We propose organising the office into four directorates under a Deputy Medical Attaché, with clear job descriptions and KPIs aligned with the National Health Strategy 2024–2030, supported by two digital projects: Smart IVR and the Patient Journey App.",
-           "نقترح تنظيم المكتب في أربع إدارات تحت إشراف نائب للملحق الطبي، مع أوصاف وظيفية ومؤشرات أداء واضحة متوافقة مع الاستراتيجية الوطنية للصحة 2024–2030، يدعمها مشروعان رقميان: الرد الصوتي الذكي وتطبيق رحلة المريض.")}</p>
+    <p>${L("We propose organising the office into four directorates under a Deputy Medical Attaché, with clear job descriptions and KPIs aligned with the National Health Strategy 2024–2030, supported by two digital projects: Smart IVR and the Rihla App.",
+           "نقترح تنظيم المكتب في أربع إدارات تحت إشراف نائب للملحق الطبي، مع أوصاف وظيفية ومؤشرات أداء واضحة متوافقة مع الاستراتيجية الوطنية للصحة 2024–2030، يدعمها مشروعان رقميان: الرد الصوتي الذكي وتطبيق «رحلة».")}</p>
     <div class="by">💡 ${L("Concept & proposal by","فكرة وإعداد المقترح:")} Mr. Mohamed Fakhtoo</div></div>
     <div style="text-align:center;background:rgba(255,255,255,.14);border-radius:14px;padding:16px 22px">
       <div style="font-size:12px;opacity:.85">${L("Start date","تاريخ البدء")}</div>
@@ -908,7 +941,7 @@ function renderSummary(){
     <div class="hk" style="--c:#A8325A"><b>3</b><span>${L("Direct reports to the Attaché","مسؤولون يتبعون الملحق مباشرة")}</span></div>
     <div class="hk" style="--c:#5E0E26"><b>${units}</b><span>${L("Units, each with a job description and KPIs","وحدة لكل منها وصف وظيفي ومؤشرات")}</span></div>
     <div class="hk" style="--c:#8A1538"><b>8</b><span>${L("Goals aligned with NHS 2024–2030","أهداف متوافقة مع الاستراتيجية 2024–2030")}</span></div>
-    <div class="hk" style="--c:#A8325A"><b>2</b><span>${L("Digital projects: Smart IVR and Patient Journey App","مشروعان رقميان: الرد الصوتي وتطبيق رحلة المريض")}</span></div>
+    <div class="hk" style="--c:#A8325A"><b>2</b><span>${L("Digital projects: Smart IVR and Rihla App","مشروعان رقميان: الرد الصوتي وتطبيق «رحلة»")}</span></div>
   </div>
   <h3 class="psec">${L("✨ What the proposal delivers","✨ ما يحققه المقترح")}</h3>
   <div class="sum-grid">${ben.map(b=>`<div class="ben"><div class="e">${b[0]}</div><b>${L(b[1][0],b[1][1])}</b><span>${L(b[2][0],b[2][1])}</span></div>`).join("")}</div>
@@ -927,7 +960,7 @@ function renderSummary(){
     <button class="btn primary" onclick="goView('proposed')">${L("🏛️ See the structure","🏛️ عرض الهيكل التنظيمي")}</button>
     <button class="btn" onclick="goView('goals')">${L("🎯 Goals & KPIs","🎯 الأهداف والمؤشرات")}</button>
     <button class="btn" onclick="goView('ivr')">${L("📞 Smart IVR","📞 الرد الصوتي الذكي")}</button>
-    <button class="btn" onclick="goView('crm')">${L("💻 Patient Journey App","💻 تطبيق رحلة المريض")}</button>
+    <button class="btn" onclick="goView('crm')">${L("💻 Rihla App","💻 تطبيق «رحلة»")}</button>
   </div>`;
   document.getElementById("summary").innerHTML = h;
 }
@@ -1049,7 +1082,7 @@ function render(){
     proposed:L(PROPOSED.intro,"يقود الملحقُ الطبي، بمساندة نائبه، أربعَ إدارات، ولكل خطوة في رحلة المريض مسؤول واضح."),
     journey:L("How a patient moves through the office under the proposed model, and which unit owns each step. Click a unit to see its job description.","كيف ينتقل المريض عبر المكتب في الهيكل المقترح، والوحدة المسؤولة عن كل خطوة. اضغط على أي وحدة لعرض وصفها الوظيفي."),
     ivr:L("Smart IVR: phone self-service for patients. A summary of the proposal.","الرد الصوتي الذكي: خدمة هاتفية ذاتية للمرضى. ملخص للمقترح."),
-    crm:L("Patient Journey App: one web-based system for the whole patient journey. A summary of the proposal.","تطبيق رحلة المريض: نظام ويب واحد لرحلة المريض كاملة. ملخص للمقترح."),
+    crm:L("Rihla App: one web-based system for the whole patient journey. A summary of the proposal.","تطبيق «رحلة»: نظام ويب واحد لرحلة المريض كاملة. ملخص للمقترح."),
     goals:L("How the office supports the Ministry of Public Health's National Health Strategy 2024–2030: our vision, eight goals and the KPIs that measure them. Click an owner to see that unit's job description.","كيف يدعم المكتب الاستراتيجية الوطنية للصحة 2024–2030 لوزارة الصحة العامة: رؤيتنا وأهدافنا الثمانية والمؤشرات التي تقيسها. اضغط على المسؤول لعرض وصفه الوظيفي."),
     jds:L("A job description for every unit in the proposed structure.","وصف وظيفي لكل وحدة في الهيكل المقترح.")
   };
@@ -1178,7 +1211,40 @@ document.getElementById("seg").addEventListener("click", e=>{
 document.getElementById("editBtn").addEventListener("click", ()=>toggleEdit());
 document.getElementById("saveBtn").addEventListener("click", saveCopy);
 document.getElementById("q").addEventListener("input", search);
-document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeDrawer(); });
+/* ---------- Sticky header: keep the menu just under it, compact it while scrolling ---------- */
+const hdrEl = document.querySelector("header");
+function setHeaderHeight(){ document.documentElement.style.setProperty("--hh", hdrEl.offsetHeight + "px"); }
+if (window.ResizeObserver) new ResizeObserver(setHeaderHeight).observe(hdrEl);
+setHeaderHeight();
+window.addEventListener("scroll", ()=>{
+  const y = window.scrollY, b = document.body;
+  if (y > 60 && !b.classList.contains("scrolled")) b.classList.add("scrolled");
+  else if (y < 10 && b.classList.contains("scrolled")) b.classList.remove("scrolled");
+}, {passive:true});
+
+/* ---------- Large PDF popup for the proposal PDFs ---------- */
+function openPdf(url, title){
+  closeDrawer();
+  document.getElementById("pdfTitle").textContent = "📄 " + title;
+  const nw = document.getElementById("pdfNew"); nw.href = url; nw.textContent = L("↗ Open in new tab","↗ فتح في نافذة جديدة");
+  document.getElementById("pdfClose").textContent = L("✖ Close","✖ إغلاق");
+  document.getElementById("pdfFrame").src = url;
+  document.getElementById("pdfModal").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closePdf(){
+  const m = document.getElementById("pdfModal"); if (!m.classList.contains("open")) return;
+  m.classList.remove("open"); document.getElementById("pdfFrame").src = "about:blank"; document.body.style.overflow = "";
+}
+document.addEventListener("click", e=>{
+  const a = e.target.closest('a[href$=".pdf"]');
+  if (!a || a.id === "pdfNew") return;
+  e.preventDefault();
+  const href = a.getAttribute("href");
+  const p = Object.values(PROJECTS).find(x=>x.pdf === href);
+  openPdf(href, p ? L(p.en, p.ar) : "PDF");
+});
+document.addEventListener("keydown", e=>{ if(e.key==="Escape"){ closePdf(); closeDrawer(); } });
 document.getElementById("langBtn").addEventListener("click", ()=>setLang(lang==="ar" ? "en" : "ar"));
 applyStatic();
 render();
