@@ -386,7 +386,13 @@
     header .tools input,body.scrolled header .tools input{width:118px}
     header .tools .btn{padding:6px 9px;font-size:13px}
     .credit{font-size:12px;padding:5px 10px}
-  }</style>
+  }  /* ---- no flicker: tabs no longer move on hover (glow only), menu never scrolls vertically ---- */
+  .seg{overflow-y:hidden}
+  .seg button,.seg button:hover{transform:none!important}
+  .seg button{transition:background .18s,color .18s,box-shadow .18s}
+  .seg button:hover .ic{animation:none;transform:scale(1.08)}
+  /* ---- hidden buttons: Edit, Save copy, Search, Print ---- */
+  #editBtn,#saveBtn,#q,header .tools button[onclick="window.print()"]{display:none!important}</style>
 </head>
 <body>
 <div id="progress"></div>
