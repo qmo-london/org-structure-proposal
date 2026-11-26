@@ -304,9 +304,93 @@
   }
   .disclaimer{background:#f7e9ee;color:var(--maroon-dk);text-align:center;font-size:13px;padding:7px 20px;border-bottom:1px solid #ebcfd9}
   #editBtn,#saveBtn{display:none!important} .logo{cursor:default!important}
-</style>
+  /* ===== One-line flashy menu ===== */
+  .toolbar{justify-content:center;padding:9px 20px;background:rgba(255,255,255,.86);backdrop-filter:blur(10px)}
+  .seg{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;max-width:100%;gap:5px;padding:6px;border-radius:22px;
+       background:linear-gradient(180deg,#fff,#fbf2f5);border:1px solid rgba(201,164,92,.5);
+       box-shadow:0 10px 26px -12px rgba(138,21,56,.35),inset 0 1px 0 #fff}
+  .seg::-webkit-scrollbar{display:none}
+  .seg button{white-space:nowrap;flex:0 0 auto;font-size:13.5px;padding:6px 15px 6px 6px;border-radius:16px}
+  [dir=rtl] .seg button{padding:6px 6px 6px 15px}
+  .seg button .ic{width:30px;height:30px;background:linear-gradient(145deg,#fff,#f3dfe7);
+       box-shadow:0 3px 8px -2px rgba(138,21,56,.25),inset 0 0 0 1px rgba(138,21,56,.08)}
+  .seg button:hover{box-shadow:0 8px 16px -8px rgba(138,21,56,.45)}
+  .seg button:hover .ic{animation:icBob .55s ease}
+  @keyframes icBob{0%,100%{transform:translateY(0)}45%{transform:translateY(-4px) scale(1.12)}}
+  .seg button.on{background:linear-gradient(110deg,#5e0e26 0%,#8a1538 30%,#c0506f 50%,#8a1538 70%,#5e0e26 100%);background-size:220% 100%;
+       animation:tabSheen 5s linear infinite;box-shadow:0 10px 22px -8px rgba(138,21,56,.7),0 0 0 1px rgba(255,255,255,.25) inset}
+  @keyframes tabSheen{0%{background-position:100% 0}100%{background-position:-120% 0}}
+  .seg button.on .ic{background:rgba(255,255,255,.18);box-shadow:inset 0 0 0 1px rgba(255,255,255,.5),0 0 14px rgba(255,214,140,.55)}
+  .seg button.on::after{width:62%;height:3px;bottom:2px;background:linear-gradient(90deg,transparent,#f4d48e,transparent);box-shadow:0 0 8px rgba(244,212,142,.9)}
+  @media (max-width:1360px){.seg button{font-size:12.5px;gap:6px;padding:5px 11px 5px 5px}[dir=rtl] .seg button{padding:5px 5px 5px 11px}.seg button .ic{width:26px;height:26px;font-size:13px}}
+  /* tools now live in the header */
+  header .tools{gap:6px}
+  header .tools input{width:170px;border-radius:12px;padding:7px 11px}
+  header .tools .btn{padding:7px 11px}
+  body.scrolled header .tools input{width:140px}
+  /* ===== Page polish ===== */
+  body{background:radial-gradient(1100px 520px at -8% -6%,rgba(138,21,56,.08),transparent 60%),
+                  radial-gradient(900px 520px at 108% 24%,rgba(201,164,92,.12),transparent 60%),#f8f4f6;background-attachment:fixed}
+  .hero{background:linear-gradient(120deg,#46081c,#8A1538 52%,#b4436a);box-shadow:0 22px 44px -22px rgba(94,14,38,.75)}
+  .hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+       background:radial-gradient(circle at 88% 120%,rgba(244,212,142,.22) 0 22%,transparent 23%),
+                  radial-gradient(circle at 98% -20%,rgba(255,255,255,.09) 0 18%,transparent 19%),
+                  repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 2px,transparent 2px 16px)}
+  .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+       background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.16) 48%,transparent 60%);background-size:260% 100%;animation:heroShine 7s ease-in-out infinite}
+  @keyframes heroShine{0%{background-position:160% 0}60%,100%{background-position:-60% 0}}
+  .hero>*{position:relative;z-index:1}
+  .pdfbtn{transition:transform .2s,box-shadow .2s}
+  .pdfbtn:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 10px 22px rgba(0,0,0,.28)}
+  .hk,.stat,.ben,.step,.fl,.mod,.rel,.jd,.rung,.card90,.vm>div{transition:transform .22s ease,box-shadow .22s ease}
+  .hk:hover,.stat:hover,.ben:hover,.step:hover,.fl:hover,.mod:hover,.rel:hover,.jd:hover,.rung:hover,.card90:hover,.vm>div:hover{transform:translateY(-4px);box-shadow:0 18px 30px -16px rgba(138,21,56,.45)}
+  .hk,.stat,.ben{border-radius:16px;position:relative;overflow:hidden}
+  .hk::after,.stat::after,.ben::after{content:"";position:absolute;inset:0 0 auto 0;height:40%;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.55),transparent)}
+  .hk b{font-size:28px;letter-spacing:-.01em}
+  .stat b{font-size:26px}
+  .ben .e{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:14px;background:linear-gradient(145deg,#fff,#f6e6ec);box-shadow:0 6px 14px -6px rgba(138,21,56,.35)}
+  .psec::before{content:"";width:8px;height:8px;border-radius:50%;background:#c9a45c;box-shadow:0 0 0 4px rgba(201,164,92,.22);flex:none}
+  .card.grp{box-shadow:0 10px 22px -12px rgba(0,0,0,.45)}
+  .card:hover{box-shadow:0 14px 26px -12px rgba(138,21,56,.45)}
+  .decide li{transition:background .2s}
+  .decide li:hover{background:#fbf3f6}
+  .changes{border-radius:18px;box-shadow:0 12px 30px -18px rgba(138,21,56,.4)}
+  /* entrance animations */
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .sum-grid>*,.headline>*,.stats>*,.flow>*,.mods>*,.rels>*,.hb-grid>*,.journey>*,.ladder>*,.vm>*,.groups>.group{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+  .sum-grid>*:nth-child(2),.headline>*:nth-child(2),.stats>*:nth-child(2),.flow>*:nth-child(2),.mods>*:nth-child(2),.rels>*:nth-child(2),.hb-grid>*:nth-child(2),.journey>*:nth-child(2),.ladder>*:nth-child(2),.vm>*:nth-child(2),.groups>.group:nth-child(2){animation-delay:.06s}
+  .sum-grid>*:nth-child(3),.headline>*:nth-child(3),.stats>*:nth-child(3),.flow>*:nth-child(3),.mods>*:nth-child(3),.rels>*:nth-child(3),.hb-grid>*:nth-child(3),.journey>*:nth-child(3),.ladder>*:nth-child(3),.groups>.group:nth-child(3){animation-delay:.12s}
+  .sum-grid>*:nth-child(4),.headline>*:nth-child(4),.stats>*:nth-child(4),.flow>*:nth-child(4),.mods>*:nth-child(4),.rels>*:nth-child(4),.hb-grid>*:nth-child(4),.journey>*:nth-child(4),.groups>.group:nth-child(4){animation-delay:.18s}
+  .sum-grid>*:nth-child(5),.headline>*:nth-child(5),.stats>*:nth-child(5),.flow>*:nth-child(5),.mods>*:nth-child(5),.rels>*:nth-child(5),.journey>*:nth-child(5){animation-delay:.24s}
+  .sum-grid>*:nth-child(n+6),.headline>*:nth-child(n+6),.flow>*:nth-child(n+6),.mods>*:nth-child(n+6),.journey>*:nth-child(n+6){animation-delay:.3s}
+  /* reading progress + back to top */
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:50;background:linear-gradient(90deg,#c9a45c,#f4d48e,#b4436a);box-shadow:0 0 10px rgba(244,212,142,.8);transition:width .1s linear}
+  [dir=rtl] #progress{left:auto;right:0;background:linear-gradient(270deg,#c9a45c,#f4d48e,#b4436a)}
+  #toTop{position:fixed;right:24px;bottom:24px;width:48px;height:48px;border-radius:50%;border:2px solid #e2c27e;cursor:pointer;z-index:20;
+       background:linear-gradient(135deg,#5e0e26,#8a1538 60%,#b4436a);color:#fff;font-size:20px;font-weight:700;
+       box-shadow:0 12px 24px -10px rgba(94,14,38,.8);opacity:0;transform:translateY(16px) scale(.9);pointer-events:none;transition:opacity .25s,transform .25s}
+  #toTop.show{opacity:1;transform:none;pointer-events:auto}
+  #toTop:hover{transform:translateY(-3px)}
+  [dir=rtl] #toTop{right:auto;left:24px}
+  /* footer band */
+  footer{margin-top:36px;padding:28px 20px 30px;color:#f1e3e8;font-size:13px;line-height:1.9;
+       background:linear-gradient(120deg,#46081c,#8A1538 60%,#a8325a);border-top:4px solid #c9a45c}
+  footer b{color:#f4d48e}
+  /* calmer for people who prefer less motion, and clean when printed */
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+  @media print{#progress,#toTop{display:none!important}.hero::after{display:none}*{animation:none!important}footer{background:none;color:#555;border:0}footer b{color:#000}}  @media (max-width:1440px){
+    header{padding-left:24px;padding-right:24px}
+    header .top{gap:14px}
+    .htitle{min-width:0}
+    h1{font-size:19px}
+    header .tools input,body.scrolled header .tools input{width:118px}
+    header .tools .btn{padding:6px 9px;font-size:13px}
+    .credit{font-size:12px;padding:5px 10px}
+  }</style>
 </head>
 <body>
+<div id="progress"></div>
+<button id="toTop" title="Back to top" aria-label="Back to top">↑</button>
 
 <header>
   <div class="top">
@@ -319,6 +403,13 @@
       <div class="eyebrow" data-ar="المكتب الطبي القطري · لندن">Medical Attaché Office · London</div>
       <h1><span data-ar="الهيكل التنظيمي المقترح">Proposed Organisation Structure</span> <span class="badge-draft" data-ar="مقترح 2027">PROPOSAL 2027</span></h1>
     </div>
+    <div class="tools">
+      <input id="q" placeholder="🔍 Search units or tasks…" data-ar-ph="🔍 ابحث عن وحدة أو مهمة…">
+      <button class="btn lang-btn" id="langBtn">🌐 عربي</button>
+      <button class="btn" id="editBtn">✏️ Edit mode</button>
+      <button class="btn" id="saveBtn" title="Download a copy of this page with your edits included" data-ar="💾 حفظ نسخة">💾 Save copy</button>
+      <button class="btn" onclick="window.print()" data-ar="🖨️ طباعة / PDF">🖨️ Print / PDF</button>
+    </div>
     <div class="credit" data-ar="💡 فكرة وإعداد المقترح: <b>Mr. Mohamed Fakhtoo</b>">💡 Concept &amp; proposal by <b>Mr. Mohamed Fakhtoo</b></div>
   </div>
 </header>
@@ -327,21 +418,14 @@
 
 <div class="toolbar">
   <div class="seg" id="seg">
-    <button data-v="summary" class="on" data-ar="<span class='ic'>📌</span><span>الملخص التنفيذي</span>"><span class="ic">📌</span><span>Executive summary</span></button>
-    <button data-v="proposed" data-ar="<span class='ic'>🏛️</span><span>الهيكل التنظيمي</span>"><span class="ic">🏛️</span><span>Organisation structure</span></button>
+    <button data-v="summary" class="on" data-ar="<span class='ic'>📌</span><span>الملخص</span>"><span class="ic">📌</span><span>Summary</span></button>
+    <button data-v="proposed" data-ar="<span class='ic'>🏛️</span><span>الهيكل التنظيمي</span>"><span class="ic">🏛️</span><span>Structure</span></button>
     <button data-v="journey" data-ar="<span class='ic'>🧭</span><span>رحلة المريض</span>"><span class="ic">🧭</span><span>Patient journey</span></button>
     <button data-v="jds" data-ar="<span class='ic'>📋</span><span>الأوصاف الوظيفية</span>"><span class="ic">📋</span><span>Job descriptions</span></button>
     <button data-v="goals" data-ar="<span class='ic'>🎯</span><span>الأهداف والمؤشرات</span>"><span class="ic">🎯</span><span>Goals &amp; KPIs</span></button>
     <button data-v="ivr" data-ar="<span class='ic'>📞</span><span>الرد الصوتي الذكي</span>"><span class="ic">📞</span><span>Smart IVR</span></button>
     <button data-v="crm" data-ar="<span class='ic'>⚕️</span><span>تطبيق «شفاء»</span>"><span class="ic">⚕️</span><span>Shifa App</span></button>
     <button data-v="hr" data-ar="<span class='ic'>👥</span><span>سياسة الحضور</span>"><span class="ic">👥</span><span>HR Policy</span></button>
-  </div>
-  <div class="tools">
-    <input id="q" placeholder="🔍 Search units or tasks…" data-ar-ph="🔍 ابحث عن وحدة أو مهمة…">
-    <button class="btn lang-btn" id="langBtn">🌐 عربي</button>
-    <button class="btn" id="editBtn">✏️ Edit mode</button>
-    <button class="btn" id="saveBtn" title="Download a copy of this page with your edits included" data-ar="💾 حفظ نسخة">💾 Save copy</button>
-    <button class="btn" onclick="window.print()" data-ar="🖨️ طباعة / PDF">🖨️ Print / PDF</button>
   </div>
 </div>
 <div class="editbar" data-ar="✏️ وضع التعديل مفعّل: اضغط على أي وحدة لتعديل المسؤول وعدد الموظفين والغرض والمهام والمؤشرات. استخدم <b>💾 حفظ نسخة</b> لتنزيل ملف يتضمن تعديلاتك وجاهز للإرسال.">✏️ Edit mode is on: click any unit to change its lead, headcount, purpose, tasks and KPIs, or click the logo box to add the MOPH logo. Use <b>💾 Save copy</b> to download a file that includes your edits, ready to email.</div>
@@ -1325,7 +1409,27 @@ document.addEventListener("click", e=>{
   openPdf(href, p ? L(p.en, p.ar) : "PDF");
 });
 document.addEventListener("keydown", e=>{ if(e.key==="Escape"){ closePdf(); closeDrawer(); } });
-document.getElementById("langBtn").addEventListener("click", ()=>setLang(lang==="ar" ? "en" : "ar"));
+/* ---------- Flashy touches: count-up numbers, reading progress, back to top ---------- */
+function animateCounts(){
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  document.querySelectorAll(".hk b, .stat b").forEach(el=>{
+    const m = el.textContent.match(/^(\D*)(\d+)(\D*)$/);
+    if (!m || +m[2] > 500 || +m[2] === 0) return;
+    const pre = m[1], end = +m[2], post = m[3], t0 = performance.now(), dur = 900;
+    (function step(t){ const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = pre + Math.round(end * e) + post; if (p < 1) requestAnimationFrame(step); })(t0);
+  });
+}
+const _baseRender = render;
+render = function(){ _baseRender(); animateCounts(); };
+const progressEl = document.getElementById("progress"), toTopEl = document.getElementById("toTop");
+function onScrollFx(){
+  const max = document.documentElement.scrollHeight - innerHeight;
+  progressEl.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + "%";
+  toTopEl.classList.toggle("show", scrollY > 500);
+}
+window.addEventListener("scroll", onScrollFx, {passive:true});
+toTopEl.addEventListener("click", ()=>window.scrollTo({top:0, behavior:"smooth"}));document.getElementById("langBtn").addEventListener("click", ()=>setLang(lang==="ar" ? "en" : "ar"));
 applyStatic();
 render();
 </script>
