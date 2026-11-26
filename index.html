@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>QMA Office (UK) — Organisation Structure</title>
+<style>
+  :root{
+    --maroon:#8A1538; --maroon-dk:#5E0E26; --ink:#1d1d24; --muted:#6b6b78;
+    --bg:#f8f5f6; --card:#ffffff; --line:#b9b3ad; --new:#0f9d58; --chg:#e08a00;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+  /* ---------- Header ---------- */
+  header{background:#fff;color:var(--ink);padding:10px 40px 22px;position:relative}
+  /* Qatar flag serrated edge: white points cutting into a maroon band */
+  header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:12px;background:var(--maroon);
+    -webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/18px 100%;
+            mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/18px 100%}
+  header::before{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--maroon)}
+  header .top{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .logo{height:62px;display:grid;place-items:center;flex:none;cursor:pointer}
+  .logo img{height:62px;width:auto;display:none}
+  .logo.has img{display:block}.logo.has .ph{display:none}
+  .logo .ph{font-size:24px;text-align:center;line-height:1;color:var(--maroon);border:1px dashed #d6cfc9;border-radius:10px;padding:8px 14px}
+  .logo .ph small{display:block;font-size:10px;color:var(--muted);margin-top:4px}
+  .hdiv{width:1px;align-self:stretch;background:#e2dbd5;margin:4px 0}
+  .htitle{flex:1;min-width:280px}
+  .credit{font-size:13px;background:#f7eef1;color:var(--maroon);padding:6px 14px;border-radius:20px;white-space:nowrap}
+  .em{margin-right:4px}
+  .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  h1{margin:2px 0 0;font-size:22px;font-weight:600;color:var(--maroon)}
+  .badge-draft{display:inline-block;margin-left:8px;padding:2px 9px;border:1px solid var(--maroon);color:var(--maroon);border-radius:20px;font-size:10px;letter-spacing:.1em;vertical-align:middle}
+  /* ---------- Toolbar ---------- */
+  .toolbar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;padding:16px 48px;background:#fff;border-bottom:1px solid #e6e1dc;position:sticky;top:0;z-index:5}
+  .seg{display:inline-flex;flex-wrap:wrap;background:#f0ebe7;border-radius:10px;padding:4px}
+  .seg button{border:0;background:transparent;padding:8px 15px;border-radius:7px;font:inherit;font-size:14px;cursor:pointer;color:var(--muted)}
+  .seg button.on{background:var(--maroon);color:#fff;box-shadow:0 2px 6px rgba(138,21,56,.3)}
+  .tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .tools input{padding:8px 12px;border:1px solid #ddd6d0;border-radius:8px;font:inherit;font-size:14px;width:190px}
+  .btn{border:1px solid #ddd6d0;background:#fff;padding:8px 13px;border-radius:8px;font:inherit;font-size:14px;cursor:pointer;color:var(--ink)}
+  .btn:hover{border-color:var(--maroon);color:var(--maroon)}
+  .btn.primary{background:var(--maroon);border-color:var(--maroon);color:#fff}
+  .btn.primary:hover{background:var(--maroon-dk);color:#fff}
+  .btn.edit-on{background:#f7e9ee;border-color:var(--maroon);color:var(--maroon)}
+  .editbar{display:none;background:#f7e9ee;color:var(--maroon-dk);padding:9px 48px;font-size:13px;border-bottom:1px solid #ebcfd9}
+  body.editing .editbar{display:block}
+  /* ---------- Stats + legend ---------- */
+  .meta{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding:22px 48px 0}
+  .stats{display:flex;flex-wrap:wrap;gap:12px}
+  .stat{background:#fff;border-radius:12px;padding:12px 18px;min-width:120px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+  .stat b{display:block;font-size:24px;color:var(--maroon)}
+  .stat span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .legend{display:flex;gap:16px;font-size:13px;color:var(--muted)}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle}
+  .intro{padding:10px 48px 0;color:var(--muted);font-size:14px;max-width:1100px}
+  /* ---------- Chart ---------- */
+  .scroller{overflow-x:auto;padding:26px 48px 60px}
+  .chart{min-width:max-content;display:flex;flex-direction:column;align-items:center;animation:fade .45s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .card{background:var(--card);border-radius:12px;padding:12px 16px;box-shadow:0 2px 8px rgba(30,20,20,.08);cursor:pointer;
+        border-top:4px solid var(--c,var(--maroon));transition:transform .15s,box-shadow .15s;position:relative;text-align:center}
+  .card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(30,20,20,.14)}
+  .card .t{font-weight:600;font-size:15px}
+  .card .d{font-size:12px;color:var(--muted);margin-top:2px}
+  .card .who{font-size:12px;margin-top:4px;font-style:italic}
+  .card.head{background:linear-gradient(135deg,var(--maroon-dk),var(--maroon));color:#fff;border:0;padding:16px 34px;min-width:260px}
+  .card.head .t{font-size:18px}.card.head .d,.card.head .who{color:rgba(255,255,255,.85)}
+  .card.deputy{background:linear-gradient(135deg,#7a1a3a,#a8284f);min-width:220px;padding:12px 26px}
+  .card.deputy .t{font-size:16px}
+  .card.grp{background:var(--c);color:#fff;border:0}
+  .card.grp .d,.card.grp .who{color:rgba(255,255,255,.88)}
+  .tag{position:absolute;top:-9px;right:-8px;font-size:10px;font-weight:700;letter-spacing:.06em;color:#fff;padding:2px 7px;border-radius:10px}
+  .tag.new{background:var(--new)}.tag.chg{background:var(--chg)}
+  .vline{width:2px;height:26px;background:var(--line)}
+  .trunk{display:grid;grid-template-columns:1fr 2px 1fr;width:100%;max-width:760px}
+  .trunk .mid{background:var(--line);min-height:90px}
+  .trunk .side{display:flex;flex-direction:column;justify-content:center;gap:14px;padding:16px 0 20px}
+  .trunk .side .row{display:flex;align-items:center}
+  .trunk .side .row::before{content:"";width:34px;border-top:2px dashed var(--line)}
+  .trunk .side .card{text-align:left;min-width:190px}
+  .groups{display:grid;grid-template-columns:repeat(var(--n),minmax(205px,1fr));position:relative;padding-top:26px}
+  .groups::before{content:"";position:absolute;top:0;height:2px;background:var(--line);left:calc(100% / var(--n) / 2);right:calc(100% / var(--n) / 2)}
+  .group{padding:0 10px;position:relative}
+  .group::before{content:"";position:absolute;top:-26px;left:50%;width:2px;height:26px;background:var(--line)}
+  .kids{margin-left:22px}
+  .kid{position:relative;padding-top:12px}
+  .kid::before{content:"";position:absolute;left:-12px;top:0;bottom:0;border-left:2px solid var(--line)}
+  .kid:last-child::before{bottom:auto;height:calc(12px + 22px)}
+  .kid::after{content:"";position:absolute;left:-12px;top:34px;width:12px;border-top:2px solid var(--line)}
+  .kid.sec::after{display:none}
+  .kid.sec .lbl{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--c);padding:6px 0 0 2px}
+  .kid .card{text-align:left;border-top:0;border-left:4px solid var(--c);padding:10px 14px}
+  .kid .card .t{font-size:14px}
+  .chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+  .chip{font-size:11px;padding:2px 8px;border-radius:10px;background:color-mix(in srgb,var(--c) 14%,white);color:var(--c);font-weight:600}
+  .dim .card:not(.hit){opacity:.25}
+  .card.hit{outline:3px solid var(--maroon);outline-offset:3px;box-shadow:0 0 0 8px rgba(138,21,56,.12)}
+  /* ---------- Changes panel ---------- */
+  .changes{margin:0 48px 50px;background:#fff;border-radius:14px;padding:22px 26px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+  .changes h2{margin:0 0 12px;font-size:18px;color:var(--maroon)}
+  .changes ol{margin:0;padding-left:20px;columns:2;column-gap:40px}
+  .changes li{margin-bottom:9px;font-size:14px;break-inside:avoid}
+  /* ---------- Journey ---------- */
+  .journey{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;padding:26px 48px 50px;counter-reset:step}
+  .step{background:#fff;border-radius:14px;padding:18px 18px 16px;box-shadow:0 2px 8px rgba(30,20,20,.07);position:relative;border-top:4px solid var(--c)}
+  .step .n{position:absolute;top:-16px;left:16px;width:32px;height:32px;border-radius:50%;background:var(--c);color:#fff;font-weight:700;display:grid;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+  .step h4{margin:10px 0 6px;font-size:16px}
+  .step p{margin:0 0 10px;font-size:13px;color:var(--muted);line-height:1.45}
+  .step .chip{cursor:pointer;display:inline-block;margin:0 5px 5px 0}
+  .step .chip:hover{filter:brightness(.92)}
+  /* ---------- JD handbook ---------- */
+  .handbook{padding:22px 48px 50px}
+  .hb-sec{margin-bottom:30px}
+  .hb-sec h2{font-size:18px;margin:0 0 12px;padding:8px 14px;border-radius:8px;background:var(--c);color:#fff;display:inline-block}
+  .hb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+  .jd{background:#fff;border-radius:12px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.07);border-left:4px solid var(--c);cursor:pointer;break-inside:avoid}
+  .jd:hover{box-shadow:0 6px 16px rgba(0,0,0,.12)}
+  .jd h3{margin:0;font-size:16px}
+  .jd .role{font-size:13px;color:var(--muted);margin:2px 0 8px}
+  .jd .pp{font-size:13px;line-height:1.45;margin:0 0 8px}
+  .jd ul{margin:0 0 6px;padding-left:18px;font-size:13px;line-height:1.5}
+  .jd .k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:6px}
+  .jd .empty{color:#b0a9a3;font-style:italic}
+  /* ---------- Drawer ---------- */
+  .backdrop{position:fixed;inset:0;background:rgba(30,12,20,.45);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .2s;z-index:9}
+  .backdrop.show{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:50%;left:50%;width:800px;max-width:94vw;max-height:90vh;font-size:15px;background:#fff;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.3);
+          border-top:8px solid var(--c,var(--maroon));transform:translate(-50%,-46%) scale(.96);opacity:0;pointer-events:none;
+          transition:transform .22s ease,opacity .22s ease;z-index:10;padding:28px 32px;overflow:auto}
+  .drawer.open{transform:translate(-50%,-50%);opacity:1;pointer-events:auto}
+  .drawer h3{font-size:26px}
+  .drawer p,.drawer ul{font-size:15px}
+  #drawer .facts{grid-template-columns:1fr 1fr 1fr}
+  #drawer .facts .fact[style]{grid-column:auto!important}
+  #drawer .note{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  #drawer .note .btn{margin-left:0!important}
+  #drawer .note .btn:first-of-type{margin-left:auto!important}
+  /* ---------- Executive summary ---------- */
+  .summary{padding:22px 48px 50px}
+  .sum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+  .ben{background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.07);border-top:4px solid var(--maroon)}
+  .ben .e{font-size:26px}
+  .ben b{display:block;margin:6px 0 4px;font-size:15px;color:var(--maroon-dk)}
+  .ben span{font-size:13px;color:var(--muted);line-height:1.5}
+  .decide{background:#fff;border-radius:14px;box-shadow:0 1px 4px rgba(0,0,0,.07);border:2px solid var(--maroon);padding:6px 20px}
+  .decide li{list-style:none;display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px solid #f1e8eb;font-size:14.5px;line-height:1.5}
+  .decide li:last-child{border-bottom:0}
+  .decide .box{flex:none;width:24px;height:24px;border-radius:6px;border:2px solid var(--maroon);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--maroon)}
+  .decide ol{margin:0;padding:0}
+  .gantt{display:grid;grid-template-columns:minmax(230px,1.6fr) repeat(12,minmax(52px,1fr));background:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 1px 4px rgba(0,0,0,.07);row-gap:3px;
+    background-image:linear-gradient(90deg,transparent calc(100% - 1px),#f1e8eb 0);overflow-x:auto}
+  .g-m{font-size:12px;font-weight:700;color:var(--maroon);text-align:center;padding:4px 0 8px;border-bottom:2px solid var(--maroon)}
+  .g-m.q{background:#faf3f5}
+  .g-sec{grid-column:1/-1;font-weight:700;font-size:14px;color:var(--c);padding:12px 0 4px;border-bottom:1px solid #efe5e8}
+  .g-l{grid-column:1;font-size:13px;padding:5px 10px 5px 0;align-self:center}
+  .g-b{background:var(--c);color:#fff;border-radius:7px;font-size:11.5px;font-weight:600;padding:5px 8px;margin:1px 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;align-self:center;box-shadow:0 2px 5px rgba(0,0,0,.12)}
+  .g-b.ms{background:#fff;color:var(--c);border:2px solid var(--c);box-shadow:none;overflow:visible;text-overflow:clip;justify-self:start;position:relative;z-index:1}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:1000px){.two{grid-template-columns:1fr}}
+  .card90{background:#fff;border-radius:14px;padding:16px 20px;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+  .card90 li{margin:6px 0;font-size:14px;line-height:1.5}
+  .risk td:first-child{font-weight:600;width:40%}
+  .golinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  /* ---------- Arabic (right-to-left) ---------- */
+  .lang-btn{font-weight:700}
+  [dir=rtl] body{font-family:"Segoe UI",Tahoma,"Arial",sans-serif}
+  [dir=rtl] *{letter-spacing:0!important}
+  [dir=rtl] .kids{margin-left:0;margin-right:22px}
+  [dir=rtl] .kid::before{left:auto;right:-12px;border-left:0;border-right:2px solid var(--line)}
+  [dir=rtl] .kid::after{left:auto;right:-12px}
+  [dir=rtl] .kid .card{border-left:0;border-right:4px solid var(--c);text-align:right}
+  [dir=rtl] .trunk .side .card,[dir=rtl] .kid.sec .lbl{text-align:right}
+  [dir=rtl] .jd,[dir=rtl] .mod{border-left:0;border-right:4px solid var(--c,var(--maroon))}
+  [dir=rtl] .goal,[dir=rtl] .hk,[dir=rtl] .note{border-left:0;border-right:5px solid var(--c,var(--maroon))}
+  [dir=rtl] .goal th{text-align:right}
+  [dir=rtl] .rung:not(:last-child)::after{content:"⬅";right:auto;left:-13px}
+  [dir=rtl] .step .n,[dir=rtl] .fl .n{left:auto;right:16px}
+  [dir=rtl] .rel .d{float:left}
+  [dir=rtl] .drawer .x{right:auto;left:16px}
+  [dir=rtl] .g-l{padding:5px 0 5px 10px}
+  [dir=rtl] .gantt{background-image:none}
+  [dir=rtl] .jd ul,[dir=rtl] .drawer ul{padding-left:0;padding-right:20px}
+  [dir=rtl] .changes ol{padding-left:0;padding-right:20px}
+  .en-note{background:#f7e9ee;color:var(--maroon-dk);border-radius:10px;padding:8px 14px;font-size:13px;margin-bottom:14px}
+  /* ---------- Proposal pages (Smart IVR, Patient CRM) ---------- */
+  .proj{padding:22px 48px 50px}
+  .hero{background:linear-gradient(120deg,var(--maroon-dk),var(--maroon) 60%,#a8325a);color:#fff;border-radius:18px;padding:26px 30px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:20px;position:relative;overflow:hidden}
+  .hero .ar{font-size:24px;font-weight:700;direction:rtl}
+  .hero h2{margin:4px 0 6px;font-size:22px}
+  .hero p{margin:0;opacity:.9;font-size:14.5px;max-width:760px;line-height:1.5}
+  .hero .tagline{margin-top:10px;font-style:italic;opacity:.85}
+  .hero .by{margin-top:10px;font-size:12.5px;background:rgba(255,255,255,.15);display:inline-block;padding:4px 12px;border-radius:20px}
+  .pdfbtn{background:#fff;color:var(--maroon);border:0;border-radius:12px;padding:12px 18px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.2);white-space:nowrap}
+  .pdfbtn:hover{background:#f7e9ee}
+  .psec{margin:24px 0 10px;font-size:17px;color:var(--maroon);display:flex;align-items:center;gap:8px}
+  .psec::after{content:"";flex:1;height:1px;background:#e8dde1}
+  .flow{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+  .fl{background:#fff;border-radius:12px;padding:14px 14px 12px;box-shadow:0 1px 4px rgba(0,0,0,.07);border-top:4px solid var(--maroon);position:relative}
+  .fl .n{position:absolute;top:-12px;left:12px;width:26px;height:26px;border-radius:50%;background:var(--maroon);color:#fff;font-size:13px;font-weight:700;display:grid;place-items:center}
+  .fl b{display:block;margin:6px 0 4px;font-size:14.5px}
+  .fl span{font-size:13px;color:var(--muted);line-height:1.45}
+  .fl .own{display:inline-block;margin-top:8px;cursor:pointer;font-size:11.5px;background:#f7e9ee;color:var(--maroon);padding:2px 8px;border-radius:10px;font-weight:600}
+  .mods{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+  .mod{background:#fff;border-radius:10px;padding:11px 14px;box-shadow:0 1px 3px rgba(0,0,0,.06);border-left:4px solid var(--maroon);font-size:13.5px}
+  .mod b{display:block;font-size:14px;margin-bottom:2px}
+  .mod span{color:var(--muted);font-size:12.5px}
+  .rels{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .rel{background:#fff;border-radius:12px;padding:16px;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+  .rel .t{display:inline-block;background:var(--maroon);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:10px}
+  .rel .d{float:right;font-size:12px;color:var(--maroon);font-weight:700}
+  .rel b{display:block;margin:8px 0 4px}
+  .rel p{margin:0;font-size:13px;color:var(--muted);line-height:1.45}
+  .rel .out{margin-top:8px;font-size:12.5px;font-weight:600;color:var(--maroon-dk)}
+  .note{background:#fff;border-left:5px solid var(--maroon);border-radius:10px;padding:12px 16px;font-size:13.5px;line-height:1.55;margin-top:12px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  /* ---------- Goals & KPIs ---------- */
+  .goals{padding:22px 48px 50px}
+  .ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}
+  .rung{background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.07);position:relative}
+  .rung small{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+  .rung h3{margin:4px 0 6px;font-size:16px;color:var(--maroon)}
+  .rung p{margin:0;font-size:13px;line-height:1.5}
+  .rung:not(:last-child)::after{content:"➜";position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:var(--maroon);font-size:16px;z-index:1}
+  .vm{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
+  .vm div{background:linear-gradient(135deg,var(--maroon-dk),var(--maroon));color:#fff;border-radius:14px;padding:18px 20px}
+  .vm small{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+  .vm p{margin:6px 0 0;font-size:15px;line-height:1.5}
+  .headline{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:26px}
+  .hk{background:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 1px 4px rgba(0,0,0,.07);border-left:5px solid var(--c)}
+  .hk b{display:block;font-size:24px;color:var(--c)}
+  .hk span{font-size:12.5px;color:var(--muted)}
+  .pri{margin-bottom:26px}
+  .pri-h{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .pri-h .pn{background:var(--c);color:#fff;border-radius:10px;padding:6px 12px;font-weight:700;font-size:13px;white-space:nowrap}
+  .pri-h h2{margin:0;font-size:17px}
+  .pri-h span{font-size:13px;color:var(--muted)}
+  .goal{background:#fff;border-radius:14px;box-shadow:0 1px 4px rgba(0,0,0,.07);margin-bottom:12px;overflow:hidden;border-left:5px solid var(--c)}
+  .goal-h{padding:14px 18px 6px}
+  .goal-h h3{margin:0;font-size:16px}
+  .goal-h p{margin:4px 0 0;font-size:13px;color:var(--muted)}
+  .goal-h .nhs{display:inline-block;margin-top:6px;font-size:11.5px;background:color-mix(in srgb,var(--c) 12%,white);color:var(--c);padding:2px 9px;border-radius:10px;font-weight:600}
+  .goal table{width:100%;border-collapse:collapse;font-size:13.5px}
+  .goal th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;padding:8px 18px;border-bottom:1px solid #eee7e1}
+  .goal td{padding:9px 18px;border-bottom:1px solid #f3eee9;vertical-align:top}
+  .goal tr:last-child td{border-bottom:0}
+  .goal td.tg{font-weight:700;color:var(--c);white-space:nowrap}
+  .goal .own{cursor:pointer;font-size:12px;background:#f4f0ec;padding:2px 8px;border-radius:10px;white-space:nowrap}
+  .goal .own:hover{background:#eadfd6}
+  .src{font-size:12px;color:var(--muted);margin-top:8px}
+  .src a{color:var(--maroon)}
+  .drawer .x{position:absolute;top:14px;right:16px;border:0;background:none;font-size:24px;cursor:pointer;color:var(--muted)}
+  .drawer .bar{height:6px;border-radius:3px;background:var(--c,var(--maroon));margin-bottom:18px;width:60px}
+  .drawer h3{margin:0 0 4px;font-size:22px}
+  .drawer .rp{color:var(--muted);font-size:13px;margin-bottom:12px}
+  .drawer p{line-height:1.55;font-size:14px;margin:6px 0}
+  .drawer ul{margin:6px 0;padding-left:20px;font-size:14px;line-height:1.55}
+  .drawer .label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:18px}
+  .drawer .facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+  .drawer .fact{background:#f7f4f1;border-radius:10px;padding:10px 12px;font-size:14px}
+  .drawer .fact small{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .drawer .empty{color:#b0a9a3;font-style:italic}
+  .drawer input,.drawer textarea{width:100%;font:inherit;font-size:14px;padding:8px 10px;border:1px solid #ddd6d0;border-radius:8px;margin-top:5px}
+  .drawer textarea{resize:vertical;line-height:1.45}
+  .drawer .hint{font-size:12px;color:var(--muted)}
+  .drawer .actions{display:flex;gap:8px;margin-top:20px}
+  footer{text-align:center;color:var(--muted);font-size:12px;padding:0 0 30px}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:#1d1d24;color:#fff;padding:10px 18px;border-radius:10px;font-size:14px;transition:transform .25s;z-index:20}
+  .toast.show{transform:translateX(-50%)}
+  [hidden]{display:none!important}
+  @media print{
+    @page{size:A3 landscape;margin:10mm}
+    .toolbar,.drawer,.editbar,.toast,.backdrop{display:none!important}
+    .goal,.rung,.hk{break-inside:avoid}
+    .logo:not(.has){display:none}
+    body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .scroller{overflow:visible}
+    .hb-grid{display:block}.jd{margin-bottom:10px}
+  }
+  .disclaimer{background:#f7e9ee;color:var(--maroon-dk);text-align:center;font-size:13px;padding:7px 20px;border-bottom:1px solid #ebcfd9}
+  #editBtn,#saveBtn{display:none!important} .logo{cursor:default!important}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="top">
+    <div class="logo" id="logo" title="Click to add the Ministry of Public Health logo">
+      <img id="logoImg" alt="Ministry of Public Health">
+      <span class="ph">🏥<small>Add MOPH logo</small></span>
+    </div>
+    <div class="hdiv"></div>
+    <div class="htitle">
+      <div class="eyebrow" data-ar="المكتب الطبي القطري · لندن">Medical Attaché Office · London</div>
+      <h1><span data-ar="الهيكل التنظيمي المقترح">Proposed Organisation Structure</span> <span class="badge-draft" data-ar="مقترح 2027">PROPOSAL 2027</span></h1>
+    </div>
+    <div class="credit" data-ar="💡 فكرة وإعداد المقترح: <b>Mr. Mohamed Fakhtoo</b>">💡 Concept &amp; proposal by <b>Mr. Mohamed Fakhtoo</b></div>
+  </div>
+</header>
+<div class="disclaimer" data-ar="ℹ️ مقترح شخصي للنقاش، وليس وثيقة رسمية صادرة عن وزارة الصحة العامة أو المكتب الطبي القطري.">ℹ️ A personal proposal for discussion. This is not an official document of the Ministry of Public Health or the Qatar Medical Attaché Office.</div>
+<input type="file" id="logoFile" accept="image/*" hidden>
+
+<div class="toolbar">
+  <div class="seg" id="seg">
+    <button data-v="summary" class="on" data-ar="📌 الملخص التنفيذي">📌 Executive summary</button>
+    <button data-v="proposed" data-ar="🏛️ الهيكل التنظيمي">🏛️ Organisation structure</button>
+    <button data-v="journey" data-ar="🧭 رحلة المريض">🧭 Patient journey</button>
+    <button data-v="jds" data-ar="📋 الأوصاف الوظيفية">📋 Job descriptions</button>
+    <button data-v="goals" data-ar="🎯 الأهداف والمؤشرات">🎯 Goals &amp; KPIs</button>
+    <button data-v="ivr" data-ar="📞 الرد الصوتي الذكي">📞 Smart IVR</button>
+    <button data-v="crm" data-ar="💻 تطبيق رحلة المريض">💻 Patient Journey App</button>
+  </div>
+  <div class="tools">
+    <input id="q" placeholder="🔍 Search units or tasks…" data-ar-ph="🔍 ابحث عن وحدة أو مهمة…">
+    <button class="btn lang-btn" id="langBtn">🌐 عربي</button>
+    <button class="btn" id="editBtn">✏️ Edit mode</button>
+    <button class="btn" id="saveBtn" title="Download a copy of this page with your edits included" data-ar="💾 حفظ نسخة">💾 Save copy</button>
+    <button class="btn" onclick="window.print()" data-ar="🖨️ طباعة / PDF">🖨️ Print / PDF</button>
+  </div>
+</div>
+<div class="editbar" data-ar="✏️ وضع التعديل مفعّل: اضغط على أي وحدة لتعديل المسؤول وعدد الموظفين والغرض والمهام والمؤشرات. استخدم <b>💾 حفظ نسخة</b> لتنزيل ملف يتضمن تعديلاتك وجاهز للإرسال.">✏️ Edit mode is on: click any unit to change its lead, headcount, purpose, tasks and KPIs, or click the logo box to add the MOPH logo. Use <b>💾 Save copy</b> to download a file that includes your edits, ready to email.</div>
+
+<div class="meta" id="meta">
+  <div class="stats" id="stats"></div>
+</div>
+<div class="intro" id="intro"></div>
+
+<div class="scroller" id="chartWrap"><div class="chart" id="chart"></div></div>
+<div class="journey" id="journey" hidden></div>
+<div class="handbook" id="handbook" hidden></div>
+<div class="summary" id="summary"></div>
+<div class="goals" id="goals" hidden></div>
+<div class="proj" id="ivr" hidden></div>
+<div class="proj" id="crm" hidden></div>
+<div class="changes" id="changes"></div>
+<footer data-ar="💡 فكرة وإعداد المقترح: <b>Mr. Mohamed Fakhtoo</b> · المكتب الطبي القطري — لندن · نوفمبر 2026<br>اضغط على أي مربع لعرض الوصف الوظيفي">💡 Concept &amp; proposal: <b>Mr. Mohamed Fakhtoo</b> · Qatar Medical Attaché Office, London · November 2026<br>Click any box to see its job description</footer>
+<script id="logoData" type="text/plain">data:image/png;base64,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77//1oJEjO+LG1q3//5X62T1++eff8Kb6XdW93Sqv8ORalhf53mgROvrkZ7pko7wtfN3pGsvySj1BJmOCHGLJDPgOwgdcgcIK+SUvwsblhnPMuVBmCnmpEcdzDkPsokumRIkqiaNiIe0xlOCx4lGkKOVoNWbgmWcT66vKNrT4Sgt+P333+WF55+Xm2+6Sa677jq55ZZb5KWXXtIXUHHj22+/lYceekjrRbn77rvl008/zfNS5KX57jvvyO233SbXX3+93HjjjfLYo4/Kzz//nOdYDkdJB9zi3XfflRtuuEGuvfZauXrTJnn66ae3euex3X333iubNm3SbW+77TZ544038mxTEvHFF1/IljvukGuuuUauvvpquffee+WHH34Ib1aiUeoJMsQzLK8IFgv7hvWYFNTFHfaNeljoNCzJRoQhyGZJNi1y0HIcvq54SpBkByNjJFLMym1Og1jq7XhcQ3iwcDgc0fHdd9/JOeecI4P69ZOmTZtK9+7dZdW55ypxLm68+uqrMn36dGnSpIl0aNNGpk6aJI8/9lgeKzL13HjppTJk0CBp1ayZtGjRQg488ED5+OOP8xzL4Sjp+PPPP5UYdu7cWdq0aiWNGzeW448/Xn795Zc82/3yyy8yceJE/b15s2bSt29f2bhhQ55tSiKee/ZZGTVqlDRr0kSvberUqfL+e++FNyvRKPUEORi9IlKB4EE8IdIQUohdcQFyjszCdMkQzbDmmE8jsskQ2mBJZv9gHYycW0QQK5BiJ8apB1ZEiMYH77+fZxDGgod17+2335bPPv20VCzfbav45ptv5ITjj5dG9etLmTJlpEH9+nLGsmVpQZCfffZZfblTryoZGdKnZ0+1IAX7G330/PPPl5bNmkmFMmUko3x5mTR5srz3/vt5jlVQ2LOAtTpstfrxxx/lvXffla+//lr+KWVLvo70Ae+4Cy+6SCpVqiQVypbV5+KAOXO2Isj0xx49eujvlKysLFm9alWebUoimBy3bds297oYG95+883wZiUapZ4gh0lmpAIhheThWFbUYd8smgXnN3lCuH7pXpCm0GYe/7jw8NNPP8mG9etl8sSJsuMOO8iCBQvkow8/1N9ee+01Oezww2Xs2LGy91576bK8T1BKJpjonHrKKdKmZUupUqGCdG7fXi3I6XA/sSBvv/32+jLMrltXBg8cKLfffnsegszf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</script>
+
+<div class="backdrop" id="backdrop" onclick="closeDrawer()"></div>
+<aside class="drawer" id="drawer"><button class="x" onclick="closeDrawer()">×</button><div id="dbody"></div></aside>
+<div class="toast" id="toast"></div>
+
+<!-- Arabic job descriptions (role, purpose, tasks, KPIs). Lead and headcount are shared with the English block. -->
+<script id="jdar" type="application/json">
+{
+ "Medical Attaché":{"role":"رئيس المكتب","purpose":"يقود المكتب، وهو المسؤول عن رعاية كل مريض قطري يُعالَج في المملكة المتحدة.","tasks":["تحديد أولويات المكتب واعتماد الخطة السنوية والميزانية","تمثيل المكتب لدى المستشفيات البريطانية وهيئة الخدمات الصحية الوطنية (NHS) والجهات الحكومية وسفارة دولة قطر","اعتماد حالات العلاج عالية التكلفة والحالات الاستثنائية","رفع التقارير عن عمل المكتب إلى الجهات المعنية في الدوحة"],"kpis":["إنفاق المكتب ضمن الميزانية المعتمدة","مؤشر رضا المرضى"]},
+ "Deputy Medical Attaché":{"role":"نائب رئيس المكتب","purpose":"يدير العمل اليومي للمكتب ليتفرغ الملحق الطبي للتوجيه والاعتمادات والعلاقات العليا.","tasks":["إدارة مديري الإدارات الأربع وترؤس الاجتماع الإداري الأسبوعي","ترؤس اجتماع مراجعة الحالات الأسبوعي","النيابة عن الملحق الطبي في غيابه","متابعة أداء المكتب ورفع المخاطر"],"kpis":["تحقيق مستهدفات الإدارات كل ربع سنة","معالجة القضايا المرفوعة ضمن المدة المتفق عليها"]},
+ "Executive Office":{"role":"مدير المكتب والسكرتارية","purpose":"المكتب الأمامي للملحق الطبي: المواعيد والمراسلات والسجلات والاعتمادات.","tasks":["إدارة جدول مواعيد الملحق واجتماعاته وسفره","متابعة المراسلات الرسمية بالعربية والإنجليزية","تنظيم نظام الحفظ والسجلات","متابعة الاعتمادات والتوقيعات الداخلية"],"kpis":["الرد على المراسلات خلال يومي عمل","إنجاز الاعتمادات في وقتها"]},
+ "Legal & Compliance":{"role":"مسؤول الشؤون القانونية والامتثال","purpose":"يحمي المكتب قانونياً في حماية البيانات والعقود والتدقيق، ويتبع الملحق مباشرة ليبقى مستقلاً.","tasks":["ضمان التعامل مع بيانات المرضى وفق قانون حماية البيانات البريطاني (UK GDPR)","مراجعة العقود مع المستشفيات والموردين وتجديدها","إجراء التدقيق الداخلي ومتابعة نتائجه","تقديم المشورة في المسائل القانونية مثل الشكاوى والحوادث"],"kpis":["عدم وقوع أي مخالفة لحماية البيانات","تجديد العقود قبل انتهائها"]},
+ "Clinical Affairs":{"role":"مدير الشؤون الطبية (طبيب استشاري)","purpose":"يتولى جميع القرارات الطبية والإشراف الطبي على حالات المرضى.","tasks":["قيادة فرق الأطباء وتوزيع الحالات","اعتماد خطط العلاج والتمديد والخروج","وضع المعايير الطبية للمستشفيات الشريكة","رفع المخاطر الطبية إلى النائب والملحق الطبي"],"kpis":["متوسط مدة اعتماد خطة العلاج","مراجعة الحالات في مواعيدها"]},
+ "Medical Review Doctors":{"role":"أطباء: رجال، نساء، أطفال، طلاب","purpose":"مراجعة الحالة الطبية لكل مريض واتخاذ قرار العلاج.","tasks":["مراجعة التقارير الطبية وتوصيات المستشفيات","تقرير اعتماد العلاج أو تمديده أو إنهائه","متابعة كل مريض أثناء العلاج","كتابة الملخصات الطبية في ملف المريض"],"kpis":["مراجعة التقارير الطبية خلال 48 ساعة","تحديث ملفات المرضى باستمرار"]},
+ "Hospital Liaison":{"role":"منسقو المستشفيات","purpose":"منسّق محدد لكل مستشفى شريك، حتى لا يضيع شيء بين المكتب والمستشفى.","tasks":["العمل كجهة اتصال وحيدة مع المستشفيات المكلّف بها","متابعة الدخول وخطط العلاج ومواعيد الخروج","ترتيب الرأي الطبي الثاني عند الحاجة","حل المشكلات بين المرضى والمستشفيات"],"kpis":["لكل مستشفى شريك منسّق محدد","الاتفاق على خطة الخروج قبل موعده"]},
+ "Quality & Patient Experience":{"role":"مسؤول الجودة وتجربة المريض","purpose":"يستمع إلى المرضى ويقيس جودة المستشفيات وجودة خدمة المكتب نفسه.","tasks":["معالجة شكاوى المرضى وإشادات الشكر","إجراء استبيانات الرضا بعد العلاج","تقييم المستشفيات الشريكة في الجودة والخدمة","رفع تقرير بالاتجاهات إلى الإدارة كل ربع سنة"],"kpis":["إغلاق الشكاوى خلال 10 أيام عمل","نسبة الاستجابة للاستبيانات"]},
+ "Patient Services":{"role":"مدير خدمات المرضى","purpose":"يتولى رحلة المريض كاملة، من التسجيل حتى رحلة العودة.","tasks":["إدارة فريقي إدارة الحالات والسفر والدعم","تعيين مسؤول حالة محدد لكل مريض","التنسيق اليومي مع الشؤون الطبية والمالية","معالجة الاختناقات في رحلة المريض"],"kpis":["عدد الأيام من الإحالة إلى أول موعد","رضا المرضى عن الخدمات"]},
+ "Contact Centre & Smart IVR":{"role":"مشرف مركز الاتصال وموظفو الاستقبال","purpose":"بوابة المكتب الهاتفية: يتيح الرد الصوتي الذكي للمرضى معلوماتهم على مدار الساعة بالعربية، ويتولى الموظفون ما سوى ذلك وملف المريض أمامهم. مبني على مقترح الرد الصوتي الذكي.","tasks":["تشغيل الخدمة الذاتية: يتحقق المريض برقمه الشخصي ورمز سري من 4 أرقام، ثم يسمع موعده القادم وموعد مخصصاته وحالة التمديد ورحلاته ونقله","الرد على المكالمات المحوّلة من النظام مع ظهور ملف المريض على الشاشة","تسجيل المرضى في الخدمة وتسليمهم الرموز السرية","إرسال تنبيهات استباقية بالرسائل والواتساب: المواعيد قبل 24 ساعة، والسفر قبل 48 ساعة، وانتهاء فترة العلاج قبل 14 يوماً","معاودة الاتصال بأصحاب الطلبات خلال يوم عمل واحد","رفع تقرير شهري بأعداد المكالمات وأوقات الذروة وتقييم المتصلين"],"kpis":["الاستفسارات المنجزة ذاتياً ≥ 60%","المكالمات المتروكة < 5%","متوسط الانتظار للموظف < دقيقتين","تقييم المتصلين ≥ 4 من 5"]},
+ "Patient Registration":{"role":"موظفو التسجيل","purpose":"البوابة الأولى: كل حالة تبدأ من هنا.","tasks":["استلام الإحالات وفتح ملفات المرضى","التحقق من الأهلية والمستندات","تعيين مسؤول الحالة","تحديث بيانات المرضى والمرافقين"],"kpis":["فتح الملفات الجديدة خلال يوم عمل واحد","اكتمال المستندات في الملفات"]},
+ "Medical Appointments":{"role":"منسقو المواعيد","purpose":"يحجز كل موعد مع المستشفيات والعيادات البريطانية ويتابعه.","tasks":["حجز المواعيد مع المستشفيات والعيادات","إرسال تفاصيل الموعد إلى المريض والمترجم وقسم النقل","إعادة جدولة المواعيد الفائتة أو الملغاة","تحديث نظام المواعيد باستمرار"],"kpis":["تأكيد الموعد للمريض قبل 48 ساعة","نسبة المواعيد الفائتة"]},
+ "Students Treatment":{"role":"منسق صحة الطلاب","purpose":"مكتب مخصص للطلاب القطريين الدارسين في المملكة المتحدة.","tasks":["تسجيل الطلاب للعلاج","التنسيق مع الجامعات والملحقية الثقافية بالسفارة عند الحاجة","ترتيب الرعاية لدى الطبيب العام والمستشفيات","الإجابة عن أسئلة التغطية والتأمين"],"kpis":["الرد على طلبات الطلاب خلال يومي عمل"]},
+ "Interpreters":{"role":"مترجمون طبيون (عربي–إنجليزي)","purpose":"يضمنون فهم المرضى لرعايتهم فهماً كاملاً.","tasks":["الترجمة في المواعيد والدخول والاستشارات","ترجمة التقارير والخطابات الطبية","مساعدة المرضى على فهم نماذج الموافقة","إعداد جدول مناوبات يتوافق مع جدول المواعيد"],"kpis":["تغطية المواعيد بمترجم","إنجاز الترجمات خلال 3 أيام عمل"]},
+ "Visa Affairs":{"role":"موظفو التأشيرات","purpose":"يضمن بقاء كل مريض ومرافق في المملكة المتحدة بصورة نظامية طوال علاجه.","tasks":["إعداد خطابات الدعم للمرضى والمرافقين","التقديم على تمديد التأشيرات ومتابعته","التنسيق مع إدارة التأشيرات والهجرة البريطانية والسفارة","متابعة تواريخ انتهاء التأشيرات"],"kpis":["عدم تجاوز أي مريض مدة إقامته","تقديم طلبات التمديد قبل الانتهاء"]},
+ "Transport & Airports":{"role":"موظفو الخدمات اللوجستية","purpose":"تنقّل المريض من الباب إلى الباب: المطار والمستشفى والسكن.","tasks":["استقبال المرضى في المطار وترتيب المساعدة","ترتيب النقل إلى المستشفيات والمواعيد","حجز الإسعاف أو المركبات المجهزة عند الحاجة","ترتيب رحلات المغادرة والعودة"],"kpis":["الالتزام بمواعيد النقل","تكلفة النقل لكل مريض"]},
+ "Accommodation":{"role":"مسؤول السكن","purpose":"سكن مناسب قريب من المستشفى المعالِج.","tasks":["حجز الفنادق والشقق للمرضى والمرافقين","اختيار سكن قريب من المستشفى المعالِج","إدارة عقود السكن وتكاليفه","معالجة مشكلات السكن"],"kpis":["تكلفة الليلة مقارنة بالميزانية","شكاوى السكن"]},
+ "Finance & Medical Supply":{"role":"مدير المالية والإمداد الطبي","purpose":"المال والأدوية والمعدات الطبية تحت إشراف مدير واحد، مع فصل واضح للمهام.","tasks":["إعداد الميزانية السنوية ومراقبتها","اعتماد المدفوعات ضمن الصلاحيات المفوّضة","الإشراف على توفير الأدوية والمعدات الطبية","رفع تقرير بالوضع المالي شهرياً"],"kpis":["الإنفاق ضمن الميزانية","التقارير الشهرية في موعدها"]},
+ "Medicines & Pharmacy":{"role":"صيدلي / منسق الصيدلية","purpose":"يضمن حصول كل مريض على الأدوية الصحيحة في وقتها، أثناء العلاج وعند العودة إلى قطر.","tasks":["مطابقة وصفات المستشفى مع خطة العلاج المعتمدة","طلب الأدوية وتوصيلها إلى سكن المريض","ترتيب الوصفات المتكررة والأدوية طويلة الأمد","إعداد كمية الأدوية وخطاب التسليم لرحلة العودة","تقديم المشورة حول أنظمة السفر بالأدوية الخاضعة للرقابة والأدوية التخصصية"],"kpis":["توصيل الوصفات خلال 48 ساعة","عودة المرضى إلى الوطن مع أدويتهم وخطاب تسليم"]},
+ "Medical Equipment":{"role":"منسق المعدات الطبية","purpose":"يوفّر المعدات التي يحتاجها المرضى أثناء العلاج وبعد الخروج.","tasks":["توفير الكراسي المتحركة ووسائل التنقل ومعدات الرعاية المنزلية","طلب الأجهزة التخصصية التي يعتمدها الأطباء (مثل السماعات والأطراف الصناعية والأجهزة التقويمية)","التأكد من سلامة المعدات وتركيبها وتدريب المريض عليها","متابعة المعدات المعارة وترتيب إعادتها أو شحنها إلى قطر"],"kpis":["تجهيز المعدات قبل الخروج من المستشفى","متابعة المعدات المعارة وإعادتها"]},
+ "Accounting":{"role":"المحاسبون","purpose":"يحافظ على دقة الحسابات وتحديثها.","tasks":["مسك الحسابات والدفاتر","مطابقة الحسابات البنكية شهرياً","صرف مخصصات المرضى","إعداد التقارير المالية"],"kpis":["إقفال الشهر خلال 5 أيام عمل"]},
+ "Invoice Processing":{"role":"موظفو الحسابات الدائنة","purpose":"يسدد مستحقات المستشفيات والموردين بدقة وفي موعدها.","tasks":["استلام الفواتير وتسجيلها","مطابقة الفواتير مع العلاج المعتمد وأوامر الشراء","تنفيذ المدفوعات في موعدها","الرد على استفسارات المستشفيات والموردين بشأن المدفوعات"],"kpis":["سداد الفواتير خلال 30 يوماً"]},
+ "Medical Billing Audit":{"role":"مدقق الفواتير","purpose":"يدقق فواتير المستشفيات قبل سدادها.","tasks":["مطابقة فواتير المستشفيات مع خطط العلاج المعتمدة","اكتشاف الرسوم المكررة أو الخاطئة","الاتفاق مع المستشفيات على التصحيحات","رفع تقرير بالوفورات المحققة"],"kpis":["تدقيق الفواتير قبل السداد","قيمة الأخطاء المستردة"]},
+ "Procurement & Distribution":{"role":"موظفو المشتريات","purpose":"يشتري الأدوية والمعدات بأفضل قيمة من موردين معتمدين، ويوصلها إلى حيث تُحتاج.","tasks":["طلب عروض الأسعار واختيار الموردين المعتمدين","إدارة عقود الموردين بالتعاون مع الشؤون القانونية والامتثال","مسك سجلات المخزون وتواريخ الصلاحية والتسليم","رفع تقرير بالإنفاق والوفورات كل ربع سنة"],"kpis":["تسليم الطلبات في موعدها","الوفورات مقارنة بعروض الأسعار"]},
+ "Corporate Services":{"role":"رئيس الخدمات المؤسسية","purpose":"يوفر للمكتب الكوادر والأنظمة والأدوات التي يحتاجها.","tasks":["إدارة تقنية المعلومات والخدمات الرقمية والموارد البشرية","إدارة مقر المكتب ومرافقه","ضمان حصول الموظفين على الأدوات والتدريب اللازم","قيادة الخطة الرقمية للمكتب"],"kpis":["رضا الموظفين عن خدمات الدعم"]},
+ "IT Operations":{"role":"موظفو تقنية المعلومات","purpose":"يحافظ على عمل الأنظمة وأمنها.","tasks":["دعم أجهزة الموظفين وهواتفهم وحساباتهم","تشغيل الشبكة والبريد الإلكتروني والنسخ الاحتياطي","حماية الأنظمة","إدارة موردي تقنية المعلومات"],"kpis":["إغلاق طلبات الدعم خلال يوم عمل واحد","استمرارية عمل الأنظمة"]},
+ "Digital Services":{"role":"مسؤول الخدمات الرقمية","purpose":"ينقل عمل المكتب إلى البيئة الرقمية، بقيادة تطبيق رحلة المريض والرد الصوتي الذكي.","tasks":["بناء تطبيق رحلة المريض وتشغيله: منصة ويب واحدة تحل محل الأنظمة القديمة والسجلات اليدوية، على أربعة إصدارات","بناء بوابة إلكترونية للمرضى وتشغيلها","تشغيل منصة الرد الصوتي الذكي وربطها الآمن (للقراءة فقط) بنظام المكتب","توفير لوحات متابعة للموظفين للحالات والمواعيد والمكالمات والإنفاق","تحويل الإجراءات الورقية إلى إلكترونية","تدريب الموظفين على الأنظمة الجديدة"],"kpis":["نسبة الطلبات المقدمة إلكترونياً"]},
+ "HR & Administration":{"role":"مسؤول الموارد البشرية والشؤون الإدارية","purpose":"يرعى موظفي المكتب.","tasks":["التوظيف وإدارة العقود","تنفيذ برامج التهيئة والتدريب","إدارة الإجازات والحضور وتقييم الأداء","تحديث سياسات الموظفين"],"kpis":["شغل الوظائف الشاغرة في وقتها","إنجاز تقييمات الأداء سنوياً"]}
+}
+</script>
+
+<!-- Job descriptions: edited in the page, saved into this block by "Save copy" -->
+<script id="jd" type="application/json">
+{
+ "Medical Attaché":{"role":"Head of Office","lead":"","headcount":"","purpose":"Leads the office and is accountable for the care of every Qatari patient treated in the UK.","tasks":["Set office priorities and approve the annual plan and budget","Represent the office with UK hospitals, the NHS, government bodies and the Qatari Embassy","Approve high-cost and exceptional treatment cases","Report on the office's work to the relevant authorities in Doha"],"kpis":["Office spend within the approved budget","Patient satisfaction score"]},
+ "Deputy Medical Attaché":{"role":"Deputy Head of Office","lead":"","headcount":"","purpose":"Runs the office day to day so the Attaché can focus on direction, approvals and senior relationships.","tasks":["Manage the four directors and run the weekly management meeting","Chair the weekly case review meeting","Deputise for the Attaché when absent","Track office performance and escalate risks"],"kpis":["Directorate targets met each quarter","Escalated issues resolved within agreed time"]},
+ "Executive Office":{"role":"Office Manager + Secretaries","lead":"","headcount":"","purpose":"Front office of the Medical Attaché: diary, correspondence, records and approvals.","tasks":["Manage the Attaché's diary, meetings and travel","Handle official correspondence in Arabic and English","Keep the filing and records system in order","Track internal approvals and signatures"],"kpis":["Correspondence answered within 2 working days","Approvals turned round on time"]},
+ "Legal & Compliance":{"role":"Legal & Compliance Officer","lead":"","headcount":"","purpose":"Keeps the office legally safe: data protection, contracts and audit. Reports straight to the Attaché so it stays independent.","tasks":["Make sure patient data is handled in line with UK GDPR","Review and renew contracts with hospitals and suppliers","Run internal audits and follow up the findings","Advise on legal issues such as complaints and incidents"],"kpis":["No data-protection breaches","Contracts renewed before expiry"]},
+ "Clinical Affairs":{"role":"Director of Clinical Affairs (senior physician)","lead":"","headcount":"","purpose":"Owns every clinical decision and the medical oversight of patient cases.","tasks":["Lead the doctor teams and assign cases","Approve treatment plans, extensions and discharges","Set clinical standards for partner hospitals","Report clinical risks to the Deputy and the Attaché"],"kpis":["Average time to approve a treatment plan","Cases reviewed on schedule"]},
+ "Medical Review Doctors":{"role":"Physicians: Men, Women, Child, Students","lead":"","headcount":"","purpose":"Review each patient's medical case and decide on treatment.","tasks":["Review medical reports and hospital recommendations","Decide whether treatment is approved, extended or ended","Follow up each patient during treatment","Write medical summaries for the patient file"],"kpis":["Medical reports reviewed within 48 hours","Patient files kept up to date"]},
+ "Hospital Liaison":{"role":"Hospital Liaison Officers","lead":"","headcount":"","purpose":"A named contact for each partner hospital, so nothing falls between the office and the hospital.","tasks":["Act as the single contact for assigned hospitals","Track admissions, treatment plans and discharge dates","Arrange second opinions when needed","Resolve problems between patients and hospitals"],"kpis":["Every partner hospital has a named contact","Discharge plans agreed before the discharge date"]},
+ "Quality & Patient Experience":{"role":"Quality & Patient Experience Officer","lead":"","headcount":"","purpose":"Listens to patients and measures the quality of the hospitals and of the office's own service.","tasks":["Handle patient complaints and compliments","Run satisfaction surveys after treatment","Score partner hospitals on quality and service","Report trends to management each quarter"],"kpis":["Complaints closed within 10 working days","Survey response rate"]},
+ "Patient Services":{"role":"Director of Patient Services","lead":"","headcount":"","purpose":"Owns the whole patient journey, from registration to the flight home.","tasks":["Manage the Case Management and Travel & Support teams","Give each patient one named case officer","Coordinate daily with Clinical Affairs and Finance","Fix bottlenecks in the patient journey"],"kpis":["Days from referral to first appointment","Patient satisfaction with services"]},
+ "Contact Centre & Smart IVR":{"role":"Contact Centre Supervisor + Reception Officers","lead":"","headcount":"","purpose":"The office's front door by phone. Smart IVR gives patients their own information 24/7 in Arabic, and staff handle everything else with the patient file on screen. Based on the Smart IVR proposal.","tasks":["Run Smart IVR self-service: patients verify with their QID and a 4-digit PIN, then hear their next appointment, allowance date, extension status, flights and transport","Answer calls the IVR passes to staff, with the patient file shown on screen","Register patients for the service and issue their PINs","Send proactive SMS / WhatsApp alerts: appointments 24h ahead, travel 48h ahead, extension expiry 14 days ahead","Return callback requests within 1 working day","Report call volumes, peak times and caller ratings every month"],"kpis":["Enquiries completed by self-service ≥ 60%","Abandoned calls < 5%","Average wait for staff < 2 minutes","Caller rating ≥ 4 out of 5"]},
+ "Patient Registration":{"role":"Registration Officers","lead":"","headcount":"","purpose":"The front door: every case starts here.","tasks":["Receive referrals and open patient files","Check eligibility and documents","Assign a case officer","Keep patient and companion details up to date"],"kpis":["New files opened within 1 working day","Files with complete documents"]},
+ "Medical Appointments":{"role":"Appointments Coordinators","lead":"","headcount":"","purpose":"Books and tracks every appointment with UK hospitals and clinics.","tasks":["Book appointments with hospitals and clinics","Send details to the patient, interpreter and transport desk","Rebook missed or cancelled appointments","Keep the appointments system up to date"],"kpis":["Appointments confirmed to the patient 48h ahead","Missed-appointment rate"]},
+ "Students Treatment":{"role":"Student Health Coordinator","lead":"","headcount":"","purpose":"A dedicated desk for Qatari students studying in the UK.","tasks":["Register students for treatment","Coordinate with universities and the Embassy's cultural office where needed","Arrange GP and hospital care for students","Answer coverage and insurance questions"],"kpis":["Student requests answered within 2 working days"]},
+ "Interpreters":{"role":"Medical Interpreters (Arabic–English)","lead":"","headcount":"","purpose":"Make sure patients fully understand their care.","tasks":["Interpret at appointments, admissions and consultations","Translate medical reports and letters","Help patients understand consent forms","Keep a roster matched to the appointment schedule"],"kpis":["Appointments covered by an interpreter","Translations returned within 3 working days"]},
+ "Visa Affairs":{"role":"Visa Officers","lead":"","headcount":"","purpose":"Keeps every patient and companion legally in the UK for their treatment.","tasks":["Prepare support letters for patients and companions","Apply for and track visa extensions","Liaise with UK Visas and Immigration and the Embassy","Track visa expiry dates"],"kpis":["No patient overstays","Extensions submitted before expiry"]},
+ "Transport & Airports":{"role":"Logistics Officers","lead":"","headcount":"","purpose":"Door-to-door movement of patients: airport, hospital, home.","tasks":["Meet patients at the airport and arrange assistance","Arrange transport to hospitals and appointments","Book ambulances or adapted vehicles when needed","Arrange departure and return flights"],"kpis":["Pick-ups on time","Transport cost per patient"]},
+ "Accommodation":{"role":"Accommodation Officer","lead":"","headcount":"","purpose":"Somewhere suitable to stay, close to the treating hospital.","tasks":["Book hotels and apartments for patients and companions","Choose places close to the treating hospital","Manage accommodation contracts and costs","Handle accommodation problems"],"kpis":["Cost per night against budget","Accommodation complaints"]},
+ "Finance & Medical Supply":{"role":"Director of Finance & Medical Supply","lead":"","headcount":"","purpose":"Money, medicines and medical equipment under one director, with clear separation of duties.","tasks":["Prepare and control the annual budget","Approve payments within delegated limits","Oversee the supply of medicines and medical equipment","Report the financial position every month"],"kpis":["Spend within budget","Monthly reports on time"]},
+ "Medicines & Pharmacy":{"role":"Pharmacist / Pharmacy Coordinator","lead":"","headcount":"","purpose":"Makes sure every patient has the right medicines on time, during treatment and when they return to Qatar.","tasks":["Check hospital prescriptions against the approved treatment plan","Order medicines and deliver them to the patient's accommodation","Arrange repeat prescriptions and long-term medicines","Prepare a medicines supply and handover letter for the journey home","Advise on travel rules for controlled and specialist medicines"],"kpis":["Prescriptions delivered within 48 hours","Patients returning home with medicines and a handover letter"]},
+ "Medical Equipment":{"role":"Medical Equipment Coordinator","lead":"","headcount":"","purpose":"Provides the equipment patients need during treatment and after discharge.","tasks":["Arrange wheelchairs, mobility aids and home-care equipment","Order specialist devices approved by the doctors (e.g. hearing aids, prostheses, orthotics)","Make sure equipment is safe, fitted and comes with training","Track loaned equipment and arrange its return or shipping to Qatar"],"kpis":["Equipment in place before discharge","Loaned equipment tracked and returned"]},
+ "Accounting":{"role":"Accountants","lead":"","headcount":"","purpose":"Keeps the books accurate and up to date.","tasks":["Keep the accounts and ledgers","Reconcile bank accounts every month","Pay patient allowances","Prepare financial reports"],"kpis":["Month-end closed within 5 working days"]},
+ "Invoice Processing":{"role":"Accounts Payable Officers","lead":"","headcount":"","purpose":"Pays hospitals and suppliers correctly and on time.","tasks":["Receive and log invoices","Match invoices to approved treatment and orders","Process payments on time","Answer hospital and supplier payment queries"],"kpis":["Invoices paid within 30 days"]},
+ "Medical Billing Audit":{"role":"Billing Auditor","lead":"","headcount":"","purpose":"Checks hospital bills before they are paid.","tasks":["Check hospital bills against approved treatment plans","Find duplicate or wrong charges","Agree corrections with hospitals","Report the savings made"],"kpis":["Bills audited before payment","Value of errors recovered"]},
+ "Procurement & Distribution":{"role":"Procurement Officers","lead":"","headcount":"","purpose":"Buys medicines and equipment at the best value from approved suppliers, and gets them where they are needed.","tasks":["Get quotes and choose approved suppliers","Manage supplier contracts with Legal & Compliance","Keep stock, expiry-date and delivery records","Report spend and savings every quarter"],"kpis":["Orders delivered on time","Savings against quotes"]},
+ "Corporate Services":{"role":"Head of Corporate Services","lead":"","headcount":"","purpose":"Gives the office the people, systems and tools it needs.","tasks":["Run IT, digital services and HR","Manage the office premises and facilities","Make sure staff have the tools and training they need","Lead the office's digital plan"],"kpis":["Staff satisfaction with support services"]},
+ "IT Operations":{"role":"IT Officers","lead":"","headcount":"","purpose":"Keeps systems running and secure.","tasks":["Support staff computers, phones and accounts","Run the network, email and backups","Keep systems secure","Manage IT suppliers"],"kpis":["Support requests closed within 1 working day","System uptime"]},
+ "Digital Services":{"role":"Digital Services Officer","lead":"","headcount":"","purpose":"Moves the office's work online, led by the Patient Journey App (web-based CRM) and Smart IVR.","tasks":["Build and run the Patient Journey App: one web platform replacing the old systems and manual records, released in 4 stages","Build and run an online patient portal","Run the Smart IVR platform and its secure, read-only link to the office system","Give staff dashboards for cases, appointments, calls and spend","Move paper processes online","Train staff on new systems"],"kpis":["Share of requests submitted online"]},
+ "HR & Administration":{"role":"HR & Admin Officer","lead":"","headcount":"","purpose":"Looks after the office's staff.","tasks":["Recruit staff and manage contracts","Run induction and training","Manage leave, attendance and appraisals","Keep staff policies up to date"],"kpis":["Vacancies filled on time","Appraisals completed each year"]}
+}
+</script>
+
+<script>
+const C = {pr:"#6B2D7B", appt:"#0F7C7C", fin:"#2457B5", sup:"#C2416B", doc:"#2E7D46", it:"#4F5563",
+           care:"#8A1538", supp:"#A8325A", res:"#5E0E26", corp:"#6E5560", exec:"#8A1538"};
+
+const PROPOSED = {
+  intro:"The Medical Attaché, supported by a Deputy, leads four directorates. Every step of the patient journey has one clear owner.",
+  head:{t:"Medical Attaché", d:"Head of Office", e:"🏛️"},
+  side:[
+    {t:"Executive Office", d:"Office Manager & Secretaries", c:C.exec, e:"🗂️"},
+    {t:"Legal & Compliance", d:"UK GDPR · contracts · audit", c:C.exec, e:"⚖️"}
+  ],
+  deputy:{t:"Deputy Medical Attaché", d:"Day-to-day operations", e:"👔"},
+  groups:[
+    {t:"Clinical Affairs", d:"Doctors & hospital care", c:C.care, e:"🩺", kids:[
+      {t:"Medical Review Doctors", chips:["Men","Women","Child","Students"]},
+      {t:"Hospital Liaison", tag:"new"},
+      {t:"Quality & Patient Experience", tag:"new"}]},
+    {t:"Patient Services", d:"Case management · Travel & support", c:C.supp, e:"🤝", kids:[
+      {sec:"Patient contact"},
+      {t:"Contact Centre & Smart IVR", e:"📞", d:"Smart IVR · 24/7 self-service"},
+      {sec:"Case management"},
+      {t:"Patient Registration"},
+      {t:"Medical Appointments"},
+      {t:"Students Treatment"},
+      {t:"Interpreters", tag:"chg"},
+      {sec:"Travel & support"},
+      {t:"Visa Affairs"},
+      {t:"Transport & Airports", tag:"chg"},
+      {t:"Accommodation", tag:"new"}]},
+    {t:"Finance & Medical Supply", d:"Budget · medicines · equipment", c:C.res, e:"💷", kids:[
+      {sec:"Finance"},
+      {t:"Accounting"},
+      {t:"Invoice Processing"},
+      {t:"Medical Billing Audit"},
+      {sec:"Medical supply"},
+      {t:"Medicines & Pharmacy", e:"💊"},
+      {t:"Medical Equipment", e:"🦽"},
+      {t:"Procurement & Distribution", e:"📦"}]},
+    {t:"Corporate Services", d:"IT · digital · HR", c:C.corp, e:"🖥️", kids:[
+      {t:"IT Operations"},
+      {t:"Digital Services", d:"Patient Journey App · portal"},
+      {t:"HR & Administration", tag:"new"}]}
+  ],
+  changes:[
+    "🎯 <b>One owner for every patient.</b> Patient Services runs the whole journey, from registration to the flight home, with a named case officer.",
+    "👔 <b>Focused leadership.</b> The Medical Attaché has three direct reports, and the Deputy runs day-to-day operations.",
+    "🩺 <b>Clinical decisions in one place.</b> Doctors, hospital liaison and quality work together under Clinical Affairs.",
+    "🏥 <b>Strong hospital partnerships.</b> Every partner hospital has a named liaison officer.",
+    "💷 <b>Strong financial control.</b> Purchasing sits with the budget, and every hospital bill is audited before payment.",
+    "💊 <b>Medicines and equipment, end to end.</b> A dedicated Medical Supply section handles prescriptions, devices and home-care equipment, including what patients take home to Qatar.",
+    "⚖️ <b>Independent compliance.</b> Legal & Compliance reports directly to the Attaché and covers UK GDPR, contracts and audit.",
+    "✈️ <b>Complete patient support.</b> Visas, interpreting, transport, airports and accommodation are managed as one service.",
+    "📞 <b>One call, instant information.</b> Smart IVR lets patients hear their own appointments, allowances, extension status, flights and transport 24/7 in Arabic, using their QID and a PIN.",
+    "💻 <b>Digital first.</b> One Patient Journey App replaces the old systems and paper records, with a patient portal and live dashboards, run by Corporate Services."
+  ]
+};
+
+const JOURNEY = [
+  {e:"📝", h:"Referral & registration", p:"The case arrives from Doha. A file is opened, documents are checked and a case officer is assigned. The patient is registered for Smart IVR and given a PIN.", o:["Patient Registration","Contact Centre & Smart IVR"]},
+  {e:"🩺", h:"Clinical review", p:"A doctor reviews the medical reports and approves the treatment plan.", o:["Medical Review Doctors","Clinical Affairs"]},
+  {e:"🏥", h:"Hospital booking", p:"An appointment is booked and the hospital is briefed through its named liaison.", o:["Medical Appointments","Hospital Liaison"]},
+  {e:"🛂", h:"Visa & travel", p:"Support letters and visas for the patient and companions. Flights booked.", o:["Visa Affairs","Transport & Airports"]},
+  {e:"✈️", h:"Arrival & stay", p:"Met at the airport, taken to accommodation near the hospital.", o:["Transport & Airports","Accommodation"]},
+  {e:"💊", h:"Treatment", p:"Interpreter present at appointments. Liaison tracks progress and the discharge date.", o:["Interpreters","Hospital Liaison","Medical Review Doctors","Medicines & Pharmacy"]},
+  {e:"💳", h:"Billing & payment", p:"The hospital bill is checked against the approved plan, then paid.", o:["Medical Billing Audit","Invoice Processing"]},
+  {e:"🏠", h:"Return & feedback", p:"Return flight booked, medicines and equipment supplied for home, follow-up plan agreed, satisfaction survey sent.", o:["Transport & Airports","Medicines & Pharmacy","Medical Equipment","Quality & Patient Experience"]}
+];
+
+/* ---------- Linked proposals by Mr. Mohamed Fakhtoo ---------- */
+const PROJECTS = {
+  ivr:{icon:"📞", short:"Smart IVR", pdf:"",
+    ar:"نظام الرد الصوتي التفاعلي الذكي", en:"Smart IVR",
+    sub:"Self-service for patients using their Qatari ID: appointments, weekly allowances, medical extension, travel and transport. Available 24/7, in Arabic, secure and private.",
+    tag:"“One call, instant information, a reassured patient.”",
+    tiles:[["24/7","Service, including weekends and holidays"],["< 60 s","To reach your own information, without waiting"],["60%+","Of repeat enquiries answered by self-service"],["0","Lost calls, with no answer or callback"]],
+    sections:[
+      {h:"🧩 How it works: three layers", type:"flow", items:[
+        ["Smart routing","A short menu takes the caller to the right department."],
+        ["Self-service","“My services”: personal information read instantly after QID verification."],
+        ["Supported transfer","Staff see the patient's file on screen as they answer."]]},
+      {h:"📲 The caller's journey, step by step", type:"flow", items:[
+        ["Welcome","Short greeting, with a reminder to call 999 in a medical emergency."],
+        ["Recognition","A registered phone number goes straight to “My services”."],
+        ["Verification","11-digit QID, then a 4-digit PIN. Locked after 3 wrong attempts."],
+        ["Service","The patient hears their own up-to-date information."],
+        ["Confirmation","Option to receive a written summary by SMS or WhatsApp."],
+        ["Transfer","If needed, to the right staff member with the file on screen.","Contact Centre & Smart IVR"],
+        ["Close","Quick 1–5 rating, and the call is logged on the patient's record."]]},
+      {h:"☎️ “My services” menu", type:"mods", items:[
+        ["1 · My next appointment","Date, time, hospital and clinic, and pick-up time"],
+        ["2 · Weekly allowances","Payment date and status: ready / in progress / paid"],
+        ["3 · Medical extension","Request status and end date of approved treatment"],
+        ["4 · Travel and tickets","Return flight date, number, time and status"],
+        ["5 · Transport","Next car, pick-up point, confirm or cancel"],
+        ["6 · Missing documents","What is still needed from the patient"],
+        ["7 · Written summary","Everything above, sent by SMS or WhatsApp"],
+        ["8 · Leave a request","A voice message delivered to the right department with a reference number"],
+        ["0 · Talk to staff","Transfer with the patient's file shown automatically"]]},
+      {h:"🔔 Proactive alerts", type:"mods", items:[
+        ["Appointment reminder","24 hours before, with car time. SMS / WhatsApp"],
+        ["Allowances ready","When the status changes to “ready”"],
+        ["Treatment period ending","14 days before expiry, plus an internal alert to the extension team"],
+        ["Extension decision","As soon as approval or refusal is recorded"],
+        ["Travel reminder","48 hours before the flight, with airport car time"],
+        ["Missing documents","When a gap is recorded on the file"]]},
+      {h:"🗓️ Rollout: January – May 2027", type:"rels", items:[
+        ["Phase 1","Jan 2027","Analysis & design","Baseline call count, menus and scripts, data sources, DPIA"],
+        ["Phase 2","Jan 2027","Platform & setup","Compare offers, number and menus, Arabic voice"],
+        ["Phase 3","Feb 2027","Integration & build","Secure read-only link to the office system, PIN, alerts"],
+        ["Phase 4","Mar 2027","Internal testing","Staff testing with sample data, security test"],
+        ["Phase 5","Apr 2027","Pilot","Small group of patients, “My appointment” and “Allowances” services"],
+        ["Phase 6","From May 2027","Full launch","All services, patient onboarding, monthly KPI review"]]},
+      {h:"📊 Success KPIs", type:"table", items:[
+        ["Enquiries completed by self-service","≥ 60%","Contact Centre & Smart IVR"],
+        ["Abandoned calls","< 5%","Contact Centre & Smart IVR"],
+        ["Average wait to reach staff","< 2 minutes","Contact Centre & Smart IVR"],
+        ["Callback requests handled","Within 1 working day","Contact Centre & Smart IVR"],
+        ["Caller rating","≥ 4 out of 5","Quality & Patient Experience"],
+        ["Current patients registered for “My services”","≥ 80%","Patient Registration"],
+        ["Complaints about wrong information","0","Digital Services"]]},
+      {h:"🔒 Privacy by design", type:"note", text:"The IVR reads <b>logistics only</b> (dates, times, places and statuses), never diagnoses or medical reports. Access needs a QID and a PIN, the link is read-only and encrypted, every access is logged, and a Data Protection Impact Assessment (UK GDPR) is approved before launch. In the Patient Journey App plan, Smart IVR is part of <b>Release 4</b>."}
+    ]},
+  crm:{icon:"💻", short:"Patient Journey App", pdf:"",
+    ar:"نظام إدارة رحلة المريض المتكامل", en:"Web-based Patient Journey CRM",
+    sub:"One platform that replaces several separate legacy systems, covering medical, administrative, financial, travel, accommodation and allowances, from treatment approval until the patient returns home.",
+    tag:"“One file, a clear journey, a reassured patient.”",
+    tiles:[["3 → 1","One platform instead of three separate systems"],["17","Modules covering the full patient journey"],["100%","Of operations recorded in an audit log"],["Live","Reports and dashboards for decision-makers"]],
+    sections:[
+      {h:"🎯 Vision", type:"note", text:"<b>One file for every patient</b>, seen by each department from its own angle, updated once, and available securely from anywhere: office, airport or on the move."},
+      {h:"🧭 The patient journey inside the system", type:"flow", items:[
+        ["Approval & referral","Treatment decision from Qatar, approval type, hospital and approved period.","Clinical Affairs"],
+        ["Open the file","Patient and companions, documents uploaded, data checked.","Patient Registration"],
+        ["Arrival","Flight, airport pick-up, car and interpreter.","Transport & Airports"],
+        ["Accommodation","Hotel or apartment, dates and cost.","Accommodation"],
+        ["Treatment","Appointments, reports, prescriptions and hospital transfers.","Medical Appointments"],
+        ["Allowances","Weekly allowances calculated, paid and receipted.","Accounting"],
+        ["Extension","Extension request sent, followed up and dates updated.","Clinical Affairs"],
+        ["Invoices","Hospital invoices matched to orders and approved.","Invoice Processing"],
+        ["Departure","Return flight, car to the airport, final medical report.","Transport & Airports"],
+        ["Close the file","Final financial settlement, archive and case report.","Finance & Medical Supply"]]},
+      {h:"🧱 17 modules, one patient file", type:"mods", items:[
+        ["Patient & companions","QID, passport, contacts, current stage, full history"],["Approvals & referrals","Types, authorities, hospital, approved period, expiry alerts"],
+        ["Medical appointments","Calendar by hospital and doctor, links to transport and interpreter"],["Documents & reports","Scanning with automatic data extraction"],
+        ["Medical extension","Statuses from draft to approved, with automatic date updates"],["Travel & flights","Tickets, Heathrow arrivals tracking"],
+        ["Transport & drivers","Daily schedule, clash detection, ready-made messages"],["Accommodation","Hotels and apartments, dates, cost, linked to invoices"],
+        ["Weekly allowances","Calculated by family size and category, payment sheets"],["Invoices & claims","Hospital and supplier invoices, purchase orders, staged approval"],
+        ["Accounting link","Export entries to the accounting software first, then review"],["Interpreters","Register, languages, linked to appointments, hours and cost"],
+        ["Communication","WhatsApp, SMS and email with approved Arabic templates"],["Reports & dashboards","By status, hospital, cost, allowances, with Excel / PDF export"],
+        ["Admin & reference data","Hospitals, clinics, doctors, approval types"],["Users & permissions","Roles per screen, audit log, encrypted passwords"],
+        ["Staff portal","Leave requests and attendance on the same platform"]]},
+      {h:"🚀 Four releases: January – December 2027", type:"rels", items:[
+        ["Release 1","Jan–Mar 2027","Operational foundation","Patient file, approvals, appointments, transport, travel, permissions, reference data","Replaces the old system day to day"],
+        ["Release 2","Apr–Jun 2027","Follow-up & documents","Document scanning, extension, accommodation, interpreters, notifications, core reports","Complete patient file"],
+        ["Release 3","Jul–Sep 2027","Finance","Weekly allowances, invoices, purchase orders, approvals, accounting link, old databases retired","Unified accounts"],
+        ["Release 4","Oct–Dec 2027","Channels & improvement","Advanced dashboards, Smart IVR, staff portal, improvements from feedback","Self-service and advanced reports"]]},
+      {h:"✅ Already built (working prototype)", type:"mods", items:[
+        ["Patient file","Tabs, add/edit, instant save, warning for unsaved changes"],["Patient list","Quick filters by status, with counts per category"],
+        ["Transport & drivers","Requests, driver schedule, clash detection"],["Flight tracking","Heathrow arrivals board with automatic flight data"],
+        ["Communication","Ready-made Arabic WhatsApp messages for patient, driver and airport staff"],["Documents","Scanning screen that extracts data and links it to the patient"],
+        ["Reference data","Hospitals, clinics, doctors and approval types"],["Reports","Patient report with purchase order, interpreter, transport and QR code"],
+        ["Staff portal","Leave and attendance requests"]]},
+      {h:"📊 Success KPIs", type:"table", items:[
+        ["Legacy systems used daily (after Release 3)","0","Digital Services"],
+        ["Manual periodic reports (after Release 2)","Close to 0","Digital Services"],
+        ["Data entered more than once between medical and finance","0","Digital Services"],
+        ["Operations recorded in the audit log","100%","Legal & Compliance"],
+        ["Staff satisfaction","≥ 4 out of 5","Digital Services"],
+        ["System availability in working hours","≥ 99%","IT Operations"]]},
+      {h:"🛠️ Technology & security", type:"note", text:"Built on proven, widely used technology the office can support in-house (Arabic, right-to-left, works on PC, phone and tablet), hosted in the office or a UK cloud. HTTPS, encrypted passwords, role-based permissions, full audit log, optional two-factor login, daily off-site backups, an independent penetration test and Cyber Essentials as the security baseline. Secure APIs connect it to Smart IVR."}
+    ]}
+};
+const PROJ_OF = {"Contact Centre & Smart IVR":["ivr"], "Digital Services":["crm","ivr"]};
+
+function renderProject(id){
+  const P = PROJECTS[id];
+  let h = `<div class="hero"><div>
+      <div class="ar">${P.ar}</div><h2>${P.icon} ${P.en}</h2><p>${T(P.sub)}</p>
+      <div class="tagline">${T(P.tag)}</div><div class="by">💡 ${L("Proposal by","إعداد:")} Mr. Mohamed Fakhtoo</div></div>
+      </div>
+    ${lang==="ar" ? `<div class="en-note">📝 التفاصيل أدناه ملخص باللغة الإنجليزية.</div>` : ""}
+    <div class="headline">${P.tiles.map(t=>`<div class="hk" style="--c:var(--maroon)"><b>${t[0]}</b><span>${T(t[1])}</span></div>`).join("")}</div>`;
+  P.sections.forEach(s=>{
+    h += `<h3 class="psec">${T(s.h)}</h3>`;
+    if (s.type==="flow") h += `<div class="flow">${s.items.map((x,i)=>`<div class="fl"><div class="n">${i+1}</div><b>${x[0]}</b><span>${x[1]}</span>${x[2]?`<br><span class="own" data-u="${esc(x[2])}">${x[2]}</span>`:""}</div>`).join("")}</div>`;
+    if (s.type==="mods") h += `<div class="mods">${s.items.map(x=>`<div class="mod"><b>${x[0]}</b><span>${x[1]}</span></div>`).join("")}</div>`;
+    if (s.type==="rels") h += `<div class="rels">${s.items.map(x=>`<div class="rel"><span class="t">${x[0]}</span><span class="d">${x[1]}</span><b>${x[2]}</b><p>${x[3]}</p>${x[4]?`<div class="out">➜ ${x[4]}</div>`:""}</div>`).join("")}</div>`;
+    if (s.type==="table") h += `<div class="goal" style="--c:var(--maroon)"><table><tr><th>${L("KPI","المؤشر")}</th><th>${L("Target","المستهدف")}</th><th>${L("Owner","المسؤول")}</th></tr>${
+        s.items.map(r=>`<tr><td>${T(r[0])}</td><td class="tg">${T(r[1])}</td><td><span class="own" data-u="${esc(r[2])}">${T(r[2])}</span></td></tr>`).join("")}</table></div>`;
+    if (s.type==="note") h += `<div class="note">${s.text}</div>`;
+  });
+  h += `<div class="src" style="margin-top:16px">${L("A summary of the proposal.","ملخص للمقترح.")}</div>`;
+  document.getElementById(id).innerHTML = h;
+}
+
+/* ---------- Goals & KPIs, aligned with MOPH National Health Strategy 2024–2030 ---------- */
+const PRI = {
+  1:{c:"#A8325A", h:"Improved population health and wellbeing", s:"Focus on individuals and population outcomes"},
+  2:{c:"#8A1538", h:"Excellence in service delivery and patient experience", s:"Focus on providers, integrated care and patient experience"},
+  3:{c:"#5E0E26", h:"Health system efficiency and resilience", s:"Focus on health system enablers"}
+};
+const HEADLINE = [
+  {v:"≥ 90%", l:"Patient satisfaction", c:"#8A1538"},
+  {v:"≤ 10 days", l:"Referral to first appointment", c:"#A8325A"},
+  {v:"≤ 5 days", l:"Treatment plan approval", c:"#8A1538"},
+  {v:"≤ 48 h", l:"Prescriptions delivered", c:"#A8325A"},
+  {v:"100%", l:"Hospital bills audited before payment", c:"#5E0E26"},
+  {v:"0", l:"Data-protection breaches", c:"#8A1538"},
+  {v:"24/7", l:"Phone self-service (Smart IVR)", c:"#A8325A"}
+];
+const GOALS = [
+  {p:1, e:"🤝", t:"Empowered patients and families", d:"Patients and companions understand their care, in their own language, and feel supported throughout their stay.",
+   nhs:"NHS outcome: Empowered patients and carers", k:[
+    ["Appointments covered by an interpreter when needed","100%","Interpreters","Monthly"],
+    ["Patients given a written care-plan summary in Arabic","95%","Hospital Liaison","Monthly"],
+    ["Companion / carer satisfaction","≥ 85%","Quality & Patient Experience","Quarterly"]]},
+  {p:2, e:"🩺", t:"Excellent, safe clinical care", d:"Patients are treated at high-quality UK centres, with fast clinical decisions and close follow-up.",
+   nhs:"NHS outcome: Excellence in secondary and tertiary care", k:[
+    ["Treatment plans approved within 5 working days","90%","Clinical Affairs","Monthly"],
+    ["Medical reports reviewed within 48 hours","95%","Medical Review Doctors","Monthly"],
+    ["Partner hospitals with a signed quality & reporting agreement","100%","Hospital Liaison","Quarterly"],
+    ["Partner hospitals scored on quality and service each year","100%","Quality & Patient Experience","Yearly"]]},
+  {p:2, e:"🧭", t:"A smooth patient journey", d:"From referral to the flight home, every step is planned, on time and owned by one team.",
+   nhs:"NHS outcome: Non-clinical patient experience", k:[
+    ["Referral to first appointment","≤ 10 working days","Patient Services","Monthly"],
+    ["Visa extensions submitted before expiry","100%","Visa Affairs","Monthly"],
+    ["Airport and hospital pick-ups on time","≥ 98%","Transport & Airports","Monthly"],
+    ["Overall patient satisfaction","≥ 90%","Quality & Patient Experience","Quarterly"],
+    ["Complaints closed within 10 working days","≥ 90%","Quality & Patient Experience","Monthly"]]},
+  {p:2, e:"💊", t:"Medicines and equipment on time", d:"Patients have the right medicines and equipment during treatment and when they return home.",
+   nhs:"NHS outcome: Excellence in secondary and tertiary care", k:[
+    ["Prescriptions delivered to the patient within 48 hours","≥ 95%","Medicines & Pharmacy","Monthly"],
+    ["Patients returning home with medicines and a handover letter","100%","Medicines & Pharmacy","Monthly"],
+    ["Equipment in place before discharge","100%","Medical Equipment","Monthly"],
+    ["Purchases from approved suppliers with competitive quotes","100%","Procurement & Distribution","Quarterly"]]},
+  {p:3, e:"💷", t:"Value for money", d:"Every pound spent on treatment abroad is checked, controlled and reported.",
+   nhs:"NHS outcome: Sustainable healthcare financing model", k:[
+    ["Hospital bills audited against the approved plan before payment","100%","Medical Billing Audit","Monthly"],
+    ["Spend within the approved budget","± 2%","Finance & Medical Supply","Monthly"],
+    ["Invoices paid within 30 days","≥ 95%","Invoice Processing","Monthly"],
+    ["Value of billing errors recovered","Reported","Medical Billing Audit","Quarterly"]]},
+  {p:3, e:"💻", t:"A digital, data-driven office", d:"Patients use online services, and managers decide using live data that is kept secure.",
+   nhs:"NHS outcomes: Digitally enabled health system · Data-driven decision making", k:[
+    ["Patient requests submitted online","≥ 60% by 2028","Digital Services","Quarterly"],
+    ["Live dashboard for cases, appointments and spend","In place by Q4 2027","Digital Services","Once"],
+    ["Legacy systems used daily, after CRM Release 3","0","Digital Services","Quarterly"],
+    ["Data entered more than once between medical and finance","0","Digital Services","Quarterly"],
+    ["CRM operations recorded in the audit log","100%","Legal & Compliance","Monthly"],
+    ["CRM availability in working hours","≥ 99%","IT Operations","Monthly"],
+    ["Staff satisfaction with the CRM","≥ 4 out of 5","Digital Services","After each release"],
+    ["Data-protection breaches (UK GDPR)","0","Legal & Compliance","Monthly"]]},
+  {p:3, e:"📞", t:"One call, instant information (Smart IVR)", d:"Patients get their own appointment, allowance, extension, travel and transport information by phone, 24/7 in Arabic, without waiting for staff.",
+   nhs:"NHS outcome: Digitally enabled health system (digitally-empowered patients)", k:[
+    ["Enquiries completed by self-service","≥ 60%","Contact Centre & Smart IVR","Monthly"],
+    ["Abandoned calls","< 5%","Contact Centre & Smart IVR","Monthly"],
+    ["Average wait to reach staff","< 2 minutes","Contact Centre & Smart IVR","Monthly"],
+    ["Callback requests handled","Within 1 working day","Contact Centre & Smart IVR","Monthly"],
+    ["Caller rating","≥ 4 out of 5","Quality & Patient Experience","Monthly"],
+    ["Current patients registered for “My services”","≥ 80%","Patient Registration","Quarterly"],
+    ["Complaints about wrong information given by phone","0","Digital Services","Monthly"]]},
+  {p:3, e:"🏛️", t:"Strong governance and people", d:"Clear roles, accountability and skilled staff, with performance reported every month.",
+   nhs:"NHS outcome: Robust and effective health system governance", k:[
+    ["Units with an approved job description and KPIs","100% by March 2027","HR & Administration","Once"],
+    ["Monthly performance report to the Medical Attaché","12 per year","Deputy Medical Attaché","Monthly"],
+    ["Staff appraisals completed","100%","HR & Administration","Yearly"],
+    ["Contracts renewed before expiry","100%","Legal & Compliance","Quarterly"]]}
+];
+
+function renderGoals(){
+  let h = `
+  <div class="ladder">
+    <div class="rung"><small>${L("🌍 National","🌍 وطنياً")}</small><h3>${L("Qatar National Vision 2030","رؤية قطر الوطنية 2030")}</h3><p>${L("Human development pillar, delivered through the Healthcare Chapter of the National Development Strategy 2024–2030.","ركيزة التنمية البشرية، عبر الفصل الصحي في استراتيجية التنمية الوطنية 2024–2030.")}</p></div>
+    <div class="rung"><small>${L("🏥 Ministry","🏥 الوزارة")}</small><h3>${L("National Health Strategy 2024–2030","الاستراتيجية الوطنية للصحة 2024–2030")}</h3><p>${L("Aspiration: “a health-focused society supported by an integrated health system”, built on clinical excellence, sustainability and innovation.","التطلّع: مجتمع يركّز على الصحة يدعمه نظام صحي متكامل، قائم على التميّز السريري والاستدامة والابتكار.")}</p></div>
+    <div class="rung"><small>${L("🏢 Our office","🏢 مكتبنا")}</small><h3>${L("Medical Attaché Office, London","المكتب الطبي القطري — لندن")}</h3><p>${L("Eight office goals, each linked to one of the strategy's three priority areas and measured by clear KPIs.","ثمانية أهداف للمكتب، يرتبط كل منها بأحد مجالات الأولوية الثلاثة في الاستراتيجية، وتُقاس بمؤشرات واضحة.")}</p></div>
+  </div>
+  <div class="vm">
+    <div><small>${L("Our vision","رؤيتنا")}</small><p>${L("Every patient Qatar sends to the UK receives excellent, safe and well-coordinated care, and is supported from arrival to return home.","أن يحظى كل مريض ترسله دولة قطر إلى المملكة المتحدة برعاية متميزة وآمنة ومنسّقة، وبالدعم من لحظة وصوله حتى عودته إلى الوطن.")}</p></div>
+    <div><small>${L("Our mission","رسالتنا")}</small><p>${L("To arrange, oversee and support high-quality treatment in the UK with care, efficiency and accountability, in line with the National Health Strategy.","تنظيم العلاج عالي الجودة في المملكة المتحدة والإشراف عليه ودعمه، بعناية وكفاءة ومساءلة، وبما يتوافق مع الاستراتيجية الوطنية للصحة.")}</p></div>
+  </div>
+  <div class="headline">${HEADLINE.map(x=>`<div class="hk" style="--c:${x.c}"><b>${T(x.v)}</b><span>${T(x.l)}</span></div>`).join("")}</div>`;
+  [1,2,3].forEach(p=>{
+    const P = PRI[p];
+    h += `<div class="pri" style="--c:${P.c}"><div class="pri-h"><span class="pn">${L("NHS Priority","أولوية الاستراتيجية")} ${p}</span><div><h2>${T(P.h)}</h2><span>${T(P.s)}</span></div></div>`;
+    GOALS.filter(g=>g.p===p).forEach(g=>{
+      h += `<div class="goal" style="--c:${P.c}"><div class="goal-h"><h3>${g.e} ${T(g.t)}</h3><p>${T(g.d)}</p><span class="nhs">${T(g.nhs)}</span></div>
+        <table><tr><th>${L("KPI","المؤشر")}</th><th>${L("Target","المستهدف")}</th><th>${L("Owner","المسؤول")}</th><th>${L("Reported","الدورية")}</th></tr>${
+          g.k.map(r=>`<tr><td>${T(r[0])}</td><td class="tg">${T(r[1])}</td><td><span class="own" data-u="${esc(r[2])}">${T(r[2])}</span></td><td>${T(r[3])}</td></tr>`).join("")}</table></div>`;
+    });
+    h += `</div>`;
+  });
+  h += `<div class="src">${L("Alignment source: Ministry of Public Health, National Health Strategy 2024–2030 —","مصدر المواءمة: وزارة الصحة العامة، الاستراتيجية الوطنية للصحة 2024–2030 —")}
+    <a href="https://www.moph.gov.qa/english/NHS/Pages/The-Aspiration.aspx" target="_blank">The Aspiration</a> ·
+    <a href="https://www.moph.gov.qa/english/NHS/Pages/Priorities.aspx" target="_blank">Strategic Priority Areas</a>.
+    ${L("Targets are proposed starting points for discussion.","المستهدفات مقترحة كنقطة انطلاق للنقاش.")}</div>`;
+  document.getElementById("goals").innerHTML = h;
+}
+
+/* ---------- Language: English / Arabic ---------- */
+let lang = "en";
+try{ lang = localStorage.getItem("qma-lang") || "en"; }catch(e){}
+const L = (en, ar) => lang==="ar" ? ar : en;
+const MISSING = new Set();
+function T(s){ if (lang!=="ar" || s==null) return s; if (AR[s]!==undefined) return AR[s]; MISSING.add(s); return s; }
+const AR = {
+ /* units and sections */
+ "Medical Attaché":"الملحق الطبي","Head of Office":"رئيس المكتب","Executive Office":"المكتب التنفيذي","Office Manager & Secretaries":"مدير المكتب والسكرتارية",
+ "Legal & Compliance":"الشؤون القانونية والامتثال","UK GDPR · contracts · audit":"حماية البيانات · العقود · التدقيق",
+ "Deputy Medical Attaché":"نائب الملحق الطبي","Day-to-day operations":"العمليات اليومية",
+ "Clinical Affairs":"الشؤون الطبية","Doctors & hospital care":"الأطباء والرعاية في المستشفيات","Medical Review Doctors":"أطباء المراجعة الطبية",
+ "Men":"رجال","Women":"نساء","Child":"أطفال","Students":"طلاب",
+ "Hospital Liaison":"التنسيق مع المستشفيات","Quality & Patient Experience":"الجودة وتجربة المريض",
+ "Patient Services":"خدمات المرضى","Case management · Travel & support":"إدارة الحالات · السفر والدعم","Patient contact":"التواصل مع المرضى",
+ "Contact Centre & Smart IVR":"مركز الاتصال والرد الصوتي الذكي","Smart IVR · 24/7 self-service":"الرد الصوتي الذكي · خدمة ذاتية على مدار الساعة",
+ "Case management":"إدارة الحالات","Patient Registration":"تسجيل المرضى","Medical Appointments":"المواعيد الطبية","Students Treatment":"علاج الطلاب",
+ "Interpreters":"المترجمون","Travel & support":"السفر والدعم","Visa Affairs":"شؤون التأشيرات","Transport & Airports":"النقل والمطارات","Accommodation":"السكن",
+ "Finance & Medical Supply":"المالية والإمداد الطبي","Budget · medicines · equipment":"الميزانية · الأدوية · المعدات","Finance":"المالية",
+ "Accounting":"المحاسبة","Invoice Processing":"معالجة الفواتير","Medical Billing Audit":"تدقيق الفواتير الطبية","Medical supply":"الإمداد الطبي",
+ "Medicines & Pharmacy":"الأدوية والصيدلية","Medical Equipment":"المعدات الطبية","Procurement & Distribution":"المشتريات والتوزيع",
+ "Corporate Services":"الخدمات المؤسسية","IT · digital · HR":"تقنية المعلومات · الخدمات الرقمية · الموارد البشرية","IT Operations":"عمليات تقنية المعلومات",
+ "Digital Services":"الخدمات الرقمية","Patient Journey App · portal":"تطبيق رحلة المريض · البوابة","HR & Administration":"الموارد البشرية والشؤون الإدارية",
+ "Leadership":"القيادة",
+ /* patient journey */
+ "Referral & registration":"الإحالة والتسجيل",
+ "The case arrives from Doha. A file is opened, documents are checked and a case officer is assigned. The patient is registered for Smart IVR and given a PIN.":"تصل الحالة من الدوحة، فيُفتح ملف للمريض وتُدقَّق المستندات ويُعيَّن مسؤول حالة. ويُسجَّل المريض في الرد الصوتي الذكي ويحصل على رمز سري.",
+ "Clinical review":"المراجعة الطبية","A doctor reviews the medical reports and approves the treatment plan.":"يراجع الطبيب التقارير الطبية ويعتمد خطة العلاج.",
+ "Hospital booking":"الحجز في المستشفى","An appointment is booked and the hospital is briefed through its named liaison.":"يُحجز الموعد ويُبلَّغ المستشفى عبر منسّقه المعتمد.",
+ "Visa & travel":"التأشيرة والسفر","Support letters and visas for the patient and companions. Flights booked.":"خطابات الدعم والتأشيرات للمريض ومرافقيه، وحجز تذاكر السفر.",
+ "Arrival & stay":"الوصول والإقامة","Met at the airport, taken to accommodation near the hospital.":"الاستقبال في المطار والانتقال إلى سكن قريب من المستشفى.",
+ "Treatment":"العلاج","Interpreter present at appointments. Liaison tracks progress and the discharge date.":"حضور المترجم في المواعيد، ومتابعة سير العلاج وموعد الخروج من المستشفى.",
+ "Billing & payment":"الفواتير والسداد","The hospital bill is checked against the approved plan, then paid.":"تُطابَق فاتورة المستشفى مع الخطة المعتمدة ثم تُسدَّد.",
+ "Return & feedback":"العودة والتقييم","Return flight booked, medicines and equipment supplied for home, follow-up plan agreed, satisfaction survey sent.":"حجز رحلة العودة، وتوفير الأدوية والمعدات للمنزل، والاتفاق على خطة المتابعة، وإرسال استبيان الرضا.",
+ /* goals */
+ "Improved population health and wellbeing":"تحسين صحة السكان ورفاههم","Focus on individuals and population outcomes":"التركيز على نتائج الأفراد والسكان",
+ "Excellence in service delivery and patient experience":"التميّز في تقديم الخدمات وتجربة المريض","Focus on providers, integrated care and patient experience":"التركيز على مقدمي الخدمة والرعاية المتكاملة وتجربة المريض",
+ "Health system efficiency and resilience":"كفاءة النظام الصحي ومرونته","Focus on health system enablers":"التركيز على ممكّنات النظام الصحي",
+ "Patient satisfaction":"رضا المرضى","Referral to first appointment":"من الإحالة إلى أول موعد","Treatment plan approval":"اعتماد خطة العلاج","Prescriptions delivered":"توصيل الوصفات الطبية",
+ "Hospital bills audited before payment":"فواتير المستشفيات المدققة قبل السداد","Data-protection breaches":"مخالفات حماية البيانات","Phone self-service (Smart IVR)":"خدمة ذاتية هاتفية (الرد الصوتي الذكي)",
+ "≤ 10 days":"≤ 10 أيام","≤ 5 days":"≤ 5 أيام","≤ 48 h":"≤ 48 ساعة",
+ "Empowered patients and families":"مرضى وأسر مُمكَّنون","Patients and companions understand their care, in their own language, and feel supported throughout their stay.":"يفهم المرضى ومرافقوهم رعايتهم بلغتهم، ويشعرون بالدعم طوال إقامتهم.",
+ "NHS outcome: Empowered patients and carers":"نتيجة الاستراتيجية: تمكين المرضى ومقدمي الرعاية",
+ "Appointments covered by an interpreter when needed":"المواعيد التي يحضرها مترجم عند الحاجة","Patients given a written care-plan summary in Arabic":"المرضى الذين يتسلمون ملخصاً مكتوباً لخطة العلاج بالعربية","Companion / carer satisfaction":"رضا المرافقين ومقدمي الرعاية",
+ "Excellent, safe clinical care":"رعاية طبية متميزة وآمنة","Patients are treated at high-quality UK centres, with fast clinical decisions and close follow-up.":"يُعالَج المرضى في مراكز بريطانية عالية الجودة، مع قرارات طبية سريعة ومتابعة دقيقة.",
+ "NHS outcome: Excellence in secondary and tertiary care":"نتيجة الاستراتيجية: التميّز في الرعاية الثانوية والتخصصية",
+ "Treatment plans approved within 5 working days":"اعتماد خطط العلاج خلال 5 أيام عمل","Medical reports reviewed within 48 hours":"مراجعة التقارير الطبية خلال 48 ساعة",
+ "Partner hospitals with a signed quality & reporting agreement":"المستشفيات الشريكة الموقِّعة على اتفاقية للجودة والتقارير","Partner hospitals scored on quality and service each year":"تقييم المستشفيات الشريكة سنوياً في الجودة والخدمة",
+ "A smooth patient journey":"رحلة مريض سلسة","From referral to the flight home, every step is planned, on time and owned by one team.":"من الإحالة حتى رحلة العودة، كل خطوة مخططة وفي وقتها ولها فريق مسؤول.",
+ "NHS outcome: Non-clinical patient experience":"نتيجة الاستراتيجية: تجربة المريض غير السريرية",
+ "Visa extensions submitted before expiry":"تقديم طلبات تمديد التأشيرات قبل انتهائها","Airport and hospital pick-ups on time":"الالتزام بمواعيد النقل من المطار وإلى المستشفى",
+ "Overall patient satisfaction":"الرضا العام للمرضى","Complaints closed within 10 working days":"إغلاق الشكاوى خلال 10 أيام عمل",
+ "Medicines and equipment on time":"الأدوية والمعدات في وقتها","Patients have the right medicines and equipment during treatment and when they return home.":"يحصل المرضى على الأدوية والمعدات المناسبة أثناء العلاج وعند العودة إلى الوطن.",
+ "Prescriptions delivered to the patient within 48 hours":"توصيل الوصفات إلى المريض خلال 48 ساعة","Patients returning home with medicines and a handover letter":"عودة المرضى إلى الوطن مع أدويتهم وخطاب تسليم",
+ "Equipment in place before discharge":"تجهيز المعدات قبل الخروج من المستشفى","Purchases from approved suppliers with competitive quotes":"الشراء من موردين معتمدين بعروض أسعار تنافسية",
+ "Value for money":"القيمة مقابل الإنفاق","Every pound spent on treatment abroad is checked, controlled and reported.":"كل جنيه يُنفَق على العلاج بالخارج يُدقَّق ويُضبط ويُبلَّغ عنه.",
+ "NHS outcome: Sustainable healthcare financing model":"نتيجة الاستراتيجية: نموذج تمويل مستدام للرعاية الصحية",
+ "Hospital bills audited against the approved plan before payment":"تدقيق فواتير المستشفيات مقابل الخطة المعتمدة قبل السداد","Spend within the approved budget":"الإنفاق ضمن الميزانية المعتمدة",
+ "Invoices paid within 30 days":"سداد الفواتير خلال 30 يوماً","Value of billing errors recovered":"قيمة أخطاء الفواتير المستردة",
+ "A digital, data-driven office":"مكتب رقمي يعتمد على البيانات","Patients use online services, and managers decide using live data that is kept secure.":"يستخدم المرضى الخدمات الإلكترونية، ويتخذ المديرون قراراتهم ببيانات فورية ومحمية.",
+ "NHS outcomes: Digitally enabled health system · Data-driven decision making":"نتائج الاستراتيجية: نظام صحي رقمي · قرارات مبنية على البيانات",
+ "Patient requests submitted online":"طلبات المرضى المقدَّمة إلكترونياً","Live dashboard for cases, appointments and spend":"لوحة متابعة فورية للحالات والمواعيد والإنفاق",
+ "Legacy systems used daily, after CRM Release 3":"الأنظمة القديمة المستخدمة يومياً بعد الإصدار الثالث",
+ "Data entered more than once between medical and finance":"البيانات المُدخلة أكثر من مرة بين الطبي والمالي","CRM operations recorded in the audit log":"عمليات النظام المسجّلة في سجل التدقيق",
+ "CRM availability in working hours":"توفّر النظام خلال ساعات العمل","Staff satisfaction with the CRM":"رضا الموظفين عن النظام","Data-protection breaches (UK GDPR)":"مخالفات حماية البيانات (UK GDPR)",
+ "One call, instant information (Smart IVR)":"مكالمة واحدة، معلومة فورية (الرد الصوتي الذكي)",
+ "Patients get their own appointment, allowance, extension, travel and transport information by phone, 24/7 in Arabic, without waiting for staff.":"يحصل المرضى على معلومات مواعيدهم ومخصصاتهم وتمديدهم وسفرهم ونقلهم هاتفياً على مدار الساعة بالعربية، دون انتظار موظف.",
+ "NHS outcome: Digitally enabled health system (digitally-empowered patients)":"نتيجة الاستراتيجية: نظام صحي رقمي (تمكين المرضى رقمياً)",
+ "Enquiries completed by self-service":"الاستفسارات المنجزة ذاتياً","Abandoned calls":"المكالمات المتروكة","Average wait to reach staff":"متوسط زمن الانتظار للموظف",
+ "Callback requests handled":"معالجة طلبات معاودة الاتصال","Caller rating":"تقييم المتصلين","Current patients registered for “My services”":"المرضى الحاليون المسجّلون في «خدماتي»",
+ "Complaints about wrong information given by phone":"شكاوى بسبب معلومة خاطئة عبر الهاتف","Complaints about wrong information":"شكاوى بسبب معلومة خاطئة",
+ "Strong governance and people":"حوكمة قوية وكوادر مؤهلة","Clear roles, accountability and skilled staff, with performance reported every month.":"أدوار واضحة ومساءلة وموظفون مؤهلون، مع تقرير أداء شهري.",
+ "NHS outcome: Robust and effective health system governance":"نتيجة الاستراتيجية: حوكمة فعّالة ومتينة للنظام الصحي",
+ "Units with an approved job description and KPIs":"الوحدات التي لديها وصف وظيفي ومؤشرات أداء معتمدة","Monthly performance report to the Medical Attaché":"تقرير أداء شهري للملحق الطبي",
+ "Staff appraisals completed":"إنجاز تقييمات أداء الموظفين","Contracts renewed before expiry":"تجديد العقود قبل انتهائها",
+ "≤ 10 working days":"≤ 10 أيام عمل","≥ 60% by 2028":"≥ 60% بحلول 2028","In place by Q4 2027":"جاهزة بحلول الربع الرابع 2027","Reported":"يُبلَّغ عنها",
+ "< 2 minutes":"< دقيقتان","Within 1 working day":"خلال يوم عمل واحد","≥ 4 out of 5":"≥ 4 من 5","100% by March 2027":"100% بحلول مارس 2027","12 per year":"12 في السنة","Close to 0":"قرابة الصفر",
+ "Monthly":"شهري","Quarterly":"ربع سنوي","Yearly":"سنوي","Once":"مرة واحدة","After each release":"بعد كل إصدار",
+ "Legacy systems used daily (after Release 3)":"الأنظمة القديمة المستخدمة يومياً (بعد الإصدار الثالث)","Manual periodic reports (after Release 2)":"التقارير الدورية اليدوية (بعد الإصدار الثاني)",
+ "Operations recorded in the audit log":"العمليات المسجّلة في سجل التدقيق","Staff satisfaction":"رضا الموظفين","System availability in working hours":"توفّر النظام خلال ساعات العمل",
+ /* proposal pages: headings, tiles, banner */
+ "Self-service for patients using their Qatari ID: appointments, weekly allowances, medical extension, travel and transport. Available 24/7, in Arabic, secure and private.":"خدمة ذاتية للمرضى عبر الرقم الشخصي القطري: المواعيد · المخصصات الأسبوعية · التمديد الطبي · السفر · النقل. على مدار الساعة، باللغة العربية، بأمان وخصوصية.",
+ "“One call, instant information, a reassured patient.”":"«مكالمة واحدة، معلومة فورية، ومريض مطمئن»",
+ "Service, including weekends and holidays":"خدمة متاحة طوال اليوم وأيام العطل","To reach your own information, without waiting":"للوصول إلى المعلومة دون انتظار",
+ "Of repeat enquiries answered by self-service":"من الاستفسارات المتكررة تُنجز ذاتياً","Lost calls, with no answer or callback":"مكالمة ضائعة دون رد أو معاودة اتصال",
+ "🧩 How it works: three layers":"🧩 كيف يعمل النظام: ثلاث طبقات","📲 The caller's journey, step by step":"📲 رحلة المتصل خطوة بخطوة","☎️ “My services” menu":"☎️ قائمة «خدماتي»",
+ "🔔 Proactive alerts":"🔔 التنبيهات الاستباقية","🗓️ Rollout: January – May 2027":"🗓️ خطة التنفيذ: يناير – مايو 2027","📊 Success KPIs":"📊 مؤشرات النجاح","🔒 Privacy by design":"🔒 الخصوصية منذ التصميم",
+ "One platform that replaces several separate legacy systems, covering medical, administrative, financial, travel, accommodation and allowances, from treatment approval until the patient returns home.":"منصة واحدة تحلّ محل عدة أنظمة منفصلة قديمة: الطبي · الإداري · المالي · السفر · النقل · السكن · المخصصات، من الموافقة على العلاج حتى عودة المريض إلى أرض الوطن.",
+ "“One file, a clear journey, a reassured patient.”":"«ملف واحد، رحلة واضحة، ومريض مطمئن»",
+ "One platform instead of three separate systems":"منصة واحدة بدل ثلاثة برامج منفصلة","Modules covering the full patient journey":"وحدة تغطي رحلة المريض كاملة",
+ "Of operations recorded in an audit log":"من العمليات مسجّلة في سجل تدقيق","Reports and dashboards for decision-makers":"تقارير ولوحات متابعة لحظية",
+ "🎯 Vision":"🎯 الرؤية","🧭 The patient journey inside the system":"🧭 رحلة المريض داخل النظام","🧱 17 modules, one patient file":"🧱 سبع عشرة وحدة وملف مريض واحد",
+ "🚀 Four releases: January – December 2027":"🚀 أربعة إصدارات: يناير – ديسمبر 2027","✅ Already built (working prototype)":"✅ ما تم إنجازه حتى الآن (نموذج أولي)","🛠️ Technology & security":"🛠️ التقنية والأمن"
+};
+
+/* Swap the fixed page texts (header, menu, buttons, footer) between English and Arabic */
+function applyStatic(){
+  document.documentElement.lang = lang; document.documentElement.dir = lang==="ar" ? "rtl" : "ltr";
+  document.querySelectorAll("[data-ar]").forEach(el=>{ if (el.dataset.en===undefined) el.dataset.en = el.innerHTML; el.innerHTML = lang==="ar" ? el.dataset.ar : el.dataset.en; });
+  document.querySelectorAll("[data-ar-ph]").forEach(el=>{ if (el.dataset.enPh===undefined) el.dataset.enPh = el.placeholder; el.placeholder = lang==="ar" ? el.dataset.arPh : el.dataset.enPh; });
+  document.getElementById("langBtn").textContent = lang==="ar" ? "🌐 English" : "🌐 عربي";
+  document.getElementById("editBtn").textContent = editing ? L("✅ Done editing","✅ إنهاء التعديل") : L("✏️ Edit mode","✏️ وضع التعديل");
+  document.title = L("QMA Office (UK) — Proposed Organisation Structure","المكتب الطبي القطري — الهيكل التنظيمي المقترح");
+}
+function setLang(l){ lang = l; try{ localStorage.setItem("qma-lang", l); }catch(e){} applyStatic(); closeDrawer(); render(); }
+
+const CHANGES_AR = [
+  "🎯 <b>مسؤول واحد عن كل مريض.</b> تتولى خدمات المرضى الرحلة كاملة، من التسجيل حتى رحلة العودة، مع مسؤول حالة محدد.",
+  "👔 <b>قيادة مركّزة.</b> يتبع الملحقَ الطبي ثلاثةُ مسؤولين مباشرة فقط، ويدير النائب العمليات اليومية.",
+  "🩺 <b>القرار الطبي في مكان واحد.</b> يعمل الأطباء والتنسيق مع المستشفيات والجودة معاً تحت الشؤون الطبية.",
+  "🏥 <b>شراكات قوية مع المستشفيات.</b> لكل مستشفى شريك منسّق معتمد.",
+  "💷 <b>رقابة مالية محكمة.</b> المشتريات مرتبطة بالميزانية، وتُدقَّق كل فاتورة مستشفى قبل السداد.",
+  "💊 <b>الأدوية والمعدات من البداية إلى النهاية.</b> قسم مخصص للإمداد الطبي يتولى الوصفات والأجهزة ومعدات الرعاية المنزلية، بما في ذلك ما يأخذه المريض معه إلى قطر.",
+  "⚖️ <b>امتثال مستقل.</b> تتبع الشؤون القانونية والامتثال الملحقَ مباشرة، وتغطي حماية البيانات والعقود والتدقيق.",
+  "✈️ <b>دعم متكامل للمريض.</b> التأشيرات والترجمة والنقل والمطارات والسكن تُدار كخدمة واحدة.",
+  "📞 <b>مكالمة واحدة، معلومة فورية.</b> يتيح الرد الصوتي الذكي للمرضى معرفة مواعيدهم ومخصصاتهم وحالة التمديد ورحلاتهم ونقلهم على مدار الساعة بالعربية، باستخدام الرقم الشخصي ورمز سري.",
+  "💻 <b>التحول الرقمي أولاً.</b> تطبيق واحد لرحلة المريض يحل محل الأنظمة القديمة والسجلات الورقية، مع بوابة للمرضى ولوحات متابعة فورية."
+];
+
+/* ---------- Executive summary + 2027 roadmap (starts 1 January 2027) ---------- */
+const MONTHS = {en:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+                ar:["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"]};
+const ROADMAP = [
+  {s:["👥 Structure & people","👥 الهيكل والموظفون"], c:"#8A1538", items:[
+    [["New structure approved and announced","اعتماد الهيكل الجديد وإعلانه"],1,1,["1 Jan","1 يناير"],1],
+    [["Deputy and four directors appointed","تعيين النائب ومديري الإدارات الأربع"],1,2,["Jan–Feb","يناير–فبراير"]],
+    [["Job descriptions and KPIs issued","إصدار الأوصاف الوظيفية ومؤشرات الأداء"],2,3,["By March","بحلول مارس"]],
+    [["Recruitment for new posts","التوظيف للوظائف الجديدة"],3,6,["Mar–Jun","مارس–يونيو"]]]},
+  {s:["🤝 Patient services","🤝 خدمات المرضى"], c:"#A8325A", items:[
+    [["Patient Services and Medical Supply sections start","بدء عمل خدمات المرضى والإمداد الطبي"],2,3,["Feb–Mar","فبراير–مارس"]],
+    [["Hospital Liaison and Quality start","بدء التنسيق مع المستشفيات والجودة"],4,5,["Apr–May","أبريل–مايو"]],
+    [["First patient satisfaction survey","أول استبيان لرضا المرضى"],6,6,["Jun","يونيو"],1]]},
+  {s:["📞 Smart IVR","📞 الرد الصوتي الذكي"], c:"#5E0E26", items:[
+    [["Design, platform and build","التصميم واختيار المنصة والبناء"],1,2,["Jan–Feb","يناير–فبراير"]],
+    [["Internal testing","الاختبار الداخلي"],3,3,["Mar","مارس"]],
+    [["Pilot with patients","التشغيل التجريبي مع المرضى"],4,4,["Apr","أبريل"]],
+    [["Full launch, 24/7","الإطلاق الكامل على مدار الساعة"],5,12,["From May 2027","من مايو 2027"]]]},
+  {s:["💻 Patient Journey App","💻 تطبيق رحلة المريض"], c:"#6E5560", items:[
+    [["Release 1: operational foundation (replaces the old system)","الإصدار 1: الأساس التشغيلي (بديل النظام القديم)"],1,3,["Jan–Mar","يناير–مارس"]],
+    [["Release 2: documents and follow-up","الإصدار 2: المتابعة والمستندات"],4,6,["Apr–Jun","أبريل–يونيو"]],
+    [["Release 3: finance (old databases retired)","الإصدار 3: الجانب المالي (إيقاف قواعد البيانات القديمة)"],7,9,["Jul–Sep","يوليو–سبتمبر"]],
+    [["Release 4: dashboards and channels","الإصدار 4: لوحات المتابعة والقنوات"],10,12,["Oct–Dec","أكتوبر–ديسمبر"]]]},
+  {s:["📊 Performance","📊 الأداء"], c:"#8A1538", items:[
+    [["Monthly KPI report to the Attaché","تقرير المؤشرات الشهري للملحق الطبي"],2,12,["Every month from February","شهرياً اعتباراً من فبراير"]],
+    [["Annual review and 2028 targets","المراجعة السنوية ومستهدفات 2028"],12,12,["Dec","ديسمبر"],1]]}
+];
+
+function renderSummary(){
+  const ben = [
+    ["🎯",["One owner for every patient","مسؤول واحد عن كل مريض"],["From registration to the flight home, Patient Services owns the whole journey.","من التسجيل حتى رحلة العودة، تتولى خدمات المرضى الرحلة كاملة."]],
+    ["⚡",["Faster decisions","قرارات أسرع"],["Treatment plans approved in ≤ 5 working days, first appointment in ≤ 10.","اعتماد خطط العلاج خلال 5 أيام عمل أو أقل، وأول موعد خلال 10 أيام أو أقل."]],
+    ["💷",["Stronger financial control","رقابة مالية أقوى"],["Every hospital bill audited against the approved plan before payment.","تُدقَّق كل فاتورة مستشفى مقابل الخطة المعتمدة قبل السداد."]],
+    ["📞",["Information 24/7","المعلومة على مدار الساعة"],["Smart IVR answers patients' routine questions in Arabic, day and night.","يجيب الرد الصوتي الذكي عن استفسارات المرضى المتكررة بالعربية ليلاً ونهاراً."]],
+    ["💻",["One patient file","ملف واحد لكل مريض"],["The Patient Journey App replaces the old systems and paper records.","يحل تطبيق رحلة المريض محل الأنظمة القديمة والسجلات الورقية."]],
+    ["🏥",["Aligned with the National Health Strategy","متوافق مع الاستراتيجية الوطنية للصحة"],["Eight office goals linked to the three priorities of NHS 2024–2030.","ثمانية أهداف للمكتب مرتبطة بالأولويات الثلاث للاستراتيجية 2024–2030."]]
+  ];
+  const decisions = [
+    ["Approve the proposed organisation structure, effective <b>1 January 2027</b>.","اعتماد الهيكل التنظيمي المقترح اعتباراً من <b>1 يناير 2027</b>."],
+    ["Appoint a <b>Deputy Medical Attaché</b> and the <b>four directors</b> (acting appointments from existing staff where possible).","تعيين <b>نائب للملحق الطبي</b> و<b>مديري الإدارات الأربع</b> (بالتكليف من الموظفين الحاليين قدر الإمكان)."],
+    ["Approve the <b>job descriptions and KPIs</b> as the basis for 2027 performance reviews.","اعتماد <b>الأوصاف الوظيفية ومؤشرات الأداء</b> أساساً لتقييم الأداء في 2027."],
+    ["Approve the <b>Smart IVR</b> project, with a patient pilot in <b>April 2027</b>.","اعتماد مشروع <b>الرد الصوتي الذكي</b>، مع تشغيل تجريبي للمرضى في <b>أبريل 2027</b>."],
+    ["Approve the <b>Patient Journey App</b>, starting with Release 1 in <b>January–March 2027</b>.","اعتماد <b>تطبيق رحلة المريض</b>، بدءاً بالإصدار الأول في <b>يناير–مارس 2027</b>."],
+    ["Form a <b>steering committee</b> that meets monthly, and name a <b>data owner</b> in each department.","تشكيل <b>لجنة توجيهية</b> تجتمع شهرياً، وتسمية <b>مالك بيانات</b> في كل قسم."]
+  ];
+  const first90 = [
+    ["New structure live on 1 January; every staff member told their new unit and line manager.","بدء العمل بالهيكل الجديد في 1 يناير، وإبلاغ كل موظف بوحدته ومسؤوله المباشر."],
+    ["Deputy, directors and acting unit leads in place by the end of February.","تكليف النائب والمديرين ومسؤولي الوحدات بنهاية فبراير."],
+    ["Job descriptions and KPIs issued by March, each KPI with a named owner.","إصدار الأوصاف الوظيفية والمؤشرات بحلول مارس، ولكل مؤشر مسؤول محدد."],
+    ["Patient Journey App Release 1 live by the end of March, replacing the old system day to day.","إطلاق الإصدار الأول من تطبيق رحلة المريض بنهاية مارس بديلاً عن النظام القديم في العمل اليومي."],
+    ["Smart IVR built and tested, ready for the April pilot.","بناء الرد الصوتي الذكي واختباره، وجاهزيته للتشغيل التجريبي في أبريل."]
+  ];
+  const risks = [
+    [["Staff resistance to change","مقاومة التغيير لدى الموظفين"],["Involve staff early, a change champion in each department, phased rollout through 2027.","إشراك الموظفين مبكراً، وسفير للتغيير في كل قسم، وتطبيق تدريجي خلال 2027."]],
+    [["Delays in filling new posts","تأخر شغل الوظائف الجديدة"],["Acting appointments from existing staff; one person can cover small units at first.","التكليف من الموظفين الحاليين، ويمكن لموظف واحد تغطية الوحدات الصغيرة في البداية."]],
+    [["Data quality for the IVR and the app","جودة البيانات للرد الصوتي والتطبيق"],["A data owner in each department and a data clean-up before migration.","مالك بيانات لكل قسم، وتنقية البيانات قبل الترحيل."]],
+    [["Data protection (UK GDPR)","حماية البيانات (UK GDPR)"],["A Data Protection Impact Assessment before each launch, led by Legal & Compliance.","تقييم أثر حماية البيانات قبل كل إطلاق، بإشراف الشؤون القانونية والامتثال."]],
+    [["Workload during the transition","ضغط العمل خلال المرحلة الانتقالية"],["Changes spread across 2027, with old and new systems run in parallel for a short time.","توزيع التغييرات على مدار 2027، وتشغيل النظامين القديم والجديد معاً لفترة قصيرة."]]
+  ];
+  const units = PROPOSED.groups.reduce((a,g)=>a+g.kids.filter(k=>k.t).length,0);
+  const M = MONTHS[lang];
+  let g = `<div class="gantt"><div class="g-m" style="text-align:start">${L("2027","2027")}</div>${M.map((m,i)=>`<div class="g-m${Math.floor(i/3)%2?"":" q"}">${m}</div>`).join("")}`;
+  ROADMAP.forEach(r=>{
+    g += `<div class="g-sec" style="--c:${r.c}">${L(r.s[0],r.s[1])}</div>`;
+    r.items.forEach(it=>{
+      g += `<div class="g-l">${L(it[0][0],it[0][1])}</div><div class="g-b${it[4]?" ms":""}" style="--c:${r.c};grid-column:${it[1]+1}/${it[2]+2}" title="${esc(L(it[3][0],it[3][1]))}">${it[4]?"◆ ":""}${L(it[3][0],it[3][1])}</div>`;
+    });
+  });
+  g += `</div>`;
+  const h = `
+  <div class="hero"><div>
+    <div class="ar" style="font-size:13px;font-weight:600;opacity:.85;direction:inherit">${L("📌 Executive summary","📌 الملخص التنفيذي")}</div>
+    <h2 style="font-size:26px">${L("A patient-centred Medical Attaché Office, from January 2027","مكتب طبي محوره المريض، اعتباراً من يناير 2027")}</h2>
+    <p>${L("We propose organising the office into four directorates under a Deputy Medical Attaché, with clear job descriptions and KPIs aligned with the National Health Strategy 2024–2030, supported by two digital projects: Smart IVR and the Patient Journey App.",
+           "نقترح تنظيم المكتب في أربع إدارات تحت إشراف نائب للملحق الطبي، مع أوصاف وظيفية ومؤشرات أداء واضحة متوافقة مع الاستراتيجية الوطنية للصحة 2024–2030، يدعمها مشروعان رقميان: الرد الصوتي الذكي وتطبيق رحلة المريض.")}</p>
+    <div class="by">💡 ${L("Concept & proposal by","فكرة وإعداد المقترح:")} Mr. Mohamed Fakhtoo</div></div>
+    <div style="text-align:center;background:rgba(255,255,255,.14);border-radius:14px;padding:16px 22px">
+      <div style="font-size:12px;opacity:.85">${L("Start date","تاريخ البدء")}</div>
+      <div style="font-size:30px;font-weight:800">${L("1 Jan 2027","1 يناير 2027")}</div></div></div>
+  <div class="headline">
+    <div class="hk" style="--c:#8A1538"><b>4</b><span>${L("Directorates","إدارات")}</span></div>
+    <div class="hk" style="--c:#A8325A"><b>3</b><span>${L("Direct reports to the Attaché","مسؤولون يتبعون الملحق مباشرة")}</span></div>
+    <div class="hk" style="--c:#5E0E26"><b>${units}</b><span>${L("Units, each with a job description and KPIs","وحدة لكل منها وصف وظيفي ومؤشرات")}</span></div>
+    <div class="hk" style="--c:#8A1538"><b>8</b><span>${L("Goals aligned with NHS 2024–2030","أهداف متوافقة مع الاستراتيجية 2024–2030")}</span></div>
+    <div class="hk" style="--c:#A8325A"><b>2</b><span>${L("Digital projects: Smart IVR and Patient Journey App","مشروعان رقميان: الرد الصوتي وتطبيق رحلة المريض")}</span></div>
+  </div>
+  <h3 class="psec">${L("✨ What the proposal delivers","✨ ما يحققه المقترح")}</h3>
+  <div class="sum-grid">${ben.map(b=>`<div class="ben"><div class="e">${b[0]}</div><b>${L(b[1][0],b[1][1])}</b><span>${L(b[2][0],b[2][1])}</span></div>`).join("")}</div>
+  <h3 class="psec">${L("✅ Decisions requested from management","✅ القرارات المطلوبة من الإدارة")}</h3>
+  <div class="decide"><ol>${decisions.map((d,i)=>`<li><span class="box">${i+1}</span><span>${L(d[0],d[1])}</span></li>`).join("")}</ol></div>
+  <h3 class="psec">${L("🗓️ Roadmap 2027: starting 1 January 2027","🗓️ خارطة الطريق 2027: البدء في 1 يناير 2027")}</h3>
+  ${g}
+  <div class="two" style="margin-top:16px">
+    <div class="card90"><h3 class="psec" style="margin-top:0">${L("🚀 First 90 days (January – March 2027)","🚀 أول 90 يوماً (يناير – مارس 2027)")}</h3>
+      <ul style="margin:0;padding-inline-start:20px">${first90.map(x=>`<li>${L(x[0],x[1])}</li>`).join("")}</ul></div>
+    <div><h3 class="psec" style="margin-top:0">${L("⚠️ Risks and how we manage them","⚠️ المخاطر وطرق معالجتها")}</h3>
+      <div class="goal risk" style="--c:var(--maroon)"><table><tr><th>${L("Risk","الخطر")}</th><th>${L("How we manage it","المعالجة")}</th></tr>
+      ${risks.map(r=>`<tr><td>${L(r[0][0],r[0][1])}</td><td>${L(r[1][0],r[1][1])}</td></tr>`).join("")}</table></div></div>
+  </div>
+  <div class="golinks">
+    <button class="btn primary" onclick="goView('proposed')">${L("🏛️ See the structure","🏛️ عرض الهيكل التنظيمي")}</button>
+    <button class="btn" onclick="goView('goals')">${L("🎯 Goals & KPIs","🎯 الأهداف والمؤشرات")}</button>
+    <button class="btn" onclick="goView('ivr')">${L("📞 Smart IVR","📞 الرد الصوتي الذكي")}</button>
+    <button class="btn" onclick="goView('crm')">${L("💻 Patient Journey App","💻 تطبيق رحلة المريض")}</button>
+  </div>`;
+  document.getElementById("summary").innerHTML = h;
+}
+
+/* ---------- Job description store ---------- */
+const JD_DEFAULT = JSON.parse(document.getElementById("jd").textContent);
+let JD = JSON.parse(JSON.stringify(JD_DEFAULT));
+try{ const s = localStorage.getItem("qma-jd-v2"); if(s) Object.assign(JD, JSON.parse(s)); }catch(e){}
+function persist(){ try{ localStorage.setItem("qma-jd-v2", JSON.stringify(JD)); }catch(e){} }
+function jd(t){ return JD[t] || (JD[t] = {role:"",lead:"",headcount:"",purpose:"",tasks:[],kpis:[]}); }
+/* Arabic job descriptions: role, purpose, tasks and KPIs; lead and headcount come from the English record */
+const JDAR_DEFAULT = JSON.parse(document.getElementById("jdar").textContent);
+let JDAR = JSON.parse(JSON.stringify(JDAR_DEFAULT));
+try{ const s = localStorage.getItem("qma-jdar"); if(s) Object.assign(JDAR, JSON.parse(s)); }catch(e){}
+function persistAr(){ try{ localStorage.setItem("qma-jdar", JSON.stringify(JDAR)); }catch(e){} }
+function jdv(t){
+  const j = jd(t);
+  if (lang!=="ar" || !JDAR[t]) return j;
+  const a = JDAR[t];
+  return {...j, role:a.role||j.role, purpose:a.purpose||j.purpose, tasks:a.tasks||j.tasks, kpis:a.kpis||j.kpis};
+}
+const esc = s => String(s??"").replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+let view = "summary", editing = false, registry = [], openIdx = null;
+
+/* Colour + parent lookup for every unit in the proposed model (used by journey and handbook) */
+function walk(v){
+  const out = [];
+  out.push({n:v.head, c:"var(--maroon)", parent:null, sec:"Leadership"});
+  if (v.deputy) out.push({n:v.deputy, c:"#a8284f", parent:v.head.t, sec:"Leadership"});
+  v.side.forEach(s=>out.push({n:s, c:s.c, parent:v.head.t, sec:"Leadership"}));
+  const gp = v.deputy ? v.deputy.t : v.head.t;
+  v.groups.forEach(g=>{
+    out.push({n:g, c:g.c, parent:gp, sec:g.t});
+    g.kids.filter(k=>k.t).forEach(k=>out.push({n:k, c:g.c, parent:g.t, sec:g.t}));
+  });
+  return out;
+}
+
+function reg(n, c, parent){ registry.push({n, c, parent}); return registry.length-1; }
+const SEC_EMOJI = {"Leadership":"🏛️"};
+PROPOSED.groups.forEach(g=>SEC_EMOJI[g.t]=g.e);
+function card(n, cls, c, parent){
+  const i = reg(n, c, parent), j = jd(n.t);
+  const chips = n.chips ? `<div class="chips">${n.chips.map(x=>`<span class="chip">${T(x)}</span>`).join("")}</div>` : "";
+  const st = L("staff","موظفين");
+  const who = j.lead ? `<div class="who">${esc(j.lead)}${j.headcount?` · ${esc(j.headcount)} ${st}`:""}</div>`
+            : j.headcount ? `<div class="who">${esc(j.headcount)} ${st}</div>` : "";
+  const ja = JDAR[n.t] || {};
+  const s = [n.t, T(n.t), n.d, T(n.d), j.role, j.lead, j.purpose, ...(j.tasks||[]), ja.role, ja.purpose, ...(ja.tasks||[]), ...(n.chips||[])].join(" ").toLowerCase();
+  return `<div class="card ${cls}" style="--c:${c||'var(--maroon)'}" data-i="${i}" data-s="${esc(s)}">
+    <div class="t">${n.e?`<span class="em">${n.e}</span>`:""}${T(n.t)}</div>${n.d?`<div class="d">${T(n.d)}</div>`:""}${who}${chips}</div>`;
+}
+
+function renderChart(v){
+  registry = [];
+  let h = card(v.head, "head", null, null);
+  h += `<div class="trunk"><div></div><div class="mid"></div><div class="side">${v.side.map(s=>`<div class="row">${card(s,"",s.c,v.head.t)}</div>`).join("")}</div></div>`;
+  if (v.deputy) h += card(v.deputy, "head deputy", null, v.head.t) + `<div class="vline"></div>`;
+  const gp = v.deputy ? v.deputy.t : v.head.t;
+  h += `<div class="groups" style="--n:${v.groups.length}">` + v.groups.map(g =>
+      `<div class="group">${card(g,"grp",g.c,gp)}<div class="kids" style="--c:${g.c}">${
+        g.kids.map(k=> k.sec ? `<div class="kid sec"><div class="lbl">${T(k.sec)}</div></div>`
+                             : `<div class="kid">${card(k,"",g.c,g.t)}</div>`).join("")}</div></div>`).join("") + `</div>`;
+  document.getElementById("chart").innerHTML = h;
+}
+
+function renderStats(v){
+  const all = walk(v);
+  const units = v.groups.reduce((a,g)=>a+g.kids.filter(k=>k.t).length,0);
+  const direct = v.side.length + (v.deputy ? 1 : v.groups.length);
+  const staff = all.reduce((a,x)=>a+(parseInt(jd(x.n.t).headcount)||0),0);
+  document.getElementById("stats").innerHTML =
+    `<div class="stat"><b>🏢 ${v.groups.length}</b><span>${L("Directorates","إدارات")}</span></div>
+     <div class="stat"><b>🧩 ${units}</b><span>${L("Units / teams","وحدات / فرق")}</span></div>
+     <div class="stat"><b>👥 ${direct}</b><span>${L("Report to Attaché","يتبعون الملحق مباشرة")}</span></div>
+     <div class="stat"><b>🧭 ${JOURNEY.length}</b><span>${L("Patient journey steps","مراحل رحلة المريض")}</span></div>` +
+     (staff ? `<div class="stat"><b>🙋 ${staff}</b><span>${L("Staff","الموظفون")}</span></div>` : "");
+}
+
+function renderJourney(){
+  const idx = {}; walk(PROPOSED).forEach(x=>idx[x.n.t]=x);
+  document.getElementById("journey").innerHTML = JOURNEY.map((s,i)=>{
+    const c = idx[s.o[0]].c;
+    return `<div class="step" style="--c:${c}"><div class="n">${i+1}</div><h4>${s.e} ${T(s.h)}</h4><p>${T(s.p)}</p>${
+      s.o.map(o=>`<span class="chip" style="--c:${idx[o].c}" data-u="${esc(o)}">${T(o)}</span>`).join("")}</div>`;
+  }).join("");
+}
+
+function jdBlock(x){
+  const j = jdv(x.n.t), e = `<span class="empty">${L("to be added","يُضاف لاحقاً")}</span>`;
+  return `<div class="jd" style="--c:${x.c}" data-u="${esc(x.n.t)}">
+    <h3>${x.n.e?x.n.e+" ":""}${T(x.n.t)}</h3>
+    <div class="role">${esc(j.role)||L("Role","الدور")} · ${L("Lead","المسؤول")}: ${j.lead?esc(j.lead):e} · ${L("Staff","الموظفون")}: ${j.headcount?esc(j.headcount):e}</div>
+    <p class="pp" dir="auto" style="text-align:start">${esc(j.purpose)}</p>
+    ${j.tasks?.length?`<div class="k">${L("Key tasks","المهام الرئيسية")}</div><ul dir="auto">${j.tasks.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>`:""}
+    ${j.kpis?.length?`<div class="k">${L("How success is measured","مؤشرات النجاح")}</div><ul dir="auto">${j.kpis.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>`:""}
+  </div>`;
+}
+function renderHandbook(){
+  const secs = {}; walk(PROPOSED).forEach(x=>{ (secs[x.sec] = secs[x.sec] || {c:x.sec==="Leadership"?"var(--maroon)":x.c, items:[]}).items.push(x); });
+  document.getElementById("handbook").innerHTML = Object.entries(secs).map(([k,s])=>
+    `<div class="hb-sec" style="--c:${s.c}"><h2>${SEC_EMOJI[k]||""} ${T(k)}</h2><div class="hb-grid">${s.items.map(jdBlock).join("")}</div></div>`).join("");
+}
+
+function render(){
+  const isChart = view==="proposed";
+  document.getElementById("chartWrap").hidden = !isChart;
+  document.getElementById("meta").hidden = !isChart;
+  document.getElementById("journey").hidden = view!=="journey";
+  document.getElementById("handbook").hidden = view!=="jds";
+  document.getElementById("goals").hidden = view!=="goals";
+  ["ivr","crm"].forEach(p=>{ document.getElementById(p).hidden = view!==p; if (view===p) renderProject(p); });
+  document.getElementById("summary").hidden = view!=="summary";
+  if (view==="summary") renderSummary();
+  if (view==="goals") renderGoals();
+  const intro = {
+    summary:"",
+    proposed:L(PROPOSED.intro,"يقود الملحقُ الطبي، بمساندة نائبه، أربعَ إدارات، ولكل خطوة في رحلة المريض مسؤول واضح."),
+    journey:L("How a patient moves through the office under the proposed model, and which unit owns each step. Click a unit to see its job description.","كيف ينتقل المريض عبر المكتب في الهيكل المقترح، والوحدة المسؤولة عن كل خطوة. اضغط على أي وحدة لعرض وصفها الوظيفي."),
+    ivr:L("Smart IVR: phone self-service for patients. A summary of the proposal.","الرد الصوتي الذكي: خدمة هاتفية ذاتية للمرضى. ملخص للمقترح."),
+    crm:L("Patient Journey App: one web-based system for the whole patient journey. A summary of the proposal.","تطبيق رحلة المريض: نظام ويب واحد لرحلة المريض كاملة. ملخص للمقترح."),
+    goals:L("How the office supports the Ministry of Public Health's National Health Strategy 2024–2030: our vision, eight goals and the KPIs that measure them. Click an owner to see that unit's job description.","كيف يدعم المكتب الاستراتيجية الوطنية للصحة 2024–2030 لوزارة الصحة العامة: رؤيتنا وأهدافنا الثمانية والمؤشرات التي تقيسها. اضغط على المسؤول لعرض وصفه الوظيفي."),
+    jds:L("A job description for every unit in the proposed structure.","وصف وظيفي لكل وحدة في الهيكل المقترح.")
+  };
+  const introEl = document.getElementById("intro");
+  introEl.textContent = intro[view] || ""; introEl.hidden = !intro[view];
+  if (isChart){ renderChart(PROPOSED); renderStats(PROPOSED); }
+  if (view==="journey") renderJourney();
+  if (view==="jds") renderHandbook();
+  const ch = document.getElementById("changes");
+  ch.hidden = view!=="proposed";
+  ch.innerHTML = `<h2>${L("✨ Why this structure","✨ لماذا هذا الهيكل")}</h2><ol>${(lang==="ar"?CHANGES_AR:PROPOSED.changes).map(x=>`<li>${x}</li>`).join("")}</ol>`;
+  search();
+}
+
+/* ---------- Drawer ---------- */
+function findUnit(t){
+  return walk(PROPOSED).find(x=>x.n.t===t);
+}
+function openDrawer(x){
+  openIdx = x;
+  const n = x.n, j = jdv(n.t), e = `<span class="empty">${L("to be added","يُضاف لاحقاً")}</span>`;
+  const head = `<div class="bar" style="--c:${x.c||'var(--maroon)'}"></div><h3>${n.e?n.e+" ":""}${T(n.t)}</h3>
+    <div class="rp">${x.parent ? L("Reports to: ","يتبع: ")+"<b>"+T(x.parent)+"</b>" : L("Head of the organisation","رأس الهيكل التنظيمي")}</div>`;
+  let body;
+  if (!editing){
+    body = `<div class="facts">
+        <div class="fact"><small>${L("Role","الدور الوظيفي")}</small>${esc(j.role)||e}</div>
+        <div class="fact"><small>${L("Headcount","عدد الموظفين")}</small>${esc(j.headcount)||e}</div>
+        <div class="fact" style="grid-column:1/3"><small>${L("Lead","المسؤول")}</small>${esc(j.lead)||e}</div></div>
+      <div class="label">${L("Purpose","الغرض")}</div><p dir="auto">${esc(j.purpose)||e}</p>
+      <div class="label">${L("Key tasks","المهام الرئيسية")}</div>${j.tasks?.length?`<ul dir="auto">${j.tasks.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>`:`<p>${e}</p>`}
+      <div class="label">${L("How success is measured","مؤشرات النجاح")}</div>${j.kpis?.length?`<ul dir="auto">${j.kpis.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>`:`<p>${e}</p>`}
+      ${(PROJ_OF[n.t]||[]).map(p=>`<div class="note">${PROJECTS[p].icon} ${L("This unit runs the","تتولى هذه الوحدة مقترح")} <b>${L(PROJECTS[p].en, PROJECTS[p].ar)}</b>${L(" proposal.","")}
+        <button class="btn primary" style="margin-left:8px" onclick="goView('${p}')">${L("Open","فتح")} ${PROJECTS[p].icon} ${L(PROJECTS[p].short, PROJECTS[p].ar)}</button>
+        </div>`).join("")}
+      <div class="actions"><button class="btn" onclick="toggleEdit(true)">${L("✏️ Edit this job description","✏️ تعديل الوصف الوظيفي")}</button><button class="btn primary" style="margin-left:auto" onclick="closeDrawer()">${L("✖ Close","✖ إغلاق")}</button></div>`;
+  } else {
+    const one = L("(one per line)","(سطر لكل بند)");
+    body = `${lang==="ar" ? `<div class="en-note" style="margin-top:10px">✏️ أنت تعدّل النسخة العربية. الاسم وعدد الموظفين مشتركان بين اللغتين.</div>` : ""}
+      <div class="label">${L("Role / job title","الدور / المسمى الوظيفي")}</div><input id="f-role" dir="auto" value="${esc(j.role)}">
+      <div class="label">${L("Lead (name)","المسؤول (الاسم)")}</div><input id="f-lead" dir="auto" value="${esc(j.lead)}" placeholder="${L("e.g. Dr. …","مثال: د. …")}">
+      <div class="label">${L("Headcount","عدد الموظفين")}</div><input id="f-hc" value="${esc(j.headcount)}" placeholder="${L("e.g. 3","مثال: 3")}">
+      <div class="label">${L("Purpose","الغرض")}</div><textarea id="f-pp" dir="auto" rows="3">${esc(j.purpose)}</textarea>
+      <div class="label">${L("Key tasks","المهام الرئيسية")} <span class="hint">${one}</span></div><textarea id="f-tasks" dir="auto" rows="6">${esc((j.tasks||[]).join("\n"))}</textarea>
+      <div class="label">${L("How success is measured","مؤشرات النجاح")} <span class="hint">${one}</span></div><textarea id="f-kpis" dir="auto" rows="3">${esc((j.kpis||[]).join("\n"))}</textarea>
+      <div class="actions"><button class="btn primary" onclick="saveJD()">${L("💾 Save","💾 حفظ")}</button><button class="btn" style="margin-left:auto" onclick="closeDrawer()">${L("✖ Close","✖ إغلاق")}</button></div>`;
+  }
+  document.getElementById("dbody").innerHTML = head + body;
+  const d = document.getElementById("drawer");
+  d.style.setProperty("--c", x.c || "var(--maroon)");
+  d.classList.add("open"); d.scrollTop = 0;
+  document.getElementById("backdrop").classList.add("show");
+}
+function saveJD(){
+  const t = openIdx.n.t, lines = id => document.getElementById(id).value.split("\n").map(s=>s.trim()).filter(Boolean);
+  const v = id => document.getElementById(id).value.trim();
+  const text = {role:v("f-role"), purpose:v("f-pp"), tasks:lines("f-tasks"), kpis:lines("f-kpis")};
+  const base = jd(t); base.lead = v("f-lead"); base.headcount = v("f-hc");
+  if (lang==="ar") { JDAR[t] = text; persistAr(); } else { Object.assign(base, text); }
+  persist(); render(); toast(L("Saved. Use “Save copy” to download a shareable file.","تم الحفظ. استخدم «حفظ نسخة» لتنزيل ملف قابل للمشاركة."));
+  openDrawer(openIdx);
+}
+function closeDrawer(){ document.getElementById("drawer").classList.remove("open"); document.getElementById("backdrop").classList.remove("show"); }
+function toggleEdit(on){
+  editing = on ?? !editing;
+  document.body.classList.toggle("editing", editing);
+  const b = document.getElementById("editBtn"); b.classList.toggle("edit-on", editing); b.textContent = editing ? L("✅ Done editing","✅ إنهاء التعديل") : L("✏️ Edit mode","✏️ وضع التعديل");
+  if (document.getElementById("drawer").classList.contains("open") && openIdx) openDrawer(openIdx);
+}
+function toast(m){ const t=document.getElementById("toast"); t.textContent=m; t.classList.add("show"); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("show"),2600); }
+
+/* ---------- Save copy: bake edits into a new HTML file ---------- */
+function saveCopy(){
+  const clone = document.documentElement.cloneNode(true);
+  clone.querySelector("#jd").textContent = "\n" + JSON.stringify(JD, null, 1).replace(/<\//g, "<\\/") + "\n";
+  clone.querySelector("#jdar").textContent = "\n" + JSON.stringify(JDAR, null, 1).replace(/<\//g, "<\\/") + "\n";
+  ["#chart","#journey","#handbook","#dbody","#stats","#changes"].forEach(s=>{ const el=clone.querySelector(s); if(el) el.innerHTML=""; });
+  clone.querySelector("#logoData").textContent = logoSrc;
+  clone.querySelector("#drawer").classList.remove("open");
+  clone.querySelector("body").classList.remove("editing");
+  const blob = new Blob(["<!DOCTYPE html>\n" + clone.outerHTML], {type:"text/html"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = "QMA-London-Org-Chart.html"; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
+  toast("Copy downloaded with your edits included.");
+}
+
+/* ---------- MOPH logo: saved in the page, a local "moph-logo.png", or uploaded ---------- */
+let logoSrc = "";
+const logoBox = document.getElementById("logo"), logoImg = document.getElementById("logoImg");
+logoImg.onload = ()=>logoBox.classList.add("has");
+logoImg.onerror = ()=>{ logoBox.classList.remove("has"); };
+function setLogo(src){ logoSrc = src; logoImg.src = src; }
+(function initLogo(){
+  let s = document.getElementById("logoData").textContent.trim();
+  try{ s = s || localStorage.getItem("qma-logo") || ""; }catch(e){}
+  if (s) setLogo(s); else logoImg.src = "moph-logo.png";
+})();
+logoBox.addEventListener("click", ()=>{ if (editing || !logoBox.classList.contains("has")) document.getElementById("logoFile").click(); });
+document.getElementById("logoFile").addEventListener("change", e=>{
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = ()=>{ setLogo(r.result); try{ localStorage.setItem("qma-logo", r.result); }catch(err){} toast("Logo added. Use 💾 Save copy to keep it in the file."); };
+  r.readAsDataURL(f);
+});
+
+/* ---------- Search ---------- */
+function search(){
+  const q = document.getElementById("q").value.trim().toLowerCase();
+  const chart = document.getElementById("chart");
+  chart.querySelectorAll(".card").forEach(c=>c.classList.toggle("hit", !!q && c.dataset.s.includes(q)));
+  chart.classList.toggle("dim", !!q);
+  document.querySelectorAll(".jd").forEach(el=>{ el.style.display = !q || el.textContent.toLowerCase().includes(q) ? "" : "none"; });
+}
+
+/* ---------- Events ---------- */
+document.getElementById("chart").addEventListener("click", e=>{ const c=e.target.closest(".card"); if(c) openDrawer(registry[+c.dataset.i] && {n:registry[+c.dataset.i].n, c:registry[+c.dataset.i].c, parent:registry[+c.dataset.i].parent}); });
+document.getElementById("journey").addEventListener("click", e=>{ const c=e.target.closest("[data-u]"); if(c) openDrawer(findUnit(c.dataset.u)); });
+document.getElementById("handbook").addEventListener("click", e=>{ const c=e.target.closest("[data-u]"); if(c) openDrawer(findUnit(c.dataset.u)); });
+["goals","ivr","crm"].forEach(id=>document.getElementById(id).addEventListener("click", e=>{ const c=e.target.closest("[data-u]"); if(c && findUnit(c.dataset.u)) openDrawer(findUnit(c.dataset.u)); }));
+function goView(v){ closeDrawer(); const b=document.querySelector(`#seg button[data-v="${v}"]`); if(b) b.click(); window.scrollTo(0,0); }
+document.getElementById("seg").addEventListener("click", e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  view=b.dataset.v; document.querySelectorAll("#seg button").forEach(x=>x.classList.toggle("on",x===b)); closeDrawer(); render();
+});
+document.getElementById("editBtn").addEventListener("click", ()=>toggleEdit());
+document.getElementById("saveBtn").addEventListener("click", saveCopy);
+document.getElementById("q").addEventListener("input", search);
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeDrawer(); });
+document.getElementById("langBtn").addEventListener("click", ()=>setLang(lang==="ar" ? "en" : "ar"));
+applyStatic();
+render();
+</script>
+</body>
+</html>
