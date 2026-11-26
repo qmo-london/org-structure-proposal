@@ -3,6 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#8A1538">
+<meta name="description" content="A patient-centred Medical Attaché Office from 1 January 2027: new structure, patient journey, job descriptions, goals & KPIs, Smart IVR and the Shifa app. A personal proposal for discussion.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="QMA Office (UK) · Proposal 2027">
+<meta property="og:title" content="Proposed Organisation Structure 2027 · Medical Attaché Office, London">
+<meta property="og:description" content="A patient-centred office from 1 January 2027: structure, patient journey, job descriptions, goals & KPIs, Smart IVR and the Shifa app.">
+<meta property="og:url" content="https://qmo-london.github.io/org-structure-proposal/">
+<meta property="og:image" content="https://qmo-london.github.io/org-structure-proposal/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Proposed Organisation Structure 2027 – Medical Attaché Office, London">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="noindex, nofollow">
 <title>QMA Office (UK) — Organisation Structure</title>
 <style>
@@ -392,7 +404,63 @@
   .seg button{transition:background .18s,color .18s,box-shadow .18s}
   .seg button:hover .ic{animation:none;transform:scale(1.08)}
   /* ---- hidden buttons: Edit, Save copy, Search, Print ---- */
-  #editBtn,#saveBtn,#q,header .tools button[onclick="window.print()"]{display:none!important}</style>
+  #editBtn,#saveBtn,#q,header .tools button[onclick="window.print()"]{display:none!important}  /* ===== Phone layout ===== */
+  @media (max-width:760px){
+    body{background-attachment:scroll;font-size:14px}
+    header{padding:8px 12px 18px}
+    header .top{gap:10px;flex-wrap:nowrap}
+    .logo,.logo img,body.scrolled .logo,body.scrolled .logo img{height:38px}
+    .hdiv,.eyebrow,.credit,.badge-draft{display:none!important}
+    .htitle{min-width:0;flex:1}
+    h1,body.scrolled h1{font-size:15px;line-height:1.3}
+    header .tools .btn{padding:6px 10px;font-size:12px}
+    .disclaimer{font-size:11px;padding:6px 10px;line-height:1.4}
+    .toolbar{padding:6px 8px;justify-content:flex-start}
+    .seg{scroll-snap-type:x proximity;border-radius:16px;padding:4px}
+    .seg button{scroll-snap-align:center;font-size:12px;padding:4px 10px 4px 4px;gap:5px}
+    [dir=rtl] .seg button{padding:4px 4px 4px 10px}
+    .seg button .ic{width:24px;height:24px;font-size:12px}
+    .summary,.proj,.goals,.handbook,.journey,.scroller{padding-left:12px!important;padding-right:12px!important}
+    .meta,.intro{padding-left:12px;padding-right:12px}
+    .changes{margin:0 12px 30px;padding:16px}
+    .changes ol{columns:1}
+    .hero{padding:18px;gap:14px;flex-direction:column;align-items:stretch;border-radius:16px}
+    .hero h2{font-size:19px!important}
+    .hero .ar{font-size:17px}
+    .hero p{font-size:13.5px}
+    .pdfbtn{text-align:center}
+    .headline{grid-template-columns:1fr 1fr}
+    .hk b{font-size:22px}
+    .two,.vm,.ladder{grid-template-columns:1fr}
+    .rung:not(:last-child)::after{display:none}
+    .sum-grid{grid-template-columns:1fr}
+    .flow,.mods,.rels,.hb-grid{grid-template-columns:1fr}
+    .goal{overflow-x:auto}
+    .goal table{min-width:540px}
+    .goal-h{min-width:0}
+    .gantt{grid-template-columns:150px repeat(12,46px)}
+    .decide li{font-size:13.5px}
+    /* organisation chart: stacked top to bottom instead of wide columns */
+    .scroller{overflow-x:visible}
+    .chart{min-width:0;align-items:stretch}
+    .chart>.card.head{align-self:center;min-width:0;width:100%}
+    .trunk{display:flex;flex-direction:column;align-items:center;gap:8px;padding:8px 0}
+    .trunk>div:first-child,.trunk .mid{display:none}
+    .trunk .side .row::before{display:none}
+    .trunk .side .card{min-width:0;width:100%}
+    .groups{grid-template-columns:1fr!important;padding-top:10px;gap:18px}
+    .groups::before,.group::before{display:none}
+    .group{padding:0}
+    .stats{gap:8px}
+    .stat{min-width:0;flex:1 1 40%;padding:10px 12px}
+    /* popups */
+    .drawer{width:96vw;max-height:92vh;padding:18px 16px}
+    #drawer .facts{grid-template-columns:1fr}
+    .pdfbox{width:100vw;height:100vh;border-radius:0}
+    #toTop{width:42px;height:42px;right:14px;bottom:14px}
+    [dir=rtl] #toTop{left:14px}
+    footer{padding:20px 14px 24px;font-size:12px}
+  }</style>
 </head>
 <body>
 <div id="progress"></div>
@@ -1409,6 +1477,7 @@ function closePdf(){
 document.addEventListener("click", e=>{
   const a = e.target.closest('a[href$=".pdf"]');
   if (!a || a.id === "pdfNew") return;
+  if (window.matchMedia && matchMedia("(max-width: 760px)").matches) return;
   e.preventDefault();
   const href = a.getAttribute("href");
   const p = Object.values(PROJECTS).find(x=>x.pdf === href);
@@ -1435,7 +1504,9 @@ function onScrollFx(){
   toTopEl.classList.toggle("show", scrollY > 500);
 }
 window.addEventListener("scroll", onScrollFx, {passive:true});
-toTopEl.addEventListener("click", ()=>window.scrollTo({top:0, behavior:"smooth"}));document.getElementById("langBtn").addEventListener("click", ()=>setLang(lang==="ar" ? "en" : "ar"));
+toTopEl.addEventListener("click", ()=>window.scrollTo({top:0, behavior:"smooth"}));document.getElementById("seg").addEventListener("click", e=>{
+  const b = e.target.closest("button"); if (b && b.scrollIntoView) b.scrollIntoView({behavior:"smooth", inline:"center", block:"nearest"});
+});document.getElementById("langBtn").addEventListener("click", ()=>setLang(lang==="ar" ? "en" : "ar"));
 applyStatic();
 render();
 </script>
