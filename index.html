@@ -308,7 +308,6 @@
   .toast.show{transform:translateX(-50%)}
   [hidden]{display:none!important}
   @media print{
-    @page{size:A3 landscape;margin:10mm}
     .toolbar,.drawer,.editbar,.toast,.backdrop,.pdfmodal{display:none!important}
     header{position:static!important}
     .goal,.rung,.hk{break-inside:avoid}
@@ -407,7 +406,7 @@
   .seg button{transition:background .18s,color .18s,box-shadow .18s}
   .seg button:hover .ic{animation:none;transform:scale(1.08)}
   /* ---- hidden buttons: Edit, Save copy, Search, Print ---- */
-  #editBtn,#saveBtn,#q,header .tools button[onclick="window.print()"]{display:none!important}  /* ===== Phone layout ===== */
+  #editBtn,#saveBtn,#q,header .tools button[onclick="printDoc(view)"]{display:none!important}  /* ===== Phone layout ===== */
   @media (max-width:760px){
     body{background-attachment:scroll;font-size:14px}
     header{padding:8px 12px 18px}
@@ -548,13 +547,13 @@ body.scrolled header{padding-top:8px;padding-bottom:24px}
 }
 
 /* ---- v2: decisions shortcut, section print, full-proposal print ---- */
-header .tools button[onclick="window.print()"]{display:inline-block!important}
+header .tools button[onclick="printDoc(view)"]{display:inline-block!important}
 header .tools .decide-btn{background:rgba(244,212,142,.16);border-color:rgba(244,212,142,.6);color:var(--gold-lt);font-weight:600}
 header .tools .decide-btn:hover{background:var(--gold-lt);color:#4A0B20}
 .decide{scroll-margin-top:160px}
 #printRoot{display:none}
 @media (max-width:760px){
-  #printAllBtn,header .tools button[onclick="window.print()"]{display:none!important}
+  #printAllBtn,header .tools button[onclick="printDoc(view)"]{display:none!important}
   header .top{flex-wrap:wrap}
   header .top .logo{order:1}
   header .top .htitle{order:2;flex:1 1 auto;min-width:0}
@@ -569,6 +568,192 @@ header .tools .decide-btn:hover{background:var(--gold-lt);color:#4A0B20}
   .printSec:first-child{page-break-before:avoid}
   .printSecTitle{font-family:"Marcellus","Noto Kufi Arabic",serif;color:var(--maroon);font-size:22px;font-weight:400;margin:0 0 12px;padding:6px 14px;border-inline-start:5px solid var(--gold);background:#FBF3F0;border-radius:8px}
 }
+
+/* ===== Document print: A4 report layout (used by every Print / PDF button and Ctrl+P) ===== */
+#printRoot{display:none}
+@media print{
+  @page{size:A4 portrait;margin:20mm 16mm 20mm 16mm}
+  @page org{size:A4 landscape;margin:14mm 12mm 16mm 12mm}
+  html,body{background:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body.printing-doc>*:not(#printRoot){display:none!important}
+  body.printing-doc #printRoot{display:block}
+}
+#printRoot{font-family:"Inter","Segoe UI",Arial,"Noto Sans Arabic",sans-serif;font-size:10pt;line-height:1.5;color:#1d1d24}
+#printRoot *{box-sizing:border-box;animation:none!important;transition:none!important;box-shadow:none!important}
+#printRoot [hidden]{display:block!important}
+#printRoot a{color:inherit;text-decoration:none}
+#printRoot button,#printRoot .golinks,#printRoot .pdfbtn,#printRoot .editbar,#printRoot .en-note{display:none!important}
+#printRoot .dsec{break-before:page}
+#printRoot .dsec:first-child{break-before:auto}
+#printRoot .dtitle{margin:0 0 6mm;padding:0 0 3mm;border-bottom:1.5pt solid var(--maroon);display:flex;align-items:baseline;gap:10pt}
+#printRoot .dtitle .no{font:400 22pt "Marcellus",serif;color:var(--gold,#c9a45c)}
+#printRoot .dtitle h1{font:400 22pt "Marcellus","Noto Kufi Arabic",serif;color:var(--maroon);margin:0;flex:1}
+#printRoot .dtitle small{font-size:8pt;color:#6b6b78;letter-spacing:.06em;text-transform:uppercase}
+#printRoot .dintro{font-size:10.5pt;color:#3d3d48;margin:0 0 5mm;padding:3mm 4mm;border-inline-start:3pt solid var(--gold,#c9a45c);background:#fbf5f7}
+#printRoot .cover{height:257mm;position:relative;display:flex;flex-direction:column;break-after:page;padding:0}
+#printRoot .cover .band{background:var(--maroon-dk);color:#fff;margin:-20mm -16mm 0;padding:16mm 16mm 14mm;display:flex;align-items:center;gap:8mm;min-height:52mm}
+#printRoot .cover .band img{height:24mm;width:auto;background:#fff;padding:2mm 3mm;border-radius:2mm}
+#printRoot .cover .band .eb{font-size:11pt;letter-spacing:.14em;text-transform:uppercase;opacity:.9}
+#printRoot .cover .serr{height:7mm;margin:0 -16mm;background:var(--maroon-dk);-webkit-mask:conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) 50%/9mm 100%;mask:conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) 50%/9mm 100%}
+#printRoot .cover .main{margin-top:34mm}
+#printRoot .cover .prop{display:inline-block;border:1pt solid var(--maroon);color:var(--maroon);font-weight:700;font-size:10pt;letter-spacing:.14em;padding:1.5mm 5mm;border-radius:10mm}
+#printRoot .cover h1{font:400 40pt/1.12 "Marcellus","Noto Kufi Arabic",serif;color:var(--maroon);margin:8mm 0 4mm}
+#printRoot .cover .sub{font-size:15pt;color:#3d3d48;margin:0 0 10mm}
+#printRoot .cover .rule{width:30mm;height:1.5mm;background:var(--gold,#c9a45c);margin:0 0 8mm}
+#printRoot .cover .by{font-size:11pt;color:#1d1d24}
+#printRoot .cover .by b{color:var(--maroon)}
+#printRoot .cover .dt{font-size:10.5pt;color:#6b6b78;margin-top:2mm}
+#printRoot .cover .disc{margin-top:auto;font-size:8.5pt;color:#6b6b78;border-top:.75pt solid #d9cfd3;padding-top:3mm}
+#printRoot .toc{break-after:page}
+#printRoot .toc h1{font:400 22pt "Marcellus","Noto Kufi Arabic",serif;color:var(--maroon);margin:0 0 6mm;padding-bottom:3mm;border-bottom:1.5pt solid var(--maroon)}
+#printRoot .toc ol{list-style:none;margin:0;padding:0}
+#printRoot .toc li{display:flex;gap:5mm;padding:3.2mm 0;border-bottom:.5pt solid #e5dde0;align-items:baseline}
+#printRoot .toc li .n{font:400 16pt "Marcellus",serif;color:var(--gold,#c9a45c);width:10mm}
+#printRoot .toc li b{font-size:12pt;color:var(--maroon);display:block}
+#printRoot .toc li span{font-size:9.5pt;color:#555}
+#printRoot h2,#printRoot h3,#printRoot h4{break-after:avoid;page-break-after:avoid}
+#printRoot .psec,#printRoot .hb-sec>h2,#printRoot .changes h2{font:400 14pt "Marcellus","Noto Kufi Arabic",serif;color:var(--maroon);margin:7mm 0 3mm;padding:0 0 1.5mm;border-bottom:.75pt solid var(--gold,#c9a45c);background:none;border-radius:0;border-inline-start:0}
+#printRoot .hero{background:#fbf5f7!important;color:#1d1d24!important;border:0;border-inline-start:4pt solid var(--maroon);border-radius:0;padding:5mm 6mm;margin:0 0 5mm;display:block}
+#printRoot .hero h2{font:400 18pt "Marcellus","Noto Kufi Arabic",serif;color:var(--maroon);margin:0 0 2mm;border:0;padding:0}
+#printRoot .hero p{opacity:1;font-size:10pt;max-width:none;color:#3d3d48;margin:0}
+#printRoot .hero .ar{font-size:11pt;color:var(--maroon)!important;font-weight:600;opacity:1;direction:rtl;text-align:start;margin-bottom:1mm}
+#printRoot .hero .tagline{color:var(--maroon);opacity:1;font-style:italic;margin-top:2mm}
+#printRoot .hero .by{background:none;padding:0;margin-top:2mm;font-size:9pt;color:#6b6b78;opacity:1}
+#printRoot .hero>div[style*="center"]{display:none!important}
+#printRoot .headline{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5mm;margin:0 0 5mm}
+#printRoot .hk{border:.75pt solid #e0d3d8;border-top:2.5pt solid var(--c,var(--maroon));background:#fff;padding:2.5mm 3mm;border-radius:0;break-inside:avoid}
+#printRoot .hk b{display:block;font:400 16pt "Marcellus",serif;color:var(--c,var(--maroon))}
+#printRoot .hk span{font-size:8.5pt;color:#555;line-height:1.3;display:block}
+#printRoot .sum-grid,#printRoot .mods,#printRoot .rels,#printRoot .flow{display:grid;grid-template-columns:repeat(2,1fr);gap:3mm}
+#printRoot .ben,#printRoot .mod,#printRoot .rel,#printRoot .fl{border:.75pt solid #e0d3d8;border-radius:0;background:#fff;padding:3mm 4mm;break-inside:avoid;margin:0;width:auto;min-width:0;height:auto}
+#printRoot .ben b,#printRoot .mod b,#printRoot .fl b{display:block;color:var(--maroon);font-size:10.5pt}
+#printRoot .ben span,#printRoot .mod span,#printRoot .fl span,#printRoot .rel p{font-size:9.5pt;color:#333}
+#printRoot .ben .e{display:none}
+#printRoot .fl .n{display:inline-block;background:var(--maroon);color:#fff;width:5.5mm;height:5.5mm;line-height:5.5mm;text-align:center;border-radius:50%;font-size:8pt;font-weight:700;margin-inline-end:2mm;vertical-align:middle;position:static}
+#printRoot .flow .fl::before,#printRoot .flow .fl::after{display:none}
+#printRoot .rel .t{font-weight:700;color:var(--maroon)}
+#printRoot .rel .d{color:#6b6b78;font-size:8.5pt;margin-inline-start:2mm}
+#printRoot .rel b{display:block}
+#printRoot .rel .out{color:var(--maroon);font-size:9pt;margin-top:1mm}
+#printRoot .note,#printRoot .src{font-size:9pt;color:#444;background:#fbf5f7;border-inline-start:2.5pt solid var(--gold,#c9a45c);padding:2.5mm 4mm;margin:3mm 0;border-radius:0}
+#printRoot .src{background:none;border:0;border-top:.5pt solid #ddd;padding:2mm 0;color:#6b6b78}
+#printRoot .proj>.src:last-child{display:none} /* repeats the section intro; avoids a near-empty last page */
+/* keep the cover band inside the page: side bleed made Arabic pages shift 16mm and shrank the whole print to ~85% */
+#printRoot .cover .band{margin:-20mm 0 0}
+#printRoot .cover .serr{margin:0}
+#printRoot .cover .band .eb{font-size:10pt;letter-spacing:.1em;white-space:nowrap}
+/* roadmap: no scrollbar in print, columns may shrink (Arabic month names) */
+#printRoot .gantt{overflow:visible;grid-template-columns:62mm repeat(12,minmax(0,1fr))}
+#printRoot .g-m{overflow:hidden;white-space:nowrap}
+#printRoot .goal{border:0;border-radius:0;background:none;padding:0;margin:0 0 5mm;break-inside:auto}
+#printRoot .goal-h{break-inside:avoid;break-after:avoid;border-inline-start:3pt solid var(--c,var(--maroon));padding:2mm 4mm;background:#fbf5f7;margin-bottom:0}
+#printRoot .goal-h h3{font:400 12.5pt "Marcellus","Noto Kufi Arabic",serif;color:var(--maroon);margin:0}
+#printRoot .goal-h p{font-size:9.5pt;margin:1mm 0 0;color:#333}
+#printRoot .goal-h .nhs{font-size:8pt;color:#6b6b78;font-style:italic;display:block;margin-top:1mm}
+#printRoot table{width:100%;border-collapse:collapse;font-size:9pt;margin:0}
+#printRoot thead{display:table-header-group}
+#printRoot tr{break-inside:avoid}
+#printRoot th{background:var(--maroon);color:#fff;font-weight:600;text-align:start;padding:2mm 3mm;font-size:8.5pt;letter-spacing:.03em}
+#printRoot td{padding:2mm 3mm;border-bottom:.5pt solid #e2d6db;vertical-align:top}
+#printRoot tr:nth-child(even) td{background:#fcf8f9}
+#printRoot td.tg{font-weight:700;color:var(--maroon);white-space:nowrap}
+#printRoot .own{color:#333;background:none;border:0;padding:0;font-weight:500}
+#printRoot .pri{margin:0 0 4mm}
+#printRoot .pri-h{display:flex;gap:4mm;align-items:center;break-after:avoid;background:var(--maroon);color:#fff;padding:3mm 5mm;margin:6mm 0 3mm}
+#printRoot .pri-h .pn{font-size:8pt;letter-spacing:.1em;text-transform:uppercase;border:.75pt solid #ffffff99;padding:1mm 3mm;border-radius:8mm;white-space:nowrap}
+#printRoot .pri-h h2{color:#fff;border:0;margin:0;padding:0;font-size:13pt}
+#printRoot .pri-h span{font-size:8.5pt;opacity:.9}
+#printRoot .ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;margin:0 0 4mm}
+#printRoot .rung{border:.75pt solid #e0d3d8;border-top:2.5pt solid var(--maroon);padding:3mm;break-inside:avoid;background:#fff;border-radius:0}
+#printRoot .rung small{font-size:8pt;color:#6b6b78;text-transform:uppercase;letter-spacing:.08em}
+#printRoot .rung h3{font-size:10.5pt;color:var(--maroon);margin:1mm 0}
+#printRoot .rung p{font-size:9pt;margin:0}
+#printRoot .vm{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin:0 0 4mm}
+#printRoot .vm>div{background:#fbf5f7;border-inline-start:3pt solid var(--gold,#c9a45c);padding:3mm 4mm;break-inside:avoid}
+#printRoot .vm small{font-size:8pt;color:#6b6b78;text-transform:uppercase;letter-spacing:.08em;display:block}
+#printRoot .vm p{margin:1mm 0 0;font-size:9.5pt}
+#printRoot .decide{background:#fbf5f7;border:.75pt solid var(--maroon);padding:3mm 5mm;break-inside:avoid;border-radius:0}
+#printRoot .decide ol{list-style:none;margin:0;padding:0}
+#printRoot .decide li{display:flex;gap:3mm;padding:1.6mm 0;align-items:flex-start;font-size:10pt}
+#printRoot .decide .box{background:var(--maroon);color:#fff;min-width:5.5mm;height:5.5mm;line-height:5.5mm;text-align:center;border-radius:50%;font-size:8pt;font-weight:700;display:inline-block;flex:none}
+#printRoot .gantt{display:grid;grid-template-columns:62mm repeat(12,1fr);background:#fff;border:.75pt solid #e0d3d8;border-radius:0;padding:2mm;font-size:7pt;row-gap:1mm;break-inside:avoid;margin-bottom:4mm}
+#printRoot .g-m{font-size:7pt;text-align:center;color:#6b6b78;padding:1mm 0}
+#printRoot .g-sec{grid-column:1/-1;font-weight:700;color:var(--c);font-size:8pt;padding-top:1.5mm;border-bottom:.5pt solid #eee}
+#printRoot .g-l{font-size:7.5pt;padding-inline-end:2mm;align-self:center}
+#printRoot .g-b{background:var(--c);color:#fff;font-size:6.5pt;border-radius:1mm;padding:.6mm 1.5mm;white-space:nowrap;overflow:hidden}
+#printRoot .two{display:block}
+#printRoot .card90{break-inside:avoid;margin-bottom:3mm}
+#printRoot .card90 ul,#printRoot .changes ol{font-size:10pt;margin:0;padding-inline-start:5mm}
+#printRoot .card90 li,#printRoot .changes li{margin-bottom:1.5mm}
+#printRoot .changes{background:none;padding:0;margin-top:6mm;break-inside:auto}
+#printRoot .changes li{break-inside:avoid}
+#printRoot .journey{display:block}
+#printRoot .step{display:block;border:.75pt solid #e0d3d8;border-inline-start:3pt solid var(--c,var(--maroon));padding:3mm 4mm 3mm 14mm;margin:0 0 3mm;position:relative;break-inside:avoid;background:#fff;width:auto;border-radius:0}
+[dir=rtl] #printRoot .step{padding:3mm 14mm 3mm 4mm}
+#printRoot .step .n{position:absolute;inset-inline-start:3.5mm;top:3mm;width:7mm;height:7mm;line-height:7mm;text-align:center;border-radius:50%;background:var(--c,var(--maroon));color:#fff;font-weight:700;font-size:9pt;margin:0}
+#printRoot .step h4{font-size:11pt;color:var(--maroon);margin:0 0 1mm}
+#printRoot .step p{margin:0 0 2mm;font-size:9.5pt}
+#printRoot .chip{display:inline-block;font-size:8pt;border:.6pt solid var(--c,var(--maroon));color:var(--c,var(--maroon));background:#fff;border-radius:6mm;padding:.4mm 2.5mm;margin:0 1.5mm 1mm 0}
+[dir=rtl] #printRoot .chip{margin:0 0 1mm 1.5mm}
+#printRoot .hb-sec{margin:0 0 4mm}
+#printRoot .hb-grid{display:block}
+#printRoot .jd{border:.75pt solid #e0d3d8;border-inline-start:3pt solid var(--c,var(--maroon));padding:3mm 5mm;margin:0 0 3.5mm;break-inside:avoid;background:#fff;border-radius:0;width:auto}
+#printRoot .jd h3{font:400 12pt "Marcellus","Noto Kufi Arabic",serif;color:var(--maroon);margin:0 0 .5mm}
+#printRoot .jd .role{font-size:8.5pt;color:#6b6b78;margin-bottom:1.5mm}
+#printRoot .jd .pp{font-size:9.5pt;margin:0 0 1.5mm}
+#printRoot .jd .k{font-size:8pt;text-transform:uppercase;letter-spacing:.08em;color:var(--maroon);font-weight:700;margin:1.5mm 0 .5mm}
+#printRoot .jd ul{margin:0;padding-inline-start:5mm;font-size:9.3pt}
+#printRoot .jd .empty{color:#999}
+#printRoot .orgpage{page:org;break-before:page;break-after:page}
+#printRoot .orgpage:first-child{break-before:auto}
+#printRoot .hero::before,#printRoot .hero::after{display:none!important}
+#printRoot .oc{text-align:center;margin-top:2mm}
+#printRoot .oc-row{display:flex;align-items:center;justify-content:center;gap:0}
+#printRoot .oc-row i{width:14mm;border-top:1pt solid #b9a3ab}
+#printRoot .oc-v{width:0;height:5mm;border-left:1pt solid #b9a3ab;margin:0 auto}
+#printRoot .oc-box{display:inline-block;background:var(--c);color:#fff;padding:2mm 4mm;min-width:44mm;text-align:center}
+#printRoot .oc-box b{display:block;font-size:10pt}
+#printRoot .oc-box small{display:block;font-size:7.5pt;opacity:.92}
+#printRoot .oc-box.side{background:#fff;color:#1d1d24;border:1pt solid var(--c);border-top:3pt solid var(--c)}
+#printRoot .oc-box.side b{color:var(--c)}
+#printRoot .oc-box.head{background:var(--maroon-dk);min-width:62mm;padding:3mm 6mm}
+#printRoot .oc-box.head b{font-size:12pt}
+#printRoot .oc-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:0 3mm;text-align:start}
+#printRoot .oc-col{position:relative;padding-top:5mm}
+#printRoot .oc-col::before{content:"";position:absolute;top:0;left:-1.5mm;right:-1.5mm;border-top:1pt solid #b9a3ab}
+#printRoot .oc-col:first-child::before{left:50%}
+#printRoot .oc-col:last-child::before{right:50%}
+#printRoot .oc-col::after{content:"";position:absolute;top:0;left:50%;height:5mm;border-left:1pt solid #b9a3ab}
+#printRoot .oc-col .oc-box{display:block;min-width:0}
+#printRoot .oc-col ul{list-style:none;margin:2mm 0 0;padding:0;border-inline-start:1.5pt solid var(--c);margin-inline-start:3mm}
+#printRoot .oc-col li{padding:1.4mm 2.5mm;border-bottom:.5pt solid #eadfe3;font-size:8.5pt;line-height:1.3;break-inside:avoid}
+#printRoot .oc-col li b{display:block;font-weight:600}
+#printRoot .oc-col li small{display:block;font-size:7pt;color:#6b6b78}
+#printRoot .oc-col li.lb{font-size:6.8pt;font-weight:700;color:var(--c);text-transform:uppercase;letter-spacing:.08em;border:0;padding:2mm 2.5mm .3mm}
+#printRoot .odir{margin:0 0 5mm}
+#printRoot .odir h3{background:var(--c);color:#fff;font:400 12.5pt "Marcellus","Noto Kufi Arabic",serif;margin:0;padding:2.5mm 4mm;display:flex;justify-content:space-between;gap:4mm}
+#printRoot .odir h3 small{font:400 9pt Inter,sans-serif;opacity:.92}
+#printRoot .odir td.u{font-weight:600;width:38%}
+#printRoot .odir tr.lbl td{background:#f3e8ec;color:var(--maroon);font-weight:700;font-size:8pt;text-transform:uppercase;letter-spacing:.08em;padding:1.2mm 3mm}
+#printRoot .stats,#printRoot .intro{display:none}
+#printRoot .odir{break-inside:avoid}
+#printRoot .odir th{background:#f3e8ec;color:var(--maroon);border-bottom:1pt solid var(--c)}
+#printRoot .odir td.u{width:30%}
+#printRoot .vm>div{color:#1d1d24!important}
+#printRoot .vm p{color:#1d1d24!important;opacity:1!important}
+#printRoot .rel .t{background:none!important;color:var(--maroon)!important;padding:0!important;border-radius:0!important;display:inline;font-weight:700}
+#printRoot .step{margin-bottom:2.2mm;padding-top:2.4mm;padding-bottom:2.4mm}
+#printRoot .ben,#printRoot .mod,#printRoot .rel,#printRoot .fl{padding:2.2mm 3.5mm}
+#printRoot .sum-grid,#printRoot .mods,#printRoot .rels,#printRoot .flow{gap:2.4mm}
+#printRoot .psec{margin:5.5mm 0 2.5mm}
+#printRoot thead tr{break-after:avoid}
+#printRoot tbody tr:first-child{break-before:avoid}
+#printRoot .orgpage{width:273mm}
+[dir=rtl] #printRoot .oc-col:first-child::before{left:-1.5mm;right:50%}
+[dir=rtl] #printRoot .oc-col:last-child::before{right:-1.5mm;left:50%}
+#printRoot .step{margin-bottom:1.8mm;padding-top:2mm;padding-bottom:2mm}
+#printRoot .step p{margin-bottom:1.5mm}
+#printRoot .pri-h span:not(.pn){color:#f6e4ea!important;opacity:1}
 </style>
 </head>
 <body>
@@ -592,8 +777,8 @@ header .tools .decide-btn:hover{background:var(--gold-lt);color:#4A0B20}
       <button class="btn" id="editBtn">✏️ Edit mode</button>
       <button class="btn" id="saveBtn" title="Download a copy of this page with your edits included" data-ar="💾 حفظ نسخة">💾 Save copy</button>
       <button class="btn decide-btn" id="decideBtn" data-ar="✅ القرارات المطلوبة" onclick="goView('summary');setTimeout(function(){var d=document.querySelector('.decide');if(d)d.scrollIntoView({behavior:'smooth',block:'start'})},120)">✅ Decisions</button>
-<button class="btn" id="printAllBtn" data-ar="📄 المقترح كاملاً PDF" onclick="printAll()">📄 Full proposal PDF</button>
-<button class="btn" onclick="window.print()" data-ar="🖨️ طباعة هذا القسم">🖨️ Print this section</button>
+<button class="btn" id="printAllBtn" data-ar="📄 المقترح كاملاً PDF" onclick="printDoc('all')">📄 Full proposal PDF</button>
+<button class="btn" onclick="printDoc(view)" data-ar="🖨️ طباعة هذا القسم">🖨️ Print this section</button>
     </div>
     <div class="credit" data-ar="💡 فكرة وإعداد المقترح: <b>السيد محمد فخرو</b>">💡 Concept &amp; proposal by <b>Mr. Mohamed Fakhroo</b></div>
   </div>
@@ -1618,33 +1803,123 @@ window.addEventListener("scroll", onScrollFx, {passive:true});
 toTopEl.addEventListener("click", ()=>window.scrollTo({top:0, behavior:"smooth"}));document.getElementById("seg").addEventListener("click", e=>{
   const b = e.target.closest("button"); if (b && b.scrollIntoView) b.scrollIntoView({behavior:"smooth", inline:"center", block:"nearest"});
 });document.getElementById("langBtn").addEventListener("click", ()=>setLang(lang==="ar" ? "en" : "ar"));
-function printAll(noPrint){
-  const keep = view;
-  const order = ["summary","proposed","journey","jds","goals","ivr","crm","hr"];
-  const ids = ["meta","intro","chartWrap","journey","handbook","goals","ivr","crm","hr","summary","changes"];
-  const old = document.getElementById("printRoot"); if (old) old.remove();
-  const root = document.createElement("div"); root.id = "printRoot";
-  order.forEach((v,i)=>{
-    view = v; render();
-    const label = ((document.querySelector('#seg button[data-v="'+v+'"]')||{}).textContent || v).trim();
-    const sec = document.createElement("div"); sec.className = "printSec";
-    if (i > 0){ const t = document.createElement("h2"); t.className = "printSecTitle"; t.textContent = label; sec.appendChild(t); }
-    ids.forEach(id=>{ const el = document.getElementById(id);
-      if (el && !el.hidden && el.innerHTML.trim()){ const c = el.cloneNode(true); c.hidden = false; c.removeAttribute("id"); sec.appendChild(c); } });
-    root.appendChild(sec);
-  });
-  document.body.appendChild(root);
-  document.body.classList.add("printing-all");
-  goView(keep);
-  if (noPrint) return;
-  setTimeout(()=>window.print(), 60);
-}
-window.addEventListener("afterprint", ()=>{
-  document.body.classList.remove("printing-all");
-  const r = document.getElementById("printRoot"); if (r) r.remove();
-});
 applyStatic();
 render();
+/* ---------- Document print: cover, contents, sections, org chart page ---------- */
+var _docOrder = ["summary","proposed","journey","jds","goals","ivr","crm","hr"];
+function _noEmoji(root){
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  const re = /[\p{Extended_Pictographic}\uFE0F\u200D\u20E3]/gu, nodes = [];
+  while (w.nextNode()) nodes.push(w.currentNode);
+  nodes.forEach(n=>{ if (re.test(n.nodeValue)) n.nodeValue = n.nodeValue.replace(re,"").replace(/^\s+/,""); re.lastIndex = 0; });
+}
+function _cssStr(s){ return '"' + String(s).replace(/\\/g,"\\\\").replace(/"/g,'\\"').replace(/\n/g," ") + '"'; }
+function _sectionTitle(v){
+  const b = document.querySelector('#seg button[data-v="'+v+'"]');
+  const sp = b ? b.querySelector("span:not(.ic)") : null;
+  return (sp ? sp.textContent : v).trim();
+}
+function _orgTables(){
+  const e = `<span class="empty">–</span>`;
+  const row = (t, bold) => { const j = jdv(t); return `<tr><td class="u">${T(t)}</td><td>${esc(j.role)||e}</td><td>${esc(j.purpose)||e}</td></tr>`; };
+  const head = `<tr><th>${L("Unit","الوحدة")}</th><th>${L("Role","الدور")}</th><th>${L("Purpose","الغرض")}</th></tr>`;
+  let h = `<div class="odir" style="--c:var(--maroon)"><h3><span>${L("Leadership","القيادة")}</span><small>${L("Reports to the Medical Attaché","تتبع الملحق الطبي")}</small></h3><table>${head}`
+        + [PROPOSED.head.t, PROPOSED.deputy.t, ...PROPOSED.side.map(s=>s.t)].map(row).join("") + `</table></div>`;
+  PROPOSED.groups.forEach(g=>{
+    h += `<div class="odir" style="--c:${g.c}"><h3><span>${T(g.t)}</span><small>${T(g.d)}</small></h3><table>${head}${row(g.t)}`
+      + g.kids.map(k=> k.sec ? `<tr class="lbl"><td colspan="3">${T(k.sec)}</td></tr>` : row(k.t)).join("") + `</table></div>`;
+  });
+  return h;
+}
+function _orgChart(){
+  const box=(n,cls,c)=>`<div class="oc-box ${cls||""}" style="--c:${c||"var(--maroon)"}"><b>${T(n.t)}</b>${n.d?`<small>${T(n.d)}</small>`:""}</div>`;
+  const [a,b]=PROPOSED.side;
+  let h=`<div class="oc"><div class="oc-row">${box(a,"side",a.c)}<i></i>${box(PROPOSED.head,"head")}<i></i>${box(b,"side",b.c)}</div><div class="oc-v"></div>${box(PROPOSED.deputy,"deputy","#a8284f")}<div class="oc-v"></div><div class="oc-cols">`;
+  PROPOSED.groups.forEach(g=>{
+    h+=`<div class="oc-col" style="--c:${g.c}">${box(g,"grp",g.c)}<ul>`+g.kids.map(k=>k.sec?`<li class="lb">${T(k.sec)}</li>`:`<li><b>${T(k.t)}</b>${k.d?`<small>${T(k.d)}</small>`:""}${k.chips?`<small>${k.chips.map(x=>T(x)).join(" · ")}</small>`:""}</li>`).join("")+`</ul></div>`;
+  });
+  return h+`</div></div>`;
+}
+function buildDoc(scope){
+  cleanupDoc();
+  const keep = view, all = scope === "all", order = all ? _docOrder : [scope];
+  const ids = ["meta","intro","chartWrap","journey","handbook","goals","ivr","crm","hr","summary","changes"];
+  const root = document.createElement("div"); root.id = "printRoot";
+  const toc = [], titles = {};
+  order.forEach((v,i)=>{
+    view = v; render();
+    const label = _sectionTitle(v); titles[v] = label;
+    const introTxt = (document.getElementById("intro").textContent || "").replace(/\s*Click [^.]*\./g,"").replace(/\s*اضغط[^.]*\./g,"").trim() ||
+      (v==="summary" ? L("Executive summary, decisions requested from management and the 2027 roadmap.","الملخص التنفيذي والقرارات المطلوبة من الإدارة وخارطة الطريق 2027.") : "");
+    toc.push({n:i+1, t:label, d:introTxt});
+    const sec = document.createElement("section"); sec.className = "dsec";
+    const title = `<div class="dtitle">${all?`<span class="no">${i+1}</span>`:""}<h1>${esc(label)}</h1><small>${L("Proposal 2027","مقترح 2027")}</small></div>`;
+    if (v === "proposed"){
+      const org = document.createElement("div"); org.className = "orgpage";
+      org.innerHTML = title + (introTxt ? `<div class="dintro">${esc(introTxt)}</div>` : "") + _orgChart();
+      sec.appendChild(org);
+      const st = document.createElement("div"); st.className = "headline";
+      st.innerHTML = [...document.querySelectorAll("#stats .stat")].map(s=>`<div class="hk"><b>${s.querySelector("b").textContent}</b><span>${s.querySelector("span").textContent}</span></div>`).join("");
+      sec.appendChild(st);
+      const ot = document.createElement("div"); ot.innerHTML = `<h3 class="psec">${L("Units and responsibilities","الوحدات والمسؤوليات")}</h3>` + _orgTables(); sec.appendChild(ot);
+      const ch = document.getElementById("changes").cloneNode(true); ch.removeAttribute("id"); sec.appendChild(ch);
+    } else {
+      sec.innerHTML = title + (introTxt && v!=="summary" ? `<div class="dintro">${esc(introTxt)}</div>` : "");
+      ids.forEach(id=>{ if (id==="intro"||id==="meta"||id==="chartWrap"||id==="changes") return;
+        const el = document.getElementById(id);
+        if (el && !el.hidden && el.innerHTML.trim()){ const c = el.cloneNode(true); c.hidden = false; c.removeAttribute("id"); sec.appendChild(c); } });
+    }
+    root.appendChild(sec);
+  });
+  /* cover + contents (full proposal only) */
+  const disc = ((document.querySelector(".disclaimer")||{}).textContent || "").replace(/^[^\p{L}]+/u,"").trim();
+  const docTitle = L("Proposed Organisation Structure","الهيكل التنظيمي المقترح");
+  const office = L("Medical Attaché Office · London","المكتب الطبي القطري · لندن");
+  if (all){
+    const front = document.createElement("div");
+    front.innerHTML = `<section class="cover"><div class="band">${logoSrc?`<img src="${logoSrc}" alt="">`:""}<div class="eb">${office}</div></div><div class="serr"></div>
+      <div class="main"><span class="prop">${L("PROPOSAL 2027","مقترح 2027")}</span><h1>${docTitle}</h1>
+      <p class="sub">${L("A patient-centred Medical Attaché Office, from 1 January 2027","مكتب طبي محوره المريض، اعتباراً من 1 يناير 2027")}</p><div class="rule"></div>
+      <div class="by">${L("Concept &amp; proposal by <b>Mr. Mohamed Fakhroo</b>","فكرة وإعداد المقترح: <b>السيد محمد فخرو</b>")}</div>
+      <div class="dt">${L("November 2026","نوفمبر 2026")}</div></div>
+      <div class="disc">${esc(disc)}</div></section>
+      <section class="toc"><h1>${L("Contents","المحتويات")}</h1><ol>${toc.map(x=>`<li><span class="n">${x.n}</span><div><b>${esc(x.t)}</b><span>${esc(x.d)}</span></div></li>`).join("")}</ol></section>`;
+    while (front.lastChild) root.insertBefore(front.lastChild, root.firstChild);
+  }
+  root.querySelectorAll("table").forEach(t=>{ const r = t.rows[0]; if (r && !t.tHead && [...r.cells].every(c=>c.tagName==="TH")){ const th = document.createElement("thead"); th.appendChild(r); t.insertBefore(th, t.firstChild); } });
+  _noEmoji(root);
+  root.querySelectorAll("[id]").forEach(e=>e.removeAttribute("id"));
+  root.querySelectorAll("[data-u]").forEach(e=>e.removeAttribute("data-u"));
+  /* running header / footer */
+  const topR = all ? docTitle : titles[scope];
+  const st = document.createElement("style"); st.id = "docPageCss";
+  st.textContent = `@media print{@page{@top-left{content:${_cssStr(office)};font:8pt Inter,Arial,sans-serif;color:#8A1538;border-bottom:.5pt solid #d9cfd3;vertical-align:bottom;padding-bottom:2mm}
+    @top-right{content:${_cssStr(topR+" · "+L("Proposal 2027","مقترح 2027"))};font:8pt Inter,Arial,sans-serif;color:#6b6b78;border-bottom:.5pt solid #d9cfd3;vertical-align:bottom;padding-bottom:2mm}
+    @bottom-left{content:${_cssStr(disc.length>95?L("A personal proposal for discussion. Not an official document.","مقترح شخصي للنقاش، وليس وثيقة رسمية."):disc)};font:7.5pt Inter,Arial,sans-serif;color:#6b6b78;vertical-align:top;padding-top:2mm}
+    @bottom-right{content:${_cssStr(L("Page ","صفحة "))} counter(page) ${_cssStr(L(" of "," من "))} counter(pages);font:8pt Inter,Arial,sans-serif;color:#8A1538;vertical-align:top;padding-top:2mm}}
+    ${all?"@page :first{@top-left{content:none;border:0}@top-right{content:none;border:0}@bottom-left{content:none}@bottom-right{content:none}}":""}}`;
+  document.head.appendChild(st);
+  document.body.appendChild(root);
+  root.querySelectorAll(".headline").forEach(hl=>{ const n=hl.children.length; hl.style.gridTemplateColumns="repeat("+(n<=5?n:n===6?3:4)+",1fr)"; });
+  document.body.classList.add("printing-doc");
+  view = keep; render();
+}
+function cleanupDoc(){
+  document.body.classList.remove("printing-doc");
+  ["printRoot","docPageCss"].forEach(id=>{ const e = document.getElementById(id); if (e) e.remove(); });
+}
+function printDoc(scope){
+  buildDoc(scope);
+  const go = ()=>setTimeout(()=>window.print(), 150);
+  (document.fonts && document.fonts.ready) ? document.fonts.ready.then(go) : go();
+}
+function printAll(){ printDoc("all"); }
+window.addEventListener("beforeprint", ()=>{ if (!document.body.classList.contains("printing-doc")) buildDoc(view); });
+window.addEventListener("afterprint", cleanupDoc);
+(function(){
+  const q = new URLSearchParams(location.search), d = q.get("doc");
+  if (d){ if (q.get("lang")==="ar") setLang("ar"); else if (lang!=="en") setLang("en"); buildDoc(d); }
+})();
 </script>
 </body>
 </html>
