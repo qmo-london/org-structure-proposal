@@ -754,6 +754,17 @@ header .tools .decide-btn:hover{background:var(--gold-lt);color:#4A0B20}
 #printRoot .step{margin-bottom:1.8mm;padding-top:2mm;padding-bottom:2mm}
 #printRoot .step p{margin-bottom:1.5mm}
 #printRoot .pri-h span:not(.pn){color:#f6e4ea!important;opacity:1}
+/* ---- Edit mode + Save copy: shown again on laptops and desktops (kept off phones to keep the header tidy) ---- */
+#editBtn,#saveBtn{display:inline-block!important}
+header .tools .btn.edit-on{background:var(--gold-lt);border-color:var(--gold-lt);color:#4A0B20}
+@media (max-width:760px){#editBtn,#saveBtn{display:none!important}}
+@media print{#editBtn,#saveBtn{display:none!important}}
+/* keep the title readable: the buttons move to a second row when the header runs out of space */
+@media (min-width:761px){
+  header .top{flex-wrap:wrap;row-gap:8px}
+  header .top .htitle{flex:1 1 360px;min-width:360px}
+  header .top .tools{flex-wrap:wrap;justify-content:flex-end}
+}
 </style>
 </head>
 <body>
