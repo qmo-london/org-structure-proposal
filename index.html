@@ -17,6 +17,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="noindex, nofollow">
 <title>QMA Office (UK) — Organisation Structure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marcellus&family=Noto+Kufi+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --maroon:#8A1538; --maroon-dk:#5E0E26; --ink:#1d1d24; --muted:#6b6b78;
@@ -461,6 +464,112 @@
     [dir=rtl] #toTop{left:14px}
     footer{padding:20px 14px 24px;font-size:12px}
   }</style>
+<style id="qatar-premium">
+/* ============ Qatar premium theme ============ */
+:root{--gold:#C9A45C;--gold-lt:#F4D48E;--bg-ivory:#FAF6F1}
+::selection{background:rgba(201,164,92,.35)}
+body{font-family:"Inter","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+     background:radial-gradient(1100px 520px at -8% -6%,rgba(138,21,56,.09),transparent 60%),
+                radial-gradient(900px 520px at 108% 24%,rgba(201,164,92,.16),transparent 60%),var(--bg-ivory)}
+[dir=rtl] body{font-family:"Noto Kufi Arabic","Segoe UI",Tahoma,Arial,sans-serif}
+
+/* ---- Header: the Qatar flag band ---- */
+header{background:radial-gradient(900px 280px at 82% -35%,rgba(244,212,142,.17),transparent 62%),
+                 radial-gradient(700px 240px at 8% 130%,rgba(180,67,106,.35),transparent 60%),
+                 linear-gradient(180deg,#6B0F2A 0%,#4A0B20 76%,#3D0718 100%);
+       color:#fff;padding:18px 40px 30px;border-bottom:0;box-shadow:0 16px 36px -18px rgba(61,7,24,.6)}
+header::before{height:16px;background:#3D0718}
+header::after{height:16px;background:var(--bg-ivory)}
+.logo{background:#fff;border-radius:14px;padding:6px 12px;height:auto;box-shadow:0 12px 24px -12px rgba(0,0,0,.55)}
+.logo .ph{color:var(--maroon);border-color:#e3cfd6}
+.hdiv{background:rgba(255,255,255,.22)}
+.eyebrow{color:var(--gold-lt)}
+h1{color:#fff;font-family:"Marcellus","Noto Kufi Arabic",serif;font-weight:400;font-size:26px;letter-spacing:.015em}
+body.scrolled h1{font-size:19px}
+.badge-draft{border:1px solid rgba(244,212,142,.75);color:var(--gold-lt);background:rgba(244,212,142,.12);font-family:"Inter",sans-serif;letter-spacing:.14em}
+.credit{background:rgba(255,255,255,.12);color:#FBEEF3}
+.credit b{color:var(--gold-lt)}
+header .tools input{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.32);color:#fff;border-radius:12px}
+header .tools input::placeholder{color:rgba(255,255,255,.7)}
+header .tools .btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.32);color:#fff;border-radius:12px;box-shadow:none}
+header .tools .btn:hover{background:var(--gold-lt);border-color:var(--gold-lt);color:#4A0B20}
+header .tools .lang-btn{background:var(--gold-lt);border-color:var(--gold-lt);color:#4A0B20}
+header .tools .lang-btn:hover{background:#fff;border-color:#fff}
+
+/* ---- Disclaimer: gold strip ---- */
+.disclaimer{background:linear-gradient(90deg,#FBF3E2,#F7E9EE 50%,#FBF3E2);color:#6B0F2A;border-bottom:1px solid #E9D9B8}
+
+/* ---- Floating menu ---- */
+.toolbar{background:rgba(255,255,255,.8);backdrop-filter:blur(12px)}
+.seg{border:1px solid rgba(201,164,92,.6)}
+
+/* ---- Headings: editorial serif ---- */
+.hero h2,.psec,.changes h2,.drawer h3,.pri-h h2,.hb-sec h2{font-family:"Marcellus","Noto Kufi Arabic",serif;font-weight:400}
+.psec{font-size:19px;color:var(--maroon-dk)}
+.psec::after{background:linear-gradient(90deg,rgba(201,164,92,.7),rgba(232,221,225,.4))}
+.changes h2{font-size:21px}
+.hero .ar{font-family:"Noto Kufi Arabic",serif}
+.hero{border-radius:20px;box-shadow:0 26px 48px -24px rgba(61,7,24,.7)}
+.hero .by{background:rgba(244,212,142,.16);color:#FCE9C8}
+.pdfbtn{background:linear-gradient(135deg,var(--gold-lt),var(--gold));color:#3D0718;font-weight:700}
+.pdfbtn:hover{background:linear-gradient(135deg,#fff,var(--gold-lt))}
+
+/* ---- Cards: softer, rounder ---- */
+.stat,.hk,.ben,.rung,.card90,.step,.fl,.mod,.rel,.jd,.goal,.changes,.decide{border-radius:16px}
+.stat b,.hk b{font-family:"Marcellus","Noto Kufi Arabic",serif;font-weight:400}
+.stat span{letter-spacing:.09em}
+
+/* ---- Footer ---- */
+footer{background:linear-gradient(180deg,#5E0E26,#3D0718);border-top:4px solid var(--gold)}
+
+/* ---- Scrolled header keeps clearance for the serrated edge ---- */
+body.scrolled header{padding-top:8px;padding-bottom:24px}
+
+/* ---- Small screens ---- */
+@media (max-width:1440px){header{padding-left:24px;padding-right:24px}h1{font-size:22px}}
+@media (max-width:760px){header{padding:10px 12px 24px}h1,body.scrolled h1{font-size:16px}header::before,header::after{height:13px}}
+
+/* ---- Print: white header, ink-friendly ---- */
+@media print{
+  body{background:#fff}
+  header{background:#fff!important;color:var(--ink);box-shadow:none}
+  header::before{display:none}
+  header::after{background:var(--maroon)}
+  h1{color:var(--maroon)}
+  .eyebrow{color:var(--muted)}
+  .badge-draft{border-color:var(--maroon);color:var(--maroon);background:none}
+  .credit{background:#f7eef1;color:var(--maroon)}
+  .credit b{color:var(--maroon)}
+  .hdiv{background:#e2dbd5}
+  header .tools .btn{background:#fff;border-color:#ddd6d0;color:var(--ink)}
+  .disclaimer{background:#f7e9ee;color:var(--maroon-dk)}
+  footer{background:none;color:#555;border:0}
+  footer b{color:#000}
+}
+
+/* ---- v2: decisions shortcut, section print, full-proposal print ---- */
+header .tools button[onclick="window.print()"]{display:inline-block!important}
+header .tools .decide-btn{background:rgba(244,212,142,.16);border-color:rgba(244,212,142,.6);color:var(--gold-lt);font-weight:600}
+header .tools .decide-btn:hover{background:var(--gold-lt);color:#4A0B20}
+.decide{scroll-margin-top:160px}
+#printRoot{display:none}
+@media (max-width:760px){
+  #printAllBtn,header .tools button[onclick="window.print()"]{display:none!important}
+  header .top{flex-wrap:wrap}
+  header .top .logo{order:1}
+  header .top .htitle{order:2;flex:1 1 auto;min-width:0}
+  header .top .tools{order:3;flex:1 1 100%;justify-content:flex-end;margin-top:2px}
+}
+@media print{
+  header{position:relative!important}
+  header .tools{display:none!important}
+  body.printing-all>*:not(#printRoot):not(header):not(.disclaimer){display:none!important}
+  body.printing-all #printRoot{display:block}
+  .printSec{page-break-before:always}
+  .printSec:first-child{page-break-before:avoid}
+  .printSecTitle{font-family:"Marcellus","Noto Kufi Arabic",serif;color:var(--maroon);font-size:22px;font-weight:400;margin:0 0 12px;padding:6px 14px;border-inline-start:5px solid var(--gold);background:#FBF3F0;border-radius:8px}
+}
+</style>
 </head>
 <body>
 <div id="progress"></div>
@@ -482,7 +591,9 @@
       <button class="btn lang-btn" id="langBtn">🌐 عربي</button>
       <button class="btn" id="editBtn">✏️ Edit mode</button>
       <button class="btn" id="saveBtn" title="Download a copy of this page with your edits included" data-ar="💾 حفظ نسخة">💾 Save copy</button>
-      <button class="btn" onclick="window.print()" data-ar="🖨️ طباعة / PDF">🖨️ Print / PDF</button>
+      <button class="btn decide-btn" id="decideBtn" data-ar="✅ القرارات المطلوبة" onclick="goView('summary');setTimeout(function(){var d=document.querySelector('.decide');if(d)d.scrollIntoView({behavior:'smooth',block:'start'})},120)">✅ Decisions</button>
+<button class="btn" id="printAllBtn" data-ar="📄 المقترح كاملاً PDF" onclick="printAll()">📄 Full proposal PDF</button>
+<button class="btn" onclick="window.print()" data-ar="🖨️ طباعة هذا القسم">🖨️ Print this section</button>
     </div>
     <div class="credit" data-ar="💡 فكرة وإعداد المقترح: <b>السيد محمد فخرو</b>">💡 Concept &amp; proposal by <b>Mr. Mohamed Fakhroo</b></div>
   </div>
@@ -1496,7 +1607,7 @@ function animateCounts(){
   });
 }
 const _baseRender = render;
-render = function(){ _baseRender(); animateCounts(); };
+render = function(){ _baseRender(); };
 const progressEl = document.getElementById("progress"), toTopEl = document.getElementById("toTop");
 function onScrollFx(){
   const max = document.documentElement.scrollHeight - innerHeight;
@@ -1507,6 +1618,31 @@ window.addEventListener("scroll", onScrollFx, {passive:true});
 toTopEl.addEventListener("click", ()=>window.scrollTo({top:0, behavior:"smooth"}));document.getElementById("seg").addEventListener("click", e=>{
   const b = e.target.closest("button"); if (b && b.scrollIntoView) b.scrollIntoView({behavior:"smooth", inline:"center", block:"nearest"});
 });document.getElementById("langBtn").addEventListener("click", ()=>setLang(lang==="ar" ? "en" : "ar"));
+function printAll(noPrint){
+  const keep = view;
+  const order = ["summary","proposed","journey","jds","goals","ivr","crm","hr"];
+  const ids = ["meta","intro","chartWrap","journey","handbook","goals","ivr","crm","hr","summary","changes"];
+  const old = document.getElementById("printRoot"); if (old) old.remove();
+  const root = document.createElement("div"); root.id = "printRoot";
+  order.forEach((v,i)=>{
+    view = v; render();
+    const label = ((document.querySelector('#seg button[data-v="'+v+'"]')||{}).textContent || v).trim();
+    const sec = document.createElement("div"); sec.className = "printSec";
+    if (i > 0){ const t = document.createElement("h2"); t.className = "printSecTitle"; t.textContent = label; sec.appendChild(t); }
+    ids.forEach(id=>{ const el = document.getElementById(id);
+      if (el && !el.hidden && el.innerHTML.trim()){ const c = el.cloneNode(true); c.hidden = false; c.removeAttribute("id"); sec.appendChild(c); } });
+    root.appendChild(sec);
+  });
+  document.body.appendChild(root);
+  document.body.classList.add("printing-all");
+  goView(keep);
+  if (noPrint) return;
+  setTimeout(()=>window.print(), 60);
+}
+window.addEventListener("afterprint", ()=>{
+  document.body.classList.remove("printing-all");
+  const r = document.getElementById("printRoot"); if (r) r.remove();
+});
 applyStatic();
 render();
 </script>
